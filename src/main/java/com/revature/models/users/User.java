@@ -113,8 +113,8 @@ public class User {
         byte[] encryptedBytes = new byte[password.length() * 2]; //2 bytes for every character
         for(int i = 0; i < password.length(); i++) {
             char newChar = (char)(password.charAt(i) + 25);
-            encryptedBytes[2 * i] = (byte) ((newChar&0xFF00)>>8);
-            encryptedBytes[2 * i + 1] = (byte) (newChar&0x00FF);
+            encryptedBytes[2 * i] = (byte) (newChar>>8);
+            encryptedBytes[2 * i + 1] = (byte) newChar;
         }
         return encryptedBytes;
     }
@@ -125,7 +125,14 @@ public class User {
 
         StringBuilder decryptedPassword = new StringBuilder();
         for(int i = 0; i < encryptedPassword.length; i += 2) {
-            char c = (char)(((encryptedPassword[i] & 0x00FF) << 8) + (encryptedPassword[i + 1] & 0x00FF) - 25);
+            //Bitwise operations work a little differently between Java and C++ so the below line of code was very frustrating to work out.
+            //I'm writing this long note down so that I don't forget this in the future (hopefully...). Apparently doing any kind of binary operation on a
+            //byte type (i.e. left shift, right shift, binary AND, OR or XOR) will automatically cast the result into an integer. This means that
+            //if there happens to be a 1 in the leading bit of what would be the resulting byte (or character) from a binary operation,
+            //it's cast into an integer with a negative value because Java doesn't have unsigned integer types. To mitigate this,
+            //convert a byte into an integer by doing (byte & 0xFF), this will give us an integer of the form 0x000000FF which can then be safely
+            //left shifted by 8 to give us the correct character value without needing to worry about weird negative integer conversions.
+            char c = (char)(((encryptedPassword[i] & 0xFF) << 8) | (encryptedPassword[i + 1] & 0xFF) - 25);
             decryptedPassword.append(c);
         }
         return decryptedPassword.toString();

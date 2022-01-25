@@ -12,7 +12,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        String originalPassword = "Haw4infect";
+        String originalPassword = "NashV!lle_Sug@R";
         byte[] encryptedPassword = User.encryptPassword(originalPassword);
 
         String decryptedPassword = User.decryptPassword(encryptedPassword);
