@@ -1,5 +1,6 @@
 package com.revature.models.users;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 public class User {
@@ -103,6 +104,32 @@ public class User {
     }
 
     //METHODS
+    public static byte[] encryptPassword(String password) {
+        //the encryption technique for all users will be the same, therefore we use a static function
+        //for encryption of passwords. Encrypted passwords are saved as byte arrays in the database
+        //to avoid UTF-8 vs. ASCII shortfall within the database. Each character in Java is 2 bytes
+        //in length, thus the length of the return byte array will be 2 X password.length()
+
+        byte[] encryptedBytes = new byte[password.length() * 2]; //2 bytes for every character
+        for(int i = 0; i < password.length(); i++) {
+            char newChar = (char)(password.charAt(i) + 25);
+            encryptedBytes[2 * i] = (byte) ((newChar&0xFF00)>>8);
+            encryptedBytes[2 * i + 1] = (byte) (newChar&0x00FF);
+        }
+        return encryptedBytes;
+    }
+    public static String decryptPassword(byte[] encryptedPassword) {
+        //every two bytes in the encrypted password makes up a character. Take two bytes from the
+        //encrypted password at a time to get the encrypted character, then subtract 25 from this
+        //character to get the decrypted character
+
+        StringBuilder decryptedPassword = new StringBuilder();
+        for(int i = 0; i < encryptedPassword.length; i += 2) {
+            char c = (char)(((encryptedPassword[i] & 0x00FF) << 8) + (encryptedPassword[i + 1] & 0x00FF) - 25);
+            decryptedPassword.append(c);
+        }
+        return decryptedPassword.toString();
+    }
     /*
     Basic users have no methods associated with them other then what's needed for JSON. This class exists in the off-chance
     that a more specific user class (such as FinanceManager or Engineer) gets accidentally deleted from the database.
