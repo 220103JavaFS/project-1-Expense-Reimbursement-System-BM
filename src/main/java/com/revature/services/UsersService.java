@@ -1,8 +1,18 @@
 package com.revature.services;
 
 import com.revature.models.users.User;
+import com.revature.repos.UsersDAO;
 
 public class UsersService {
+
+    private UsersDAO usersDAO;
+
+    //CONSTRUCTORS
+    public UsersService() {}
+    public UsersService(UsersDAO usersDAO) {
+        this.usersDAO = usersDAO;
+    }
+
     //GET METHODS
     public User getUser(String username) {
         //asks the DAO layer to get all basic info on the employee with the given username. Check to make sure the

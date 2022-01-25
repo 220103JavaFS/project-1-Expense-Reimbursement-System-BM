@@ -12,14 +12,6 @@ public class App {
 
     public static void main(String[] args) {
 
-        String originalPassword = "NashV!lle_Sug@R";
-        byte[] encryptedPassword = User.encryptPassword(originalPassword);
-
-        String decryptedPassword = User.decryptPassword(encryptedPassword);
-
-        System.out.println(originalPassword);
-        System.out.println(decryptedPassword);
-
         app = Javalin.create((config)->{
             config.addStaticFiles("/web", Location.CLASSPATH);
         });
