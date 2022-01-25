@@ -17,7 +17,9 @@ public class UsersService {
     public User getUser(String username) {
         //asks the DAO layer to get all basic info on the employee with the given username. Check to make sure the
         //username passed isn't null or empty before moving on to DAO layer
-        return null;
+        if (username.equals("")) return null;
+
+        return usersDAO.getUser(username);
     }
 
     //POST METHODS
@@ -26,7 +28,7 @@ public class UsersService {
         //Finance Managers can only hire Financial analysts while non-Financial Managers can hire Engineers and Interns
         //This function needs to have functionality to check that info for the new User is ok, such as making sure the username and email addresses are available
         //and that the password meets requirements
-        return true;
+        return usersDAO.hireEmployee(newEmployee);
     }
 
     //DELETE METHODS
