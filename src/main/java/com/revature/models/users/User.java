@@ -9,7 +9,7 @@ public class User {
     protected static int userRoleID = 1;
     protected int userID;
     protected String username;
-    protected String password;
+    protected byte[] password;
     protected String firstName;
     protected String lastName;
     protected String emailAddress;
@@ -23,7 +23,7 @@ public class User {
     public User(int userID, String username, String password, String firstName, String lastName, String emailAddress) {
         this.userID = userID;
         this.username = username;
-        this.password = password;
+        this.password = User.encryptPassword(password);
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
@@ -53,10 +53,10 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
-    public String getPassword() {
+    public byte[] getPassword() {
         return password;
     }
-    public void setPassword(String password) {
+    public void setPassword(byte[] password) {
         this.password = password;
     }
     public String getFirstName() {

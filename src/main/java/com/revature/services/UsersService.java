@@ -11,7 +11,9 @@ public class UsersService {
     private Logger log = LoggerFactory.getLogger(UsersService.class);
 
     //CONSTRUCTORS
-    public UsersService() {}
+    public UsersService() {
+        //this.usersDAO = new UsersDAOImpl(); //uncomment when done with UsersDaoImpl class
+    }
     public UsersService(UsersDAO usersDAO) {
         this.usersDAO = usersDAO;
     }

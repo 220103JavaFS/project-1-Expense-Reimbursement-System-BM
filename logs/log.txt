@@ -1,17 +1,2 @@
-16:06:30.661 [] [Test worker] INFO  com.revature.services.UsersService - About to fire employee: Capn
-16:06:30.667 [] [Test worker] INFO  com.revature.services.UsersService - About to fire employee: rfloyd01
-16:06:30.680 [] [Test worker] DEBUG com.revature.services.UsersService - Username string was null
-16:06:30.685 [] [Test worker] INFO  com.revature.services.UsersService - Sorry, you don't have access to fire that type of employee
-16:06:30.686 [] [Test worker] INFO  com.revature.services.UsersService - Sorry, you don't have access to fire that type of employee
-16:06:30.686 [] [Test worker] INFO  com.revature.services.UsersService - An employee with that username doesn't exist, please re-type username.
-16:06:30.686 [] [Test worker] INFO  com.revature.services.UsersService - Sorry, you don't have access to fire that type of employee
-16:06:30.686 [] [Test worker] INFO  com.revature.services.UsersService - Sorry, you don't have access to fire that type of employee
-16:06:30.687 [] [Test worker] INFO  com.revature.services.UsersService - Sorry, you don't have access to fire that type of employee
-16:06:30.695 [] [Test worker] INFO  com.revature.services.UsersService - Sorry, you don't have access to hire that type of employee
-16:06:30.695 [] [Test worker] INFO  com.revature.services.UsersService - Sorry, you don't have access to hire that type of employee
-16:06:30.695 [] [Test worker] INFO  com.revature.services.UsersService - Either the username or email address already exists in the database, please enter new info.
-16:06:30.695 [] [Test worker] INFO  com.revature.services.UsersService - Either the username or email address already exists in the database, please enter new info.
-16:06:30.695 [] [Test worker] INFO  com.revature.services.UsersService - Capn doesn't have access to hire employees.
-16:06:30.695 [] [Test worker] INFO  com.revature.services.UsersService - Sorry, you don't have access to hire that type of employee
-16:06:30.695 [] [Test worker] INFO  com.revature.services.UsersService - Either the username or email address already exists in the database, please enter new info.
-16:06:30.696 [] [Test worker] INFO  com.revature.services.UsersService - Either the username or email address already exists in the database, please enter new info.
+17:38:35.110 [] [Test worker] DEBUG com.revature.services.LoginService - The password entered was valid, preparing to log you in.
+17:38:35.122 [] [Test worker] DEBUG com.revature.services.LoginService - The password entered was invalid, please try again.
