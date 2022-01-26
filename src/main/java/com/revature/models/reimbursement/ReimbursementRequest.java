@@ -20,6 +20,21 @@ public class ReimbursementRequest {
     private ReimbursementStatus reimbursementStatus;
     private ReimbursementType reimbursementType;
 
+    //CONSTRUCTORS
+    public ReimbursementRequest() {}
+    public ReimbursementRequest(int reimbursementID, double reimbursementAmount, Timestamp reimbursementSubmitted, Timestamp reimbursementResolved, String reimbursementDescription, byte[] reimbursementReceipt, User reimbursementAuthor, User reimbursementResolver, ReimbursementStatus reimbursementStatus, ReimbursementType reimbursementType) {
+        this.reimbursementID = reimbursementID;
+        this.reimbursementAmount = reimbursementAmount;
+        this.reimbursementSubmitted = reimbursementSubmitted;
+        this.reimbursementResolved = reimbursementResolved;
+        this.reimbursementDescription = reimbursementDescription;
+        this.reimbursementReceipt = reimbursementReceipt;
+        this.reimbursementAuthor = reimbursementAuthor;
+        this.reimbursementResolver = reimbursementResolver;
+        this.reimbursementStatus = reimbursementStatus;
+        this.reimbursementType = reimbursementType;
+    }
+
     //GETTERS AND SETTERS
     public int getReimbursementID() {
         return reimbursementID;
