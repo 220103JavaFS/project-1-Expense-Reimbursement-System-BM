@@ -2,10 +2,6 @@ package com.revature;
 
 import com.revature.controllers.Controller;
 import com.revature.controllers.LoginController;
-import com.revature.controllers.TestController;
-import com.revature.models.users.FinanceManager;
-import com.revature.models.users.NonFinanceManager;
-import com.revature.models.users.User;
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
 
