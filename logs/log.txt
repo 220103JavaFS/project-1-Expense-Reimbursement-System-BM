@@ -1,6 +1,6 @@
-15:37:51.139 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @271ms to org.eclipse.jetty.util.log.Slf4jLog
-15:37:51.180 [] [main] INFO  io.javalin.Javalin - Static file handler added: StaticFileConfig(hostedPath=/, directory=/web, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<javax.servlet.http.HttpServletRequest, java.lang.Boolean>). File system location: 'file:///C:/Users/Bobby/Documents/Coding/Revature_Projects/project-1-bobbymahad/build/resources/main/web/'
-15:37:51.250 [] [main] INFO  io.javalin.Javalin - 
+15:46:48.948 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @269ms to org.eclipse.jetty.util.log.Slf4jLog
+15:46:48.980 [] [main] INFO  io.javalin.Javalin - Static file handler added: StaticFileConfig(hostedPath=/, directory=/web, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<javax.servlet.http.HttpServletRequest, java.lang.Boolean>). File system location: 'file:///C:/Users/Bobby/Documents/Coding/Revature_Projects/project-1-bobbymahad/build/resources/main/web/'
+15:46:49.047 [] [main] INFO  io.javalin.Javalin - 
        __                      __ _            __ __
       / /____ _ _   __ ____ _ / /(_)____      / // /
  __  / // __ `/| | / // __ `// // // __ \    / // /_
@@ -9,8 +9,8 @@
 
           https://javalin.io/documentation
 
-15:37:51.251 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
-15:37:51.258 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 108 days old. Consider upgrading!).
-15:37:51.258 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
-15:37:51.504 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
-15:37:51.504 [] [main] INFO  io.javalin.Javalin - Javalin started in 253ms \o/
+15:46:49.047 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+15:46:49.054 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 108 days old. Consider upgrading!).
+15:46:49.054 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
+15:46:49.291 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+15:46:49.291 [] [main] INFO  io.javalin.Javalin - Javalin started in 244ms \o/
