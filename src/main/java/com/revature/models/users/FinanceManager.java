@@ -8,7 +8,7 @@ public class FinanceManager extends Employee implements Manager {
 
     //FIELDS
     static private int userRoleIDAdder = 2;
-    private ArrayList<ReimbursementRequest> availableReimbursementRequests;
+    private ArrayList<ReimbursementRequest> availableReimbursementRequests; //this is a list of all the reimbursement requests in the database waiting for approval
 
     //CONSTRUCTORS
     public FinanceManager() {
@@ -39,6 +39,22 @@ public class FinanceManager extends Employee implements Manager {
     }
     public void setAvailableReimbursementRequests(ArrayList<ReimbursementRequest> availableReimbursementRequests) {
         this.availableReimbursementRequests = availableReimbursementRequests;
+    }
+
+    @Override
+    public String toString() {
+        //We override the standard Employee toString method to include the availableReimbursementRequests field
+        return userType + "{" +
+                "userRoleID='" + getUserRoleID() + '\'' +
+                ", userID='" + userID + '\'' +
+                ", username='" + username + '\'' +
+                ", password=" + password +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", existingReimbursementRequests='" + existingReimbursementRequests + '\'' +
+                ", availableReimbursementRequests='" + availableReimbursementRequests + '\'' +
+                '}';
     }
 
     //METHODS

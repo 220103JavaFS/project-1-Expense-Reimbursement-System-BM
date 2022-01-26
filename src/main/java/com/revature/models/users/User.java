@@ -34,6 +34,8 @@ public class User {
     public int getUserRoleID() {
         //the userRoleID variable is static and shared with all subclasses, however, each subclass overrides the
         //getUserRoleID method to return a userRoleID that's unique for each sub-class type.
+
+        //We return this as an Integer instead of a normal int so it can be easily converted to a string for JSON purposes
         return userRoleID;
     }
     public void setUserRoleID(int userRoleID) {
@@ -93,7 +95,7 @@ public class User {
     @Override
     public String toString() {
         return userType + "{" +
-                "userRoleID=" + getUserRoleID() +
+                "userRoleID='" + getUserRoleID() + '\'' +
                 ", userID='" + userID + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +

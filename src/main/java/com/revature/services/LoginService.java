@@ -11,6 +11,7 @@ public class LoginService {
     private UsersDAO usersDAO;
     private Logger log = LoggerFactory.getLogger(LoginService.class);
 
+    public LoginService() {}
     public LoginService(UsersDAO usersDAO) {
         //allows for mocking of UsersSDAO class with Mockcito
         this.usersDAO = usersDAO;
@@ -18,8 +19,6 @@ public class LoginService {
 
     public User loginUser(LoginAttempt loginAttempt) {
         //this will return true if there's a username and password in the database that matches the login attempt
-
-        //TODO: Maybe include a check against null login attempt or empty strings for values if we don't add in front end
 
         User user = usersDAO.getUser(loginAttempt.getUsername());
 

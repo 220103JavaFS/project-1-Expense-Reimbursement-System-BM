@@ -16,7 +16,7 @@
         </encoder>
     </appender>
 
-    <root level="all"> <!-- change info to all to show all levels of the log, turned off because of Javalin debug overflow-->
+    <root level="info"> <!-- change info to all to show all levels of the log, turned off because of Javalin debug overflow-->
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
     </root>

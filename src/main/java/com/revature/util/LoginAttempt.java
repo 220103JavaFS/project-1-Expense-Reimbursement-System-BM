@@ -4,6 +4,7 @@ public class LoginAttempt {
     private String username;
     private String password;
 
+    public LoginAttempt() {}
     public LoginAttempt(String username, String password) {
         this.username = username;
         this.password = password;

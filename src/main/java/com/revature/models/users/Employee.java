@@ -3,11 +3,11 @@ package com.revature.models.users;
 import com.revature.models.reimbursement.ReimbursementRequest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public abstract class Employee extends User {
     //FIELDS
-    protected ArrayList<ReimbursementRequest> currentReimbursementRequests;
-    protected ArrayList<ReimbursementRequest> legacyReimbursementRequests;
+    protected ArrayList<ReimbursementRequest> existingReimbursementRequests;
 
     //CONSTRUCTORS
     public Employee() {super();}
@@ -17,16 +17,25 @@ public abstract class Employee extends User {
 
     //GETTERS AND SETTERS
     public ArrayList<ReimbursementRequest> getCurrentReimbursementRequests() {
-        return currentReimbursementRequests;
+        return existingReimbursementRequests;
     }
     public void setCurrentReimbursementRequests(ArrayList<ReimbursementRequest> currentReimbursementRequests) {
-        this.currentReimbursementRequests = currentReimbursementRequests;
+        this.existingReimbursementRequests = currentReimbursementRequests;
     }
-    public ArrayList<ReimbursementRequest> getLegacyReimbursementRequests() {
-        return legacyReimbursementRequests;
-    }
-    public void setLegacyReimbursementRequests(ArrayList<ReimbursementRequest> legacyReimbursementRequests) {
-        this.legacyReimbursementRequests = legacyReimbursementRequests;
+
+    @Override
+    public String toString() {
+        //We override the generic User toString() method to include the existingReimbursementRequests field
+        return userType + "{" +
+                "userRoleID='" + getUserRoleID() + '\'' +
+                ", userID='" + userID + '\'' +
+                ", username='" + username + '\'' +
+                ", password=" + password +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", existingReimbursementRequests='" + existingReimbursementRequests + '\'' +
+                '}';
     }
 
     //METHODS
