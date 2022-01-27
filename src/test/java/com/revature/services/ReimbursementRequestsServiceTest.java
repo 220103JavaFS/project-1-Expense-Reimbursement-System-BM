@@ -3,16 +3,17 @@ package com.revature.services;
 import com.revature.models.reimbursement.ReimbursementRequest;
 import com.revature.models.reimbursement.ReimbursementStatus;
 import com.revature.models.reimbursement.ReimbursementType;
-import com.revature.models.users.FinanceAnalyst;
-import com.revature.models.users.FinanceManager;
-import com.revature.models.users.Intern;
-import com.revature.models.users.NonFinanceManager;
+import com.revature.models.users.*;
 import com.revature.repos.ReimbursementRequestsDAO;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.sql.Timestamp;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ReimbursementRequestsServiceTest {
 
@@ -69,8 +70,35 @@ public class ReimbursementRequestsServiceTest {
         dbRequestThree = new ReimbursementRequest(3, 12.50, currentTime, null, "Highway toll", null, manager, null, new ReimbursementStatus(2, "Submitted"), new ReimbursementType(3, "Travel"));
         dbRequestFour = new ReimbursementRequest(4, 501.34, currentTime, null, "Entertaining clients", null, nfManager, null, new ReimbursementStatus(2, "Submitted"), new ReimbursementType(4, "Other"));
 
+        //Requests with "approved" status
+        dbRequestFive   = new ReimbursementRequest(1, 150.12, null, null, "Lunch with a client", null, intern, null, new ReimbursementStatus(1, "Created"), new ReimbursementType(2, "Food"));
+        dbRequestSix   = new ReimbursementRequest(2, 1000.24, null, null, "Lodging for a week", null, analyst, null, new ReimbursementStatus(1, "Created"), new ReimbursementType(1, "Lodging"));
+
+
         //set up Mockito instance of DAO
         MockitoAnnotations.openMocks(this);
         testInstance = new ReimbursementRequestsService(mockedDAO);
+    }
+
+    //Choosing not to test out the GetRequest Functions here, these are really more DAO layer methods
+
+    @Test
+    public void testCreateRequestSuccess() {
+        assertTrue(testInstance.createReimbursementRequestService(dbRequestOne)); //this is a valid creation request
+    }
+
+    @Test
+    public void testCreateRequestFailure() {
+        /*
+        Tests to carry out:
+        1. Test that requests can't be created with approved status (can be handled in the front end)
+        2. Test that requests can't be created with denied status (can probably be handled in the front end)
+        3. Test that requests can't be created with the reimbursement ID filled out (this should be created on entering into the DB, probably can be handled in the front end)
+        4. Test that requests created with the "created" status don't have the submittedTimestamp filled out
+        5. Test that the requestDesription is less than 250 characters in length
+        6. Test that the reimbursementType is valid (can also probably be handled in the front end)
+         */
+
+        assertFalse(testInstance.createReimbursementRequestService(dbRequestOne)); //Test that a request can't be created with the approved status
     }
 }
