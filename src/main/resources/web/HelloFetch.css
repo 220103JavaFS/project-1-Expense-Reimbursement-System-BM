@@ -13,7 +13,7 @@ body {
 
 .form-signin {
   width: 100%;
-  max-width: 330px;
+  max-width: 500px;
   padding: 15px;
   margin: auto;
 }
@@ -36,4 +36,73 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.form-row input {
+  padding: 3px 1px;
+  width: 100%;
+}
+input.currency {
+  text-align: center;
+  padding-right: 15px;
+}
+.input-group .form-control {
+  float: none;
+}
+.input-group .input-buttons {
+  position: relative;
+  z-index: 3;
+}
+
+.input-group-addon {
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+label {
+  display: inline-block;
+  width: 140px;
+  text-align: left;
+}
+
+ .input-group input{
+  margin-bottom: 8px;
+  width: 330px;
+  height: 32px;
+}
+
+#submit{
+  margin-top: 20px;
+}
+
+#mainButton{
+  width: 200px;
+  margin: 0 auto;
+  display: inline;
+}
+
+.inlineButtons{
+  width: 200px;
+  margin: 0 auto;
+  display: inline;
+}
+
+#RequestsDisplayed{
+  width: 50%;
+  float: right;
+  border: 1px solid;
+  background-color:rgb(255, 235, 235);
+}
+
+#RequestFilters{
+  width: 50%;
+  float: left;
+}
+
+input[type="radio"]{
+  float:left;
+}
+
+#requests{
+  float:left;
 }
