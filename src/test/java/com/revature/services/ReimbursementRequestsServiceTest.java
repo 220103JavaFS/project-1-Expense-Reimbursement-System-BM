@@ -84,21 +84,15 @@ public class ReimbursementRequestsServiceTest {
 
     @Test
     public void testCreateRequestSuccess() {
-        assertTrue(testInstance.createReimbursementRequestService(dbRequestOne)); //this is a valid creation request
+        assertTrue(testInstance.createReimbursementRequestService(dbRequestOne) == 0); //this is a valid creation request
     }
 
     @Test
     public void testCreateRequestFailure() {
-        /*
-        Tests to carry out:
-        1. Test that requests can't be created with approved status (can be handled in the front end)
-        2. Test that requests can't be created with denied status (can probably be handled in the front end)
-        3. Test that requests can't be created with the reimbursement ID filled out (this should be created on entering into the DB, probably can be handled in the front end)
-        4. Test that requests created with the "created" status don't have the submittedTimestamp filled out
-        5. Test that the requestDesription is less than 250 characters in length
-        6. Test that the reimbursementType is valid (can also probably be handled in the front end)
-         */
+        //Testing for non-blank inputs will be handled in the front end so no need to check for that here.
 
-        assertFalse(testInstance.createReimbursementRequestService(dbRequestOne)); //Test that a request can't be created with the approved status
+        assertFalse(testInstance.createReimbursementRequestService(dbRequestOne) == 0); //Test that a positive value was entered for the reimbursement amount
+        assertFalse(testInstance.createReimbursementRequestService(dbRequestOne) == 0); //Test for failure when amount is over $500 and no receipt is attached
+        assertFalse(testInstance.createReimbursementRequestService(dbRequestOne) == 0); //Test that description length is less than 250 characters as that's all the database can handle
     }
 }

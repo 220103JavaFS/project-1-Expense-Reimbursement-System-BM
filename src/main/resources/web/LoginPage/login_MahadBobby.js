@@ -1,9 +1,9 @@
 //DOM Selection
-let userName = document.getElementById('username');
-let passWord = document.getElementById("password");
+let userName = document.getElementById('floatingInput');
+let passWord = document.getElementById("floatingPassword");
 let button = document.getElementById("loginButton");
 
-const url = "http://localhost:8080";
+const url = "http://localhost:8081";
 
 button.addEventListener("click", loginFunc);
 
@@ -11,15 +11,16 @@ async function loginFunc() {
     let loginAttempt = {
         username: userName.value,
         password: passWord.value
-    }
+    };
 
     if (loginAttempt.username == "" || loginAttempt.password == "") {
         //I want to send some kind of error message to the page here
+        //alert("Username and/or password fields can't be blank.");
         alert("Username and/or password fields can't be blank.");
         return;
     }
 
-    let response = await fetch(url + "/login", 
+    let response = await fetch(url + "/login",
         {
             method: "POST",
             body: JSON.stringify(loginAttempt),
