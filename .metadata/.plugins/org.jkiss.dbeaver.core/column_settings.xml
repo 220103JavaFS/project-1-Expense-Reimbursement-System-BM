@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item id="NodeList/PostgreTableColumn">
+		<column name="Column Name" visible="true" order="0" width="127"/>
+		<column name="#" visible="true" order="1" width="33"/>
+		<column name="Data type" visible="true" order="2" width="96"/>
+		<column name="Identity" visible="true" order="3" width="64"/>
+		<column name="Collation" visible="true" order="4" width="74"/>
+		<column name="Not Null" visible="true" order="5" width="70"/>
+		<column name="Default" visible="true" order="6" width="63"/>
+		<column name="Comment" visible="true" order="7" width="79"/>
+	</item>
+	<item id="NodeList/PostgreTableRegular">
+		<column name="Table Name" visible="true" order="0" width="195"/>
+		<column name="Object ID" visible="true" order="1" width="77"/>
+		<column name="Owner" visible="true" order="2" width="57"/>
+		<column name="Tablespace" visible="true" order="3" width="89"/>
+		<column name="Row Count Estimate" visible="true" order="4" width="147"/>
+		<column name="Partitions" visible="true" order="5" width="76"/>
+		<column name="Partition by" visible="true" order="6" width="90"/>
+		<column name="Extra Options" visible="true" order="7" width="103"/>
+		<column name="Comment" visible="true" order="8" width="79"/>
+	</item>
+</items>

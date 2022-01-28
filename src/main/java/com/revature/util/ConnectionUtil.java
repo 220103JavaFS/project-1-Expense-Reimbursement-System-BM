@@ -25,7 +25,8 @@ public class ConnectionUtil {
         //3. The port number for the db -> :5432
         //4. The name of the specific db -> /demos
         String bobbyURL = "jdbc:postgresql://javafs220103.csjukvpunyct.us-east-1.rds.amazonaws.com:5432/project1";
-        String mahadURL = "";
+        String mahadURL = "jdbc:postgresql://javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com:5432/postgres";
+        String mahadPassword = "Password";
         String bobbyUsername = "postgres";
         String bobbyPassword = "password";
 
@@ -35,7 +36,7 @@ public class ConnectionUtil {
 
         //String username = "postgres"; //The username given to the overall db when it was created. Note* it's possible and preferable to hide this environment in environment variables for security reasons
         //String password = "password"; //The password for the db. Note* it's possible and preferable to hide this environment in environment variables for security reasons
-        return DriverManager.getConnection(bobbyURL, bobbyUsername, bobbyPassword); //this can throw a SQLException so we add throws SQLException to our class definition
+        return DriverManager.getConnection(mahadURL, bobbyUsername, mahadPassword); //this can throw a SQLException so we add throws SQLException to our class definition
 
     }
 
