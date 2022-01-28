@@ -1,11 +1,58 @@
 package com.revature.repos;
 
+import com.revature.models.users.Employee;
 import com.revature.models.users.User;
+import com.revature.models.users.UserFactory;
+import com.revature.util.ConnectionUtil;
+
+import java.sql.*;
+import java.util.ArrayList;
 
 public class UserDAOImpl implements UsersDAO{
     @Override
     public User getUser(String username) {
-        return null;
+        //used by admins to view all users in the database
+        try (Connection conn = ConnectionUtil.getConnection()) {
+            //log.info("UserDAO getAllUsersDAO() method was called");
+            //Since each employee has a list of customers associated with them, we don't need to actually query the
+            //customer table in our original call to the database.
+            String sql = "SELECT * FROM ers_users WHERE ers_username = ?;";
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            int statementCounter = 0;
+            statement.setString(++statementCounter, username);
+
+            ResultSet result = statement.executeQuery();
+
+            while(result.next()) {
+                UserFactory factory = UserFactory.getFactory();
+                User newUser = factory.makeUser(result.getInt("user_role_id"));
+
+                newUser.setUserID(result.getInt("ers_users_id"));
+                newUser.setUsername(result.getString("ers_username"));
+                newUser.setPassword(result.getBytes("ers_password"));
+                newUser.setUserRoleID(result.getInt("user_role_id"));
+                newUser.setFirstName(result.getString("user_first_name"));
+                newUser.setLastName(result.getString("user_last_name"));
+                newUser.setEmailAddress(result.getString("user_email"));
+
+                //TODO: add function to get the reimbursement requests for the specific user from the database
+                //TODO: add function to get the all pending reimbursement requests if the user is a manager
+
+                newUser.setFirstName(result.getString("user_first_name"));
+
+
+                System.out.println(newUser);
+                return newUser;
+            }
+
+            //if no username match was found then return null
+            System.out.println("Couldn't find employee");
+            return null;
+        } catch (SQLException e) {
+            System.out.println("problem");
+            return null;
+        }
     }
 
     @Override

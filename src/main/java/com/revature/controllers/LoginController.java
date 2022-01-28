@@ -20,7 +20,7 @@ public class LoginController extends Controller {
         }
         else {
             LoginAttempt log = ctx.bodyAsClass(LoginAttempt.class); //JS logic ensures that username and password aren't blank
-            System.out.println(log.getUsername());
+            //System.out.println(log.getUsername());
             //User user = loginService.loginUser(log);
 
             User user = null;

@@ -1,4 +1,4 @@
-package com.revature.services;
+package com.revature.repos;
 
 import com.revature.models.users.*;
 import com.revature.repos.UserDAOImpl;

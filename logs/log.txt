@@ -1,6 +1,6 @@
-15:49:33.297 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @278ms to org.eclipse.jetty.util.log.Slf4jLog
-15:49:33.332 [] [main] INFO  io.javalin.Javalin - Static file handler added: StaticFileConfig(hostedPath=/, directory=/web, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<javax.servlet.http.HttpServletRequest, java.lang.Boolean>). File system location: 'file:///C:/Users/Bobby/Documents/Coding/Revature_Projects/project-1-bobbymahad/build/resources/main/web/'
-15:49:33.407 [] [main] INFO  io.javalin.Javalin - 
+15:23:33.173 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @272ms to org.eclipse.jetty.util.log.Slf4jLog
+15:23:33.210 [] [main] INFO  io.javalin.Javalin - Static file handler added: StaticFileConfig(hostedPath=/, directory=/web, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<javax.servlet.http.HttpServletRequest, java.lang.Boolean>). File system location: 'file:///C:/Users/Bobby/Documents/Coding/Revature_Projects/project-1-bobbymahad/build/resources/main/web/'
+15:23:34.328 [] [main] INFO  io.javalin.Javalin - 
        __                      __ _            __ __
       / /____ _ _   __ ____ _ / /(_)____      / // /
  __  / // __ `/| | / // __ `// // // __ \    / // /_
@@ -9,7 +9,7 @@
 
           https://javalin.io/documentation
 
-15:49:33.408 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
-15:49:33.416 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 109 days old. Consider upgrading!).
-15:49:33.704 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8081/
-15:49:33.704 [] [main] INFO  io.javalin.Javalin - Javalin started in 296ms \o/
+15:23:34.329 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+15:23:34.339 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 110 days old. Consider upgrading!).
+15:23:34.445 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8081/
+15:23:34.445 [] [main] INFO  io.javalin.Javalin - Javalin started in 117ms \o/
