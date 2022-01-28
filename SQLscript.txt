@@ -109,18 +109,18 @@ INSERT INTO ers_user_roles (user_role) VALUES ('default'),
 
 --create a few users of each of the above user types
 INSERT INTO ers_users (ers_username, ers_password, user_first_name, user_last_name, user_email, user_role_id) VALUES
-	('rfloyd01', 'Coding_is_Kewl34', 'robert', 'floyd', 'robert.floyd@airproducts.com', 2),
-	('sno19', 'Guitar_man12', 'scott', 'olsen', 'scott.olsen@gairproducts.com', 2),
-	('danthaman', '12345_ABcde', 'dan', 'preuss', 'dannyboy12@airproducts.com', 3),
-	('jjmm07', 'EggsInMyDr@nk89', 'jonathan', 'miller', 'jmills7@airproducts.com', 3),
-	('bilbo24', 'Baller4Life};', 'billy', 'floyd', 'wof31n@airproducts.com', 4),
-	('jstarita', 'M0xLotus@2', 'jake', 'astarita', 'jake.astarita@airproducts.com', 4),
-	('Ir0nMan', 'Mind0nMyM@ney', 'tony', 'stark', 'tony.stark@airproducts.com', 5);
+	('rfloyd01', 'Coding_is_Kewl34', 'robert', 'floyd', 'robert.floyd@airproducts.com', 3),
+	('sno19', 'Guitar_man12', 'scott', 'olsen', 'scott.olsen@gairproducts.com', 3),
+	('danthaman', '12345_ABcde', 'dan', 'preuss', 'dannyboy12@airproducts.com', 4),
+	('jjmm07', 'EggsInMyDr@nk89', 'jonathan', 'miller', 'jmills7@airproducts.com', 4),
+	('bilbo24', 'Baller4Life};', 'billy', 'floyd', 'wof31n@airproducts.com', 5),
+	('jstarita', 'M0xLotus@2', 'jake', 'astarita', 'jake.astarita@airproducts.com', 6),
+	('Ir0nMan', 'Mind0nMyM@ney', 'tony', 'stark', 'tony.stark@airproducts.com', 7);
 
 
 --finally add a few reimbursement requests so we can try to process them in the Java application
 INSERT INTO ers_reimbursement (reimb_amount, reimb_submitted, reimb_resolved, reimb_description, reimb_receipt, reimb_author, reimb_resolver, reimb_status_id, reimb_type_id) VALUES
-	(125.12, '2022-01-08 16:05:06', null, 'took client out for dinner', null, 4, null, 2, 2),
+	(125.12, '2022-01-08 16:05:06', null, 'took clgit statusient out for dinner', null, 4, null, 2, 2),
 	(1000.00, '2022-01-12 10:33:45', null, 'lodging for a week at holiday inn', null, 6, null, 2, 1),
 	(15.28, null, null, 'needed my smokes', null, 4, null, 1, 4);
 

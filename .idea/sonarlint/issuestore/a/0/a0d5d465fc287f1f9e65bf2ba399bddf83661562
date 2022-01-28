@@ -1,0 +1,11 @@
+
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(­ ‘ˆüÿÿÿÿ8­‘ú‘ê/
+]
+java:S34571"AFormat specifiers should be used instead of string concatenation.(™ª¨j8¹‘ú‘ê/
+]
+java:S3457V"AFormat specifiers should be used instead of string concatenation.(™ª¨j8¼‘ú‘ê/
+c
+java:S3457q"AFormat specifiers should be used instead of string concatenation.(œì¼‚ûÿÿÿÿ8½‘ú‘ê/
+m	java:S117b"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­·ê8¾‘ú‘ê/
+Y
+java:S2629q"7Use the built-in formatting to construct this argument.(œì¼‚ûÿÿÿÿ8¾‘ú‘ê/

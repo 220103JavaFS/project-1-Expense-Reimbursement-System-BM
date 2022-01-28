@@ -1,0 +1,15 @@
+
+Q	java:S125"<This block of commented-out lines of code should be removed.(øÎŸÀ
+S	java:S106*"9Replace this use of System.out or System.err by a logger.(Ò¡š‚şÿÿÿÿ
+T
+java:S1135'"2Complete the task associated to this TODO comment.(‚Ùêˆşÿÿÿÿ8 íÁ’ê/
+O
+java:S1135("2Complete the task associated to this TODO comment.(Óàù‡8÷ÑÄ’ê/
+N	java:S106/"9Replace this use of System.out or System.err by a logger.(ØíšÌ
+Z	java:S1062"9Replace this use of System.out or System.err by a logger.(®Úúşÿÿÿÿ8¼úí’ê/
+a
+java:S1128"?Remove this unused import 'com.revature.models.users.Employee'.(ù”«óıÿÿÿÿ8ÏíÑ’ê/
+M
+java:S1128	"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ĞíÑ’ê/
+e
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Æ‹ïú

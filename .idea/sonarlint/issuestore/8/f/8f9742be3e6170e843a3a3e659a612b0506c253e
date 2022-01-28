@@ -1,0 +1,7 @@
+
+P
+java:S1118":Add a private constructor to hide the implicit public one.(ò°ª
+C
+java:S4925"-Remove this "Class.forName()", it is useless.(©»Ì
+C
+java:S1481"-Remove this unused "mahadURL" local variable.(šû‹®
