@@ -18,7 +18,7 @@ public class App {
         });
         configure(new LoginController());
 
-        userDAO.getUser("Ir0nMan5");
+        userDAO.getUser("rfloyd01");
 
         app.start(8081); //changed this because there's now a Jenkins instance set on port 8080 of my PC
     }

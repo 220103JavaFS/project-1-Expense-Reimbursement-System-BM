@@ -26,12 +26,11 @@ public class UserDAOImpl implements UsersDAO{
 
             while(result.next()) {
                 UserFactory factory = UserFactory.getFactory();
-                User newUser = factory.makeUser(result.getInt("user_role_id"));
+                User newUser = factory.makeUser(result.getInt("user_role_id")); //we don't need to set the userRoleID, only use it to create our new user
 
                 newUser.setUserID(result.getInt("ers_users_id"));
                 newUser.setUsername(result.getString("ers_username"));
                 newUser.setPassword(result.getBytes("ers_password"));
-                newUser.setUserRoleID(result.getInt("user_role_id"));
                 newUser.setFirstName(result.getString("user_first_name"));
                 newUser.setLastName(result.getString("user_last_name"));
                 newUser.setEmailAddress(result.getString("user_email"));
