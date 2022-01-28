@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import com.revature.models.reimbursement.ReimbursementRequest;
 import com.revature.models.users.User;
 import com.revature.services.ReimbursementRequestsService;
 import io.javalin.Javalin;
@@ -12,22 +13,43 @@ public class ReimbursementRequestsController extends Controller {
     private ReimbursementRequestsService rrService = new ReimbursementRequestsService();
 
     Handler getUserReimbursementRequests = (ctx) -> {
-        //get's the reimbursement requests for the logged in user.
-        //this is useful for refreshing the list of all requests after a new one is created
+        //Gets all the reimbursement requests for the logged in user. This information should already be stored in the
+        //session cookie, however, if the user makes changes to their own requests list (i.e. adds or deletes requests)
+        //then we need some way to update the information in the cookie.
 
         //first make sure that someone is actually logged in
         if (ctx.req.getSession(false) != null) {
-            User currentUser = ctx.sessionAttribute("user");
-            ArrayList<ReimbursementRequestsController> = rrService.getCurrentUserReimbursementRequestsService();
+            User currentUser = ctx.sessionAttribute("User");
+            ArrayList<ReimbursementRequest> currentRequests = rrService.getCurrentUserReimbursementRequestsService(currentUser);
+
+            if (currentRequests == null) {
+                //something went wrong in the DAO layer, don't update the current user's list
+                ctx.status(500);
+            }
+            else {
+                //we have the updated list of user requests. Use this list to update the information in the user cookie
+                rrService.updateCurrentUserReimbursementRequestsService(currentUser, currentRequests);
+
+                //we also need to
+                ctx.sessionAttribute("User", currentUser);
+
+                //after updating the cookie, return the array of requests back to the front end in JSON format
+                ctx.json(currentRequests);
+                ctx.status(200); //everything is ok
+            }
         }
         else {
             ctx.status(401);
         }
     };
 
+    Handler getPendingReimbursementRequests = (ctx) -> {
+
+    };
+    
     @Override
     public void addRoutes(Javalin app) {
-        //POST localhost:8080/ReimbursementRequest
-        app.get("/ReimbursementRequest", getUserReimbursementRequests)
+        app.get("/ReimbursementRequest", getUserReimbursementRequests);
+        app.get("/ReimbursementRequest/Approval", getPendingReimbursementRequests)
     }
 }

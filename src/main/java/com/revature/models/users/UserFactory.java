@@ -1,5 +1,9 @@
 package com.revature.models.users;
 
+import com.revature.models.reimbursement.ReimbursementRequest;
+
+import java.util.ArrayList;
+
 public class UserFactory {
 
     //Singleton class for creation of users
