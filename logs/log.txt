@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-15:44:06.083 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @276ms to org.eclipse.jetty.util.log.Slf4jLog
-15:44:06.114 [] [main] INFO  io.javalin.Javalin - Static file handler added: StaticFileConfig(hostedPath=/, directory=/web, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<javax.servlet.http.HttpServletRequest, java.lang.Boolean>). File system location: 'file:///C:/Users/Bobby/Documents/Coding/Revature_Projects/project-1-bobbymahad/build/resources/main/web/'
-15:44:07.223 [] [main] INFO  io.javalin.Javalin - 
-=======
-16:44:14.148 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @1043ms to org.eclipse.jetty.util.log.Slf4jLog
-16:44:14.233 [] [main] INFO  io.javalin.Javalin - Static file handler added: StaticFileConfig(hostedPath=/, directory=/web, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<javax.servlet.http.HttpServletRequest, java.lang.Boolean>). File system location: 'file:///C:/Users/thema/project-1-bobbymahad/build/resources/main/web/'
-16:44:15.802 [] [main] INFO  io.javalin.Javalin - 
->>>>>>> ff3386d3fdd0b4949c8cac6014091d451c7824b9
+17:54:08.769 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @283ms to org.eclipse.jetty.util.log.Slf4jLog
+17:54:08.796 [] [main] INFO  io.javalin.Javalin - Static file handler added: StaticFileConfig(hostedPath=/, directory=/web, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<javax.servlet.http.HttpServletRequest, java.lang.Boolean>). File system location: 'file:///C:/Users/Bobby/Documents/Coding/Revature_Projects/project-1-bobbymahad/build/resources/main/web/'
+17:54:08.853 [] [main] INFO  io.javalin.Javalin - 
        __                      __ _            __ __
       / /____ _ _   __ ____ _ / /(_)____      / // /
  __  / // __ `/| | / // __ `// // // __ \    / // /_
@@ -15,14 +9,7 @@
 
           https://javalin.io/documentation
 
-<<<<<<< HEAD
-15:44:07.224 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
-15:44:07.233 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 110 days old. Consider upgrading!).
-15:44:07.332 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8081/
-15:44:07.332 [] [main] INFO  io.javalin.Javalin - Javalin started in 109ms \o/
-=======
-16:44:15.804 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
-16:44:15.838 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 110 days old. Consider upgrading!).
-16:44:16.187 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8081/
-16:44:16.188 [] [main] INFO  io.javalin.Javalin - Javalin started in 386ms \o/
->>>>>>> ff3386d3fdd0b4949c8cac6014091d451c7824b9
+17:54:08.853 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+17:54:08.868 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 110 days old. Consider upgrading!).
+17:54:09.058 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8081/
+17:54:09.058 [] [main] INFO  io.javalin.Javalin - Javalin started in 205ms \o/

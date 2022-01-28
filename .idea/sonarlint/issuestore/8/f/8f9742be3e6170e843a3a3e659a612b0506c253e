@@ -1,7 +1,13 @@
 
 P
 java:S1118":Add a private constructor to hide the implicit public one.(ò°ª
+c
+java:S1854"ARemove this useless assignment to local variable "mahadPassword".(Èê«Óıÿÿÿÿ8—¬ª–ê/
+Y
+java:S1854"<Remove this useless assignment to local variable "mahadURL".(“Éµ8ä‚ª–ê/
 C
 java:S4925"-Remove this "Class.forName()", it is useless.(©»Ì
-C
-java:S1481"-Remove this unused "mahadURL" local variable.(šû‹®
+J
+java:S1481"-Remove this unused "mahadURL" local variable.(“Éµ8æ‚ª–ê/
+T
+java:S1481"2Remove this unused "mahadPassword" local variable.(Èê«Óıÿÿÿÿ8š¬ª–ê/

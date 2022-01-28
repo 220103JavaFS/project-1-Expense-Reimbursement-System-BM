@@ -12,13 +12,37 @@ public class UserFactory {
     private UserFactory() { super(); }
 
     public User makeUser(int userRoleId) {
+        ArrayList<ReimbursementRequest> currentRequests = new ArrayList<>();
+        ArrayList<ReimbursementRequest> availableRequests = new ArrayList<>(); //only finance manager gets this
+
         if (userRoleId == 1) return new User();
         else if (userRoleId == 2) return new ExEmployee();
-        else if (userRoleId == 3) return new FinanceManager();
-        else if (userRoleId == 4) return new NonFinanceManager();
-        else if (userRoleId == 5) return new FinanceAnalyst();
-        else if (userRoleId == 6) return new Engineer();
-        else return new Intern();
+        else if (userRoleId == 3) {
+            FinanceManager fm = new FinanceManager();
+            fm.setCurrentReimbursementRequests(currentRequests);
+            fm.setAvailableReimbursementRequests(availableRequests);
+            return fm;
+        }
+        else if (userRoleId == 4) {
+            NonFinanceManager nfm = new NonFinanceManager();
+            nfm.setCurrentReimbursementRequests(currentRequests);
+            return nfm;
+        }
+        else if (userRoleId == 5) {
+            FinanceAnalyst fa = new FinanceAnalyst();
+            fa.setCurrentReimbursementRequests(currentRequests);
+            return fa;
+        }
+        else if (userRoleId == 6) {
+            Engineer eng = new Engineer();
+            eng.setCurrentReimbursementRequests(currentRequests);
+            return eng;
+        }
+        else {
+            Intern in = new Intern();
+            in.setCurrentReimbursementRequests(currentRequests);
+            return in;
+        }
     }
 
     public static UserFactory getFactory() {

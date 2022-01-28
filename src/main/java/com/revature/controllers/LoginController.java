@@ -20,37 +20,20 @@ public class LoginController extends Controller {
         }
         else {
             LoginAttempt log = ctx.bodyAsClass(LoginAttempt.class); //JS logic ensures that username and password aren't blank
-            //System.out.println(log.getUsername());
-            //User user = loginService.loginUser(log);
+            User user = loginService.loginUser(log);
 
-            User user = null;
-            if (user != null) {
+            if (user == null) {
                 //either the username wasn't in the database or the password was incorrect
                 ctx.result("Sorry, either the username or password was incorrect. Please retype and then try again.");
                 ctx.status(400);
             }
             else {
-                //TODO: This is just for JSON testing, delete these lines later
-                User basic = new User(1, "rfloyd01", "helloW0rld", "Robert", "Floyd", "robert.floyd@company.com");
-                User nfManager = new NonFinanceManager(2, "Manage1", "helloW0rld", "Matt", "Damon", "matthew.damon@company.com");
-                User fManager = new FinanceManager(3, "Manage2", "helloW0rld", "Ben", "Affleck", "ben.affleck@company.com");
+                //System.out.println(user);
+                ctx.req.getSession();
+                ctx.sessionAttribute("currentUser", user);
 
-                if (log.getUsername().equals("rfloyd01")) {
-                    ctx.json(basic);
-                    ctx.status(200);
-                }
-                else if (log.getUsername().equals("Manage1")) {
-                    ctx.json(nfManager);
-                    ctx.status(200);
-                }
-                else if (log.getUsername().equals("Manage2")) {
-                    System.out.println("yoooo");
-                    ctx.json(fManager);
-                    ctx.status(200);
-                }
-                else {
-                    ctx.status(400);
-                }
+                ctx.json(user);
+                ctx.status(200);
             }
         }
     };

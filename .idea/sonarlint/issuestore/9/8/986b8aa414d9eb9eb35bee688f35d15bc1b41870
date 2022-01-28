@@ -7,9 +7,21 @@ O
 java:S1135("2Complete the task associated to this TODO comment.(Óàù‡8÷ÑÄ’ê/
 N	java:S106/"9Replace this use of System.out or System.err by a logger.(ØíšÌ
 Z	java:S1062"9Replace this use of System.out or System.err by a logger.(®Úúşÿÿÿÿ8¼úí’ê/
+X	java:S125;"<This block of commented-out lines of code should be removed.(øÎŸÀ8Ğ›Ü–ê/
+U	java:S106L"9Replace this use of System.out or System.err by a logger.(ØíšÌ8Ñ›Ü–ê/
+Z	java:S106O"9Replace this use of System.out or System.err by a logger.(®Úúşÿÿÿÿ8Ñ›Ü–ê/
+X	java:S125]"<This block of commented-out lines of code should be removed.(øÎŸÀ8Ò›Ü–ê/
+Z	java:S106o"9Replace this use of System.out or System.err by a logger.(˜Õ…ğøÿÿÿÿ8Ô›Ü–ê/
+Z	java:S106r"9Replace this use of System.out or System.err by a logger.(®Úúşÿÿÿÿ8Ô›Ü–ê/
 a
 java:S1128"?Remove this unused import 'com.revature.models.users.Employee'.(ù”«óıÿÿÿÿ8ÏíÑ’ê/
 M
 java:S1128	"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ĞíÑ’ê/
+j
+java:S11922"HDefine a constant instead of duplicating this literal "problem" 3 times.(®Úúşÿÿÿÿ8Ö›Ü–ê/
 e
-java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Æ‹ïú
+java:S2095a"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Æ‹ïú
+l
+java:S2095?"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Æ‹ïú8ç›Ü–ê/
+l
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Æ‹ïú8ç›Ü–ê/

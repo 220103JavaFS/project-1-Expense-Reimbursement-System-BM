@@ -134,7 +134,8 @@ public class User {
             //it's cast into an integer with a negative value because Java doesn't have unsigned integer types. To mitigate this,
             //convert a byte into an integer by doing (byte & 0xFF), this will give us an integer of the form 0x000000FF which can then be safely
             //left shifted by 8 to give us the correct character value without needing to worry about weird negative integer conversions.
-            char c = (char)(((encryptedPassword[i] & 0xFF) << 8) | (encryptedPassword[i + 1] & 0xFF) - 25);
+            //char c = (char)(((encryptedPassword[i] & 0xFF) << 8) | (encryptedPassword[i + 1] & 0xFF) - 25);
+            char c = (char)(((encryptedPassword[i] & 0xFF) << 8) | (encryptedPassword[i + 1] & 0xFF));
             decryptedPassword.append(c);
         }
         return decryptedPassword.toString();

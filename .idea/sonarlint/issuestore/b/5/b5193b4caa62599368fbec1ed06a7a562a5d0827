@@ -1,13 +1,10 @@
 
 G
 java:S1611"1Remove the parentheses around the "ctx" parameter(—ƒô
-X	java:S125"<This block of commented-out lines of code should be removed.(ø¤ğê8½¦¡’ê/
-H
-java:S1135!"2Complete the task associated to this TODO comment.( ††©
-S	java:S106/"9Replace this use of System.out or System.err by a logger.(µÁÔæúÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(‰ü¾üÿÿÿÿ
 L
-java:S1611:"1Remove the parentheses around the "ctx" parameter(²ãıæşÿÿÿÿ
-K
-java:S1068"0Remove this unused "loginService" private field.(ˆµÌƒüÿÿÿÿ
+java:S1611)"1Remove the parentheses around the "ctx" parameter(²ãıæşÿÿÿÿ
 `
-java:S1192""KDefine a constant instead of duplicating this literal "helloW0rld" 3 times.(™˜³"
+java:S1128"ERemove this unused import 'com.revature.models.users.FinanceManager'.(œ†™ïúÿÿÿÿ
+^
+java:S1128"HRemove this unused import 'com.revature.models.users.NonFinanceManager'.(«…ãÚ
