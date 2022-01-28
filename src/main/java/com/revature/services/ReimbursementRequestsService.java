@@ -15,8 +15,8 @@ public class ReimbursementRequestsService {
     private Logger log = LoggerFactory.getLogger(ReimbursementRequestsService.class);
 
     //CONSTRUCTORS
-    ReimbursementRequestsService() {}
-    ReimbursementRequestsService(ReimbursementRequestsDAO reimbursementRequestsDAO) {
+    public ReimbursementRequestsService() {}
+    public ReimbursementRequestsService(ReimbursementRequestsDAO reimbursementRequestsDAO) {
         this.reimbursementRequestsDAO = reimbursementRequestsDAO;
     }
 
