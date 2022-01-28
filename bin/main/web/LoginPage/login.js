@@ -3,11 +3,9 @@ let userName = document.getElementById('username');
 let passWord = document.getElementById("password");
 let button = document.getElementById("loginButton");
 
-const url = "http://localhost:8081";
+const url = "http://localhost:8080";
 
 button.addEventListener("click", loginFunc);
-
-console.log("Yeet");
 
 async function loginFunc() {
     let loginAttempt = {
