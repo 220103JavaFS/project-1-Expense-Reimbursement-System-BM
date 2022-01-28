@@ -20,6 +20,7 @@ public class LoginController extends Controller {
         }
         else {
             LoginAttempt log = ctx.bodyAsClass(LoginAttempt.class); //JS logic ensures that username and password aren't blank
+            System.out.println(log.getUsername());
             //User user = loginService.loginUser(log);
 
             User user = null;
@@ -43,6 +44,7 @@ public class LoginController extends Controller {
                     ctx.status(200);
                 }
                 else if (log.getUsername().equals("Manage2")) {
+                    System.out.println("yoooo");
                     ctx.json(fManager);
                     ctx.status(200);
                 }
@@ -53,9 +55,19 @@ public class LoginController extends Controller {
         }
     };
 
+    Handler logout = (ctx) -> {
+        //we can only access the logout page if we're actually logged in
+        if (ctx.req.getSession(false) != null) {
+            //log the current user out
+            ctx.req.getSession().invalidate();
+            ctx.status(202); //return 202 Accepted code
+        }
+        else ctx.status(401); //no one is logged in, restrict access the logout page
+    };
+
     @Override
     public void addRoutes(Javalin app) {
         app.post("/login", login);
-        //app.delete("/logout", logout);
+        app.delete("/logout", logout); //felt it was easier to include this in the login controller instead of creating separate logout controller
     }
 }

@@ -9,16 +9,15 @@ public interface ReimbursementRequestsDAO {
 
     //GET METHODS
     public ArrayList<ReimbursementRequest> getUserCurrentReimbursementRequestsDAO(User user); //returns all reimbursement requests for the user that have a status of created, submitted or denied
-    public ArrayList<ReimbursementRequest> getUserLegacyReimbursementRequestsDAO(User user); //returns all reimbursement requests for the user that have a status of approved
-    public ArrayList<ReimbursementRequest> getAllPendingReimbursementRequestsDAO(User user); //returns all reimbursement requests in the database with a status of submitted (for approving managers only)
+    public ArrayList<ReimbursementRequest> getAllPendingReimbursementRequestsDAO(); //returns all reimbursement requests in the database with a status of submitted (for approving managers only)
 
     //POST METHODS
-    public boolean createReimbursementRequestDAO(ReimbursementRequest RR);
+    public int createReimbursementRequestDAO(ReimbursementRequest RR);
 
     //PATCH METHODS
-    public boolean editReimbursementRequestDAO(ReimbursementRequest RR); //incorporates functionality for normal users to
+    public int editReimbursementRequestDAO(ReimbursementRequest RR); //incorporates functionality for normal users to
 
     //DELETE METHODS
-    public boolean deleteReimbursementRequestDAO(ReimbursementRequest RR);
+    public int deleteReimbursementRequestDAO(ReimbursementRequest RR);
 
 }
