@@ -54,12 +54,68 @@ public class UserDAOImpl implements UsersDAO{
 
     @Override
     public boolean availableUsernameEmail(String username, String email) {
-        return false;
+        //used by admins to view all users in the database
+        try (Connection conn = ConnectionUtil.getConnection()) {
+            //log.info("UserDAO getAllUsersDAO() method was called");
+            //Since each employee has a list of customers associated with them, we don't need to actually query the
+            //customer table in our original call to the database.
+            String sql = "SELECT * FROM ers_users WHERE ers_username = ? OR user_email = ?;";
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            int statementCounter = 0;
+            statement.setString(++statementCounter, username);
+            statement.setString(++statementCounter, email);
+
+            ResultSet result = statement.executeQuery();
+
+            while(result.next()) {
+                return false;
+            }
+
+            //if no username match was found then return null
+            System.out.println("Couldn't find employee");
+            return true;
+        } catch (SQLException e) {
+            System.out.println("problem");
+            return false;
+        }
     }
 
     @Override
     public boolean hireEmployee(User newEmployee) {
-        return false;
+        //used by admins to view all users in the database
+
+        boolean existingEmployee = availableUsernameEmail (newEmployee.getUsername(), newEmployee.getEmailAddress());
+        if(!existingEmployee){
+            return false;
+        }else{
+            try (Connection conn = ConnectionUtil.getConnection()) {
+                //log.info("UserDAO getAllUsersDAO() method was called");
+                //Since each employee has a list of customers associated with them, we don't need to actually query the
+                //customer table in our original call to the database.
+                String sql = "INSERT INTO ers_users (ers_username, ers_password, user_first_name, user_last_name, user_email, user_role_id) VALUES (?, ?, ?, ?, ?, ?);";
+                PreparedStatement statement = conn.prepareStatement(sql);
+
+                int statementCounter = 0;
+                statement.setString(++statementCounter, newEmployee.getUsername());
+                statement.setBytes(++statementCounter, newEmployee.getPassword());
+                statement.setString(++statementCounter, newEmployee.getFirstName());
+                statement.setString(++statementCounter, newEmployee.getLastName());
+                statement.setString(++statementCounter, newEmployee.getEmailAddress());
+                statement.setInt(++statementCounter, newEmployee.getUserRoleID());
+
+                statement.execute();
+
+
+                //if no username match was found then return null
+                System.out.println("Employee added to database");
+                return true;
+            } catch (SQLException e) {
+                System.out.println("problem");
+                return false;
+            }
+        }
+
     }
 
     @Override
