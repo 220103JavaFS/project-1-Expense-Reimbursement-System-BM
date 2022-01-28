@@ -50,6 +50,6 @@ public class ReimbursementRequestsController extends Controller {
     @Override
     public void addRoutes(Javalin app) {
         app.get("/ReimbursementRequest", getUserReimbursementRequests);
-        app.get("/ReimbursementRequest/Approval", getPendingReimbursementRequests)
+        app.get("/ReimbursementRequest/Approval", getPendingReimbursementRequests);
     }
 }
