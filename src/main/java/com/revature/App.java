@@ -2,6 +2,7 @@ package com.revature;
 
 import com.revature.controllers.Controller;
 import com.revature.controllers.LoginController;
+import com.revature.controllers.UsersController;
 import com.revature.models.users.Intern;
 import com.revature.models.users.User;
 import com.revature.repos.UserDAOImpl;
@@ -21,7 +22,7 @@ public class App {
         app = Javalin.create((config)->{
             config.addStaticFiles("/web", Location.CLASSPATH);
         });
-        configure(new LoginController());
+        configure(new LoginController(), new UsersController());
 
         //This SHOULD be included with git push...
 
