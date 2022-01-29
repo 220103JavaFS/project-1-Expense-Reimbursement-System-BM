@@ -39,7 +39,7 @@ public class UserDAOImpl implements UsersDAO{
                 //TODO: add function to get the reimbursement requests for the specific user from the database
                 //TODO: add function to get the all pending reimbursement requests if the user is a manager
 
-                System.out.println(newUser);
+                //System.out.println(newUser);
                 return newUser;
             }
 

@@ -22,7 +22,6 @@ public class LoginService {
     public User loginUser(LoginAttempt loginAttempt) {
         //this will return true if there's a username and password in the database that matches the login attempt
 
-        log.debug("made it to the LoginUser function in the LoginService.");
         User user = userDAOImpl.getUser(loginAttempt.getUsername());
 
         if (user == null) {
@@ -32,16 +31,14 @@ public class LoginService {
 
         //We found the user, now we need to compare passwords. The user brought up from the DAO is going to have an
         //encrypted password so we need to decrypt it before comparing them.
-        //String decryptedUserPassword = User.decryptPassword(user.getPassword());
-        //System.out.println("The decrypted password is: " + decryptedUserPassword);
-        String decryptedUserPassword = "Coding_is_Kewl34";
+        String decryptedUserPassword = User.decryptPassword(user.getPassword());
 
         if (loginAttempt.getPassword().equals(decryptedUserPassword)) {
-            log.debug("The password entered was valid, preparing to log you in.");
+            log.info("The password entered was valid, preparing to log you in.");
             return user;
         }
         else {
-            log.debug("The password entered was invalid, please try again.");
+            log.info("The password entered was invalid, please try again.");
             return null;
         }
     }

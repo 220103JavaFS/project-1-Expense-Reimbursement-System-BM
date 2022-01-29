@@ -15,6 +15,8 @@ public class User {
     protected String emailAddress;
     public String userType;
 
+    private static int passwordDecrypter = 25;
+
     //CONSTRUCTORS
     public User() {
         super();
@@ -114,10 +116,19 @@ public class User {
 
         byte[] encryptedBytes = new byte[password.length() * 2]; //2 bytes for every character
         for(int i = 0; i < password.length(); i++) {
-            char newChar = (char)(password.charAt(i) + 25);
+            char newChar = (char)(password.charAt(i) + User.passwordDecrypter);
+            System.out.print(newChar); //TODO: debugging, delete later
             encryptedBytes[2 * i] = (byte) (newChar>>8);
             encryptedBytes[2 * i + 1] = (byte) newChar;
         }
+        System.out.println("\n");//TODO: debugging, delete later
+        for (int i = 0; i < password.length(); i++){
+            //compare integer value of characters and bytes
+            System.out.print((int)password.charAt(i));
+            int reconstructedByte = ((encryptedBytes[2 * i] & 0xFF) << 8) | (encryptedBytes[2 * i + 1] & 0xFF);
+            System.out.println(" vs. " + reconstructedByte);
+        }
+
         return encryptedBytes;
     }
     public static String decryptPassword(byte[] encryptedPassword) {
@@ -134,11 +145,39 @@ public class User {
             //it's cast into an integer with a negative value because Java doesn't have unsigned integer types. To mitigate this,
             //convert a byte into an integer by doing (byte & 0xFF), this will give us an integer of the form 0x000000FF which can then be safely
             //left shifted by 8 to give us the correct character value without needing to worry about weird negative integer conversions.
-            //char c = (char)(((encryptedPassword[i] & 0xFF) << 8) | (encryptedPassword[i + 1] & 0xFF) - 25);
-            char c = (char)(((encryptedPassword[i] & 0xFF) << 8) | (encryptedPassword[i + 1] & 0xFF));
+            char c = (char)(((encryptedPassword[i] & 0xFF) << 8) | (encryptedPassword[i + 1] & 0xFF) - User.passwordDecrypter);
+
             decryptedPassword.append(c);
         }
         return decryptedPassword.toString();
+    }
+    public static String convertStringToSQLEscapeHex(String s) {
+        //I found that initializing passwords in the database as encrypted byte arrays was incredibly tedious.
+        //Created this function that lets you type in a password in plain english and returns the appropraite
+        //string to paste into DBeaver for the encrypted byte array.
+
+        StringBuilder newS = new StringBuilder("E'\\\\x");
+        for (int i = 0; i < s.length(); i++)
+        {
+            char c = (char)(s.charAt(i) + User.passwordDecrypter);
+            byte byteOne = (byte)(c >> 8);
+            byte byteTwo = (byte)c;
+
+            int[] hexDigits = new int[4];
+
+            hexDigits[0] = ((byteOne & 0xFF) >> 4);
+            hexDigits[1] = ((byteOne & 0xF));
+            hexDigits[2] = ((byteTwo & 0xFF) >> 4);
+            hexDigits[3] = ((byteTwo & 0xF));
+
+            for (int j = 0; j < 4; j++)
+            {
+                if (hexDigits[j] < 10) newS.append(hexDigits[j]);
+                else newS.append((char)((hexDigits[j] - 10) + 'A'));
+            }
+        }
+        newS.append("'");
+        return newS.toString();
     }
     /*
     Basic users have no methods associated with them other then what's needed for JSON. This class exists in the off-chance

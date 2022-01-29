@@ -1,7 +1,5 @@
 package com.revature.controllers;
 
-import com.revature.models.users.FinanceManager;
-import com.revature.models.users.NonFinanceManager;
 import com.revature.models.users.User;
 import com.revature.services.LoginService;
 import com.revature.util.LoginAttempt;
