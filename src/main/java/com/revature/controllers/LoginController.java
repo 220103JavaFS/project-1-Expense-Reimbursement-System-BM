@@ -4,6 +4,7 @@ import com.revature.models.users.User;
 import com.revature.services.LoginService;
 import com.revature.util.LoginAttempt;
 import io.javalin.Javalin;
+import io.javalin.http.Cookie;
 import io.javalin.http.Handler;
 
 public class LoginController extends Controller {
@@ -33,11 +34,12 @@ public class LoginController extends Controller {
                 ctx.req.getSession();
                 ctx.sessionAttribute("currentUser", user);
 
-                //Now set the userRoleId cookie for the browser
-                Integer urid = user.getUserRoleID();
-                ctx.cookie("userRoleId", urid.toString());
+                //create a few basic cookies to help the browser keep track of who is currently logged in
+                Integer userRole = user.getUserRoleID();
+                ctx.cookie("currentUserRole", userRole.toString());
+                ctx.cookie("currentUserName", user.getFirstName());
+                ctx.cookie("currentUserUsername", user.getUsername());
 
-                ctx.json(user);
                 ctx.status(200);
             }
         }
@@ -50,16 +52,15 @@ public class LoginController extends Controller {
         if (ctx.req.getSession(false) != null) {
             //log the current user out
             ctx.req.getSession().invalidate();
-            ctx.removeCookie("userRoleId"); //remove the userRoleId cookie in the broswer upon logging out.
             ctx.status(202); //return 202 Accepted code
         }
-        else {
-            //it's possible for the userRoleId cookie to persist in the browser if the Javalin application crashes. Because of this,
-            //even if there's no current user data on the Javalin side we need to double-check and make sure that there's also
-            //no user information stored on the browser side.
-            if (ctx.cookie("userRoleId") == null) ctx.removeCookie("userRoleId"); //remove the userRoleId cookie in the browser if it exists
-            ctx.status(401); //no one is logged in, restrict access the logout page
-        }
+
+        //it's possible for cookies to persist in the browser if the Javalin application crashes. Because of this,
+        //even if there's no current user data on the Javalin side we need to double-check and make sure that there's also
+        //no user information stored on the browser side in cookies.
+        if (ctx.cookie("currentUserRole") != null) ctx.removeCookie("currentUserRole");
+        if (ctx.cookie("currentUserName") != null)ctx.removeCookie("currentUserName");
+        if (ctx.cookie("currentUserUsername") != null)ctx.removeCookie("currentUserUsername");
     };
 
     @Override

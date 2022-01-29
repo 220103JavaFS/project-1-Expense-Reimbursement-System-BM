@@ -30,7 +30,7 @@ public abstract class Employee extends User {
                 "userRoleID='" + getUserRoleID() + '\'' +
                 ", userID='" + userID + '\'' +
                 ", username='" + username + '\'' +
-                ", password=" + password +
+                //", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", emailAddress='" + emailAddress + '\'' +

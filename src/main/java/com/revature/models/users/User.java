@@ -100,7 +100,20 @@ public class User {
                 "userRoleID='" + getUserRoleID() + '\'' +
                 ", userID='" + userID + '\'' +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
+                //", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                '}';
+    }
+    public String toBasicString() {
+        //This function is helpful for storing data in cookies as it ignores any arrays. "[" character's can't
+        //be stored in cookies. Any user type will be able to print out all non-array values with this function.
+        return userType + "{" +
+                "userRoleID='" + getUserRoleID() + '\'' +
+                ", userID='" + userID + '\'' +
+                ", username='" + username + '\'' +
+                //", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", emailAddress='" + emailAddress + '\'' +

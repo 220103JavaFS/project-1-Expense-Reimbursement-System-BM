@@ -1,6 +1,4 @@
 
-e
-5src/main/java/com/revature/models/users/Employee.java,6\9\695ff50022dfbec2d00269f0794898074df076df
 u
 Esrc/main/java/com/revature/services/ReimbursementRequestsService.java,2\4\24ea9ffe35c360dca0556ce2b902d9a2050bb987
 9
@@ -15,8 +13,6 @@ a
 1src/main/java/com/revature/util/LoginAttempt.java,2\b\2b19fcf101b7fd4d1cfd9eb487095f534785aa53
 e
 5src/main/java/com/revature/models/users/Engineer.java,7\6\76ae23cc92cef01199f385ca092566ad0a67f0df
-k
-;src/main/java/com/revature/models/users/FinanceManager.java,2\2\22c910f3a2225c79dd79ae37b8be4ab2d7abb6ec
 e
 5src/test/java/com/revature/repos/UserDAOImplTest.java,2\4\2447ff4cdee7746991114a475af1131ad6db5631
 r

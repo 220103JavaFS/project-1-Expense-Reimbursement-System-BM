@@ -19,12 +19,10 @@ public class UsersController extends Controller{
         //generic user with blank fields will be sent back to the server.
         if (ctx.req.getSession(false) != null) {
             User currentUser = ctx.sessionAttribute("currentUser");
-            ctx.json(currentUser);
+            ctx.json(currentUser); //send back a JSON object so the browser can compare with its current cookie
         }
         else {
             User blankUser = new User();
-            System.out.println("Attempting to go back to the main page while not logged in.");
-            System.out.println("Returning the following user:\n" + blankUser);
             ctx.json(blankUser);
         }
 
