@@ -4,7 +4,8 @@ let logoutButton = document.getElementById("logoutButton");
 let approveButton = document.getElementById("approveButton");
 let viewButton = document.getElementById("viewButton");
 let editButton = document.getElementById("editButton");
-let hireFireButton = document.getElementById("hireFireButton");
+let hireButton = document.getElementById("hireButton");
+let fireButton = document.getElementById("fireButton");
 let welcomeMessage = document.getElementById("welcomeMessage");
 
 const url = "http://localhost:8081";
@@ -13,7 +14,8 @@ logoutButton.addEventListener("click", logoutFunc);
 approveButton.addEventListener("click", approveFunc);
 viewButton.addEventListener("click", viewFunc);
 editButton.addEventListener("click", editFunc);
-hireFireButton.addEventListener("click", hireFireFunc);
+hireButton.addEventListener("click", hireFunc);
+fireButton.addEventListener("click", fireFunc);
 
 //Upon opening or reloading this page, we need to ask the database who's currently logged in.
 //This information is stored in the Javalin session. We might already have information on the current user
@@ -21,7 +23,6 @@ hireFireButton.addEventListener("click", hireFireFunc);
 //cookie information will no longer match the Javalin session information. We do this check on page reload
 //just to confirm everything matches (this check should happen on all HTML pages for this project).
 let currentUser = get_cookie("currentUserRole");
-console.log(currentUser);
 
 //All page buttons are hidden by default. We "un-hide" them based on who's currently logged in
 if (currentUser == "") {
@@ -43,13 +44,15 @@ else {
             viewButton.hidden = false;
             approveButton.hidden = false;
             editButton.hidden = false;
-            hireFireButton.hidden = false;
+            hireButton.hidden = false;
+            fireButton.hidden = false;
             break;
         case "4":
             logoutButton.hidden = false;
             viewButton.hidden = false;
             editButton.hidden = false;
-            hireFireButton.hidden = false;
+            hireButton.hidden = false;
+            fireButton.hidden = false;
             break;
         default:
             logoutButton.hidden = false;
@@ -106,7 +109,7 @@ async function editFunc() {
     else location.href = 'http://localhost:8081/RequestPages/Request.html';
 }
 
-async function hireFireFunc() {
+async function hireFunc() {
     //before going to the edit page, get the current user from the Javalin session. Make sure it matches
     //what's currently in the cookie
     let currentJavalinUser = await getCurrentUser(); //make sure that user cookie is up to date
@@ -114,7 +117,18 @@ async function hireFireFunc() {
         alert("You're connection has timed out, please log back in and try again.");
         logoutFunc()//call the logout function as the browser and javalin cookies no longer match
     }
-    else location.href = 'http://localhost:8081/EmployeePages/Request.html';
+    else location.href = 'http://localhost:8081/EmployeePages/hireEmployee.html';
+}
+
+async function fireFunc() {
+    //before going to the edit page, get the current user from the Javalin session. Make sure it matches
+    //what's currently in the cookie
+    let currentJavalinUser = await getCurrentUser(); //make sure that user cookie is up to date
+    if (currentJavalinUser == null || currentJavalinUser.username != get_cookie("currentUserUsername")) {
+        alert("You're connection has timed out, please log back in and try again.");
+        logoutFunc()//call the logout function as the browser and javalin cookies no longer match
+    }
+    else location.href = 'http://localhost:8081/EmployeePages/fireEmployee.html';
 }
 
 function get_cookie(Name) {
