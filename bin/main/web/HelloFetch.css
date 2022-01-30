@@ -106,3 +106,14 @@ input[type="radio"]{
 #requests{
   float:left;
 }
+
+table th {
+  border-bottom: solid;
+  border-right: solid;
+  border-left: solid;
+  border-top: solid;
+}
+
+table tr {
+  border-bottom: groove;
+}

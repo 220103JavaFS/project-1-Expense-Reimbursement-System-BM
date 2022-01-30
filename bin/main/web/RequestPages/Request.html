@@ -37,8 +37,19 @@
         </div>
 
         <div class="input-group">
+          <label for="Type">Request Type</label>
+          <select name="Type" id="Type" style="margin-bottom: 10px;" required>
+            <option value="">--Please choose a type--</option>
+            <option value="lodging">Lodging</option>
+            <option value="food">Food</option>
+            <option value="travel">Travel</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="input-group">
           <label for="Status">Current Status</label>
-          <select name="Status" id="Status" required>
+          <select name="Status" id="Status" >
             <option value="">--Please choose an option--</option>
             <option value="created">Created</option>
             <option value="submitted">Submitted</option>
@@ -52,7 +63,7 @@
 
     </main>
 
-
+    <script src="RequestFetch.js"></script>
     
   </body>
 </html>

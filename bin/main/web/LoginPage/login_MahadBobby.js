@@ -33,6 +33,7 @@ async function loginFunc() {
         //otherwise me might log nothing in the next line of code
         let data = await response.json(); //print something back from Javlin to the console as a means of debugging for now
         console.log(data);
+        location.href = 'http://localhost:8081/MainPages/ApproverMain.html';
     } else {
         alert("Couldn't find user, either the username or password was incorrect. Please retype and try again.");
     }
