@@ -48,16 +48,16 @@
       <div class="input-group">
         <label for="employeeType">Employee Type:</label>
         <select id="employeeType" required>
-          <option value="" hidden="true">--Please choose an option--</option>
-          <option value="finanaceManager" hidden="true">Finance Manager</option>
-          <option value="nonFinanceManager" hidden="true">Non-Finance Manager</option>
-          <option value="financeAnalyst" hidden="true">Financial Analyst</option>
-          <option value="engineer" hidden="true">Engineer</option>
-          <option value="intern" hidden="true">Intern</option>
+          <option value="">--Please choose an option--</option>
+          <option value="financeManager" id="financeManager" hidden>Finance Manager</option>
+          <option value="nonFinanceManager" id="nonFinanceManager" hidden>Non-Finance Manager</option>
+          <option value="financeAnalyst" id="financeAnalyst" hidden>Financial Analyst</option>
+          <option value="engineer" id="engineer" hidden>Engineer</option>
+          <option value="intern" id="intern" hidden>Intern</option>
         </select>
       </div>
 
-      <button id="submitButton" class="w-100 btn btn-lg btn-primary">Submit</button>
+      <button id="submitButton" class="w-100 btn btn-lg btn-primary" style="margin-top: 20px;">Submit</button>
       <p class="mt-3 mb-3 text-muted">*Note - Password entered must be at least 8 characters in length, contain both an uppercase and lowercase letter, contain a number and contain a special character
       (i.e. @, *, %, (, ;)</p>
       <p class="mt-5 mb-3 text-muted">&copy; 2022</p>

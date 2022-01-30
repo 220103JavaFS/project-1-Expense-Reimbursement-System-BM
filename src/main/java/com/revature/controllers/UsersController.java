@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import com.revature.models.users.User;
 import com.revature.services.UsersService;
+import com.revature.util.NewUser;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
 
@@ -30,10 +31,20 @@ public class UsersController extends Controller{
         ctx.status(200);
     };
 
+    Handler hireEmployee = (ctx) -> {
+        //I'm not going to add logic to make sure that a user is logged in directly here. A user needs to be logged in
+        //to reach the page that executes this handler, and there's even a separate check when they click the button
+        //to submit employee information so a third login check here would just be redundant.
+        NewUser newUser = ctx.bodyAsClass(NewUser.class);
+
+        System.out.println(newUser);
+    };
+
     @Override
     public void addRoutes(Javalin app) {
 
         app.get("/users", getUser);
         app.get("/users/currentUser", getCurrentUser);
+        app.post("/users", hireEmployee);
     }
 }
