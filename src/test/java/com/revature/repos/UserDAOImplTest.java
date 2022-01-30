@@ -4,6 +4,7 @@ import com.revature.models.users.*;
 import com.revature.repos.UserDAOImpl;
 import com.revature.repos.UsersDAO;
 import com.revature.services.UsersService;
+import com.revature.util.NewUser;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,6 +35,9 @@ public class UserDAOImplTest {
     private String  availableUsername;
     private String availableEmail;
 
+    private NewUser newNonDBAnalyst;
+    private NewUser newAnalyst;
+
     //BEFORE AND AFTER ANNOTATIONS
     @BeforeEach
     public void setUp() {
@@ -60,6 +64,9 @@ public class UserDAOImplTest {
         repeatEmail = new FinanceAnalyst(7, "rfloyd02", "helloW0rld", "Bobby", "Floyd", "robert.floyd@company.com"); //same email as someone already in the db
         nonDBIntern = new Intern(8, "rfloyd02", "helloW0rld", "Robert", "Floyd", "robert.floyd2@company.com");
 
+        //create NewUser types for the hire function
+        newNonDBAnalyst = new NewUser(5, "Ir0nMan", "helloW0rld", "Tony", "Stark", "tony.stark@company.com");
+        newAnalyst = new NewUser(5, "Capn", "helloW0rld", "Steve", "Rogers", "captain.america@company.com");
     }
 
     @Test
@@ -78,12 +85,12 @@ public class UserDAOImplTest {
 
     @Test
     public void testHireEmployeeSuccess() {
-        assertTrue(testInstance.hireEmployee(nonDBAnalyst)); //Test that a finance manager can hire a financial employee not already in the database
+        assertTrue(testInstance.hireEmployee(newNonDBAnalyst)); //Test that a finance manager can hire a financial employee not already in the database
     }
 
     @Test
     public void testHireEmployeeFailure() {
-        assertFalse(testInstance.hireEmployee(analyst)); //this test is to make sure a non-financial manager can't hire a financial employee (but the employee input is valid)
+        assertFalse(testInstance.hireEmployee(newAnalyst)); //this test is to make sure a non-financial manager can't hire a financial employee (but the employee input is valid)
     }
 
     @Test

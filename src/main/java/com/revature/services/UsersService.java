@@ -1,18 +1,21 @@
 package com.revature.services;
 
 import com.revature.models.users.User;
+import com.revature.repos.UserDAOImpl;
 import com.revature.repos.UsersDAO;
+import com.revature.util.NewUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class UsersService {
 
-    private UsersDAO usersDAO;
+    private UsersDAO usersDAO; //used for mocking of service layer tests
+    private UserDAOImpl userDAO;
     private Logger log = LoggerFactory.getLogger(UsersService.class);
 
     //CONSTRUCTORS
     public UsersService() {
-        //this.usersDAO = new UsersDAOImpl(); //uncomment when done with UsersDaoImpl class
+        this.userDAO = new UserDAOImpl(); //uncomment when done with UsersDaoImpl class
     }
     public UsersService(UsersDAO usersDAO) {
         this.usersDAO = usersDAO;
@@ -28,7 +31,7 @@ public class UsersService {
                 System.out.println(username);
                 return null;
             }
-            return usersDAO.getUser(username);
+            return userDAO.getUser(username);
         } catch (Exception e) {
             log.debug("Username string was null");
             return null;
@@ -36,7 +39,7 @@ public class UsersService {
     }
 
     //POST METHODS
-    public boolean hireEmployee(User currentUser, User newEmployee) {
+    public boolean hireEmployee(User currentUser, NewUser newEmployee) {
         //allows a manager to potentially hire an employee.
         //Finance Managers can only hire Financial analysts while non-Financial Managers can hire Engineers and Interns
         //This function needs to have functionality to check that info for the new User is ok, such as making sure the username and email addresses are available
@@ -51,7 +54,7 @@ public class UsersService {
         }
 
         //Check 2. Make sure that the current manager can actually hire this newEmployee type
-        int newEmployeeUserRoleID = newEmployee.getUserRoleID();
+        int newEmployeeUserRoleID = newEmployee.userRoleID;
         if (userRoleID == 3) {
             //Finance Manager role
             if (newEmployeeUserRoleID != 5) {
@@ -68,8 +71,8 @@ public class UsersService {
 
         //3. Need to make sure that the username and email address for the newEmployee aren't already taken because the
         // database has a UNIQUE constraint on those columns
-        if (usersDAO.availableUsernameEmail(newEmployee.getUsername(), newEmployee.getEmailAddress())) {
-            return usersDAO.hireEmployee(newEmployee);
+        if (userDAO.availableUsernameEmail(newEmployee.username, newEmployee.emailAddress)) {
+            return userDAO.hireEmployee(newEmployee);
         }
 
         log.info("Either the username or email address already exists in the database, please enter new info.");

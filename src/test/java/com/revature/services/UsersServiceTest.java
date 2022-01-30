@@ -3,6 +3,7 @@ package com.revature.services;
 import com.revature.models.users.*;
 import com.revature.repos.UsersDAO;
 import com.revature.services.UsersService;
+import com.revature.util.NewUser;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,6 +34,14 @@ public class UsersServiceTest {
     private Intern intern;
     private Intern nonDBIntern;
 
+    private NewUser newNonDBIntern;
+    private NewUser newNonDBAnalyst;
+    private NewUser newIntern;
+    private NewUser newAnalyst;
+    private NewUser newNFManager;
+    private NewUser newRepeatUsername;
+    private NewUser newRepeatEmail;
+
     //BEFORE AND AFTER ANNOTATIONS
     @BeforeEach
     public void setUp() {
@@ -55,14 +64,23 @@ public class UsersServiceTest {
         repeatEmail = new FinanceAnalyst(7, "rfloyd02", "helloW0rld", "Bobby", "Floyd", "robert.floyd@company.com"); //same email as someone already in the db
         nonDBIntern = new Intern(8, "rfloyd02", "helloW0rld", "Robert", "Floyd", "robert.floyd2@company.com");
 
+        //create Some NewUser types to test our hireEmployee functionality
+        newNonDBIntern = new NewUser(7, "rfloyd02", "helloW0rld", "Robert", "Floyd", "robert.floyd2@company.com");
+        newNonDBAnalyst = new NewUser(5, "Ir0nMan", "helloW0rld", "Tony", "Stark", "tony.stark@company.com");
+        newIntern = new NewUser(7, "rfloyd01", "helloW0rld", "Bobby", "Floyd", "robert.floyd@company.com");
+        newAnalyst = new NewUser(5, "Capn", "helloW0rld", "Steve", "Rogers", "captain.america@company.com");
+        newNFManager = new NewUser(4, "Manage1", "helloW0rld", "Matt", "Damon", "matthew.damon@company.com");
+        newRepeatUsername = new NewUser(5, "rfloyd01", "helloW0rld", "Bobby", "Floyd", "robert.floyd2@company.com"); //same username
+        newRepeatEmail = new NewUser(5, "rfloyd02", "helloW0rld", "Bobby", "Floyd", "robert.floyd@company.com"); //same username
+
         MockitoAnnotations.openMocks(this);
         testInstance = new UsersService(mockedDAO);
 
-        Mockito.when(mockedDAO.hireEmployee(intern)).thenReturn(false);
-        Mockito.when(mockedDAO.hireEmployee(analyst)).thenReturn(false);
-        Mockito.when(mockedDAO.hireEmployee(nonDBAnalyst)).thenReturn(true);
-        Mockito.when(mockedDAO.hireEmployee(nonDBIntern)).thenReturn(true);
-        Mockito.when(mockedDAO.hireEmployee(nfManager)).thenReturn(false);
+        Mockito.when(mockedDAO.hireEmployee(newIntern)).thenReturn(false);
+        Mockito.when(mockedDAO.hireEmployee(newAnalyst)).thenReturn(false);
+        Mockito.when(mockedDAO.hireEmployee(newNonDBAnalyst)).thenReturn(true);
+        Mockito.when(mockedDAO.hireEmployee(newNonDBIntern)).thenReturn(true);
+        Mockito.when(mockedDAO.hireEmployee(newNFManager)).thenReturn(false);
 
         Mockito.when(mockedDAO.fireEmployee(analyst)).thenReturn(true);
         Mockito.when(mockedDAO.fireEmployee(nonDBAnalyst)).thenReturn(false);
@@ -101,23 +119,23 @@ public class UsersServiceTest {
 
     @Test
     public void testHireEmployeeSuccess() {
-        assertTrue(testInstance.hireEmployee(manager, nonDBAnalyst)); //Test that a finance manager can hire a financial employee not already in the database
-        assertTrue(testInstance.hireEmployee(nfManager, nonDBIntern)); //Test that a non-finance manager can hire a non-financial employee that's not already in the database
+        assertTrue(testInstance.hireEmployee(manager, newNonDBAnalyst)); //Test that a finance manager can hire a financial employee not already in the database
+        assertTrue(testInstance.hireEmployee(nfManager, newNonDBIntern)); //Test that a non-finance manager can hire a non-financial employee that's not already in the database
     }
 
     @Test
     public void testHireEmployeeFailure() {
-        assertFalse(testInstance.hireEmployee(nfManager, nonDBAnalyst)); //this test is to make sure a non-financial manager can't hire a financial employee (but the employee input is valid)
-        assertFalse(testInstance.hireEmployee(manager, nonDBIntern)); //this test is to make sure a financial manager can't hire a non-financial employee (but the employee isn't in the database)
+        assertFalse(testInstance.hireEmployee(nfManager, newNonDBAnalyst)); //this test is to make sure a non-financial manager can't hire a financial employee (but the employee input is valid)
+        assertFalse(testInstance.hireEmployee(manager, newNonDBIntern)); //this test is to make sure a financial manager can't hire a non-financial employee (but the employee isn't in the database)
 
-        assertFalse(testInstance.hireEmployee(nfManager, intern)); //this test is to make sure a non-financial manager can't hire a non-financial employee who already exists
-        assertFalse(testInstance.hireEmployee(manager, analyst)); //this test is to make sure a financial manager can't hire a financial employee who already exists
+        assertFalse(testInstance.hireEmployee(nfManager, newIntern)); //this test is to make sure a non-financial manager can't hire a non-financial employee who already exists
+        assertFalse(testInstance.hireEmployee(manager, newAnalyst)); //this test is to make sure a financial manager can't hire a financial employee who already exists
 
-        assertFalse(testInstance.hireEmployee(analyst, nonDBAnalyst)); //this test is to make sure a non-manager role can't hire anybody
-        assertFalse(testInstance.hireEmployee(nfManager, nfManager)); //this test is to make sure that a mangager can't hire themselves
+        assertFalse(testInstance.hireEmployee(analyst, newNonDBAnalyst)); //this test is to make sure a non-manager role can't hire anybody
+        assertFalse(testInstance.hireEmployee(nfManager, newNFManager)); //this test is to make sure that a mangager can't hire themselves
 
-        assertFalse(testInstance.hireEmployee(manager, repeatUsername)); //this test is to make sure we can't hire anyone whose username already exists in the database
-        assertFalse(testInstance.hireEmployee(manager, repeatEmail)); //this test is to make sure we can't hire anyone whose email already exists in the database
+        assertFalse(testInstance.hireEmployee(manager, newRepeatUsername)); //this test is to make sure we can't hire anyone whose username already exists in the database
+        assertFalse(testInstance.hireEmployee(manager, newRepeatEmail)); //this test is to make sure we can't hire anyone whose email already exists in the database
     }
 
     @Test

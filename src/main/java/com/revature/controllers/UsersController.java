@@ -1,6 +1,8 @@
 package com.revature.controllers;
 
 import com.revature.models.users.User;
+import com.revature.repos.UserDAOImpl;
+import com.revature.repos.UsersDAO;
 import com.revature.services.UsersService;
 import com.revature.util.NewUser;
 import io.javalin.Javalin;
@@ -9,6 +11,7 @@ import io.javalin.http.Handler;
 public class UsersController extends Controller{
 
     private UsersService usersService = new UsersService();
+    private UsersDAO ud = new UserDAOImpl();
 
     Handler getUser = (ctx) -> {
         usersService.getUser("sno19");
@@ -36,8 +39,17 @@ public class UsersController extends Controller{
         //to reach the page that executes this handler, and there's even a separate check when they click the button
         //to submit employee information so a third login check here would just be redundant.
         NewUser newUser = ctx.bodyAsClass(NewUser.class);
+        User currentUser = ctx.sessionAttribute("currentUser");
 
-        System.out.println(newUser);
+        //System.out.println(newUser);
+        //System.out.println(currentUser);
+
+        //System.out.println(ud.availableUsernameEmail(newUser.username, newUser.emailAddress));
+
+        boolean employeeHired = usersService.hireEmployee(currentUser, newUser);
+
+        if (employeeHired) ctx.status(200);
+        else ctx.status(400);
     };
 
     @Override

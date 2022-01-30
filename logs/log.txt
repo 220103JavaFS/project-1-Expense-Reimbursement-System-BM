@@ -1,6 +1,6 @@
-09:56:08.237 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @277ms to org.eclipse.jetty.util.log.Slf4jLog
-09:56:08.271 [] [main] INFO  io.javalin.Javalin - Static file handler added: StaticFileConfig(hostedPath=/, directory=/web, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<javax.servlet.http.HttpServletRequest, java.lang.Boolean>). File system location: 'file:///C:/Users/Bobby/Documents/Coding/Revature_Projects/project-1-bobbymahad/build/resources/main/web/'
-09:56:08.339 [] [main] INFO  io.javalin.Javalin - 
+12:08:36.117 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @280ms to org.eclipse.jetty.util.log.Slf4jLog
+12:08:36.154 [] [main] INFO  io.javalin.Javalin - Static file handler added: StaticFileConfig(hostedPath=/, directory=/web, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<javax.servlet.http.HttpServletRequest, java.lang.Boolean>). File system location: 'file:///C:/Users/Bobby/Documents/Coding/Revature_Projects/project-1-bobbymahad/build/resources/main/web/'
+12:08:36.224 [] [main] INFO  io.javalin.Javalin - 
        __                      __ _            __ __
       / /____ _ _   __ ____ _ / /(_)____      / // /
  __  / // __ `/| | / // __ `// // // __ \    / // /_
@@ -9,8 +9,9 @@
 
           https://javalin.io/documentation
 
-09:56:08.340 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
-09:56:08.348 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 112 days old. Consider upgrading!).
-09:56:08.625 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8081/
-09:56:08.626 [] [main] INFO  io.javalin.Javalin - Javalin started in 287ms \o/
-09:56:26.168 [] [qtp392781299-36] INFO  com.revature.services.LoginService - The password entered was valid, preparing to log you in.
+12:08:36.224 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+12:08:36.231 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 112 days old. Consider upgrading!).
+12:08:36.512 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8081/
+12:08:36.512 [] [main] INFO  io.javalin.Javalin - Javalin started in 288ms \o/
+12:08:41.022 [] [qtp392781299-34] INFO  com.revature.services.LoginService - The password entered was valid, preparing to log you in.
+12:09:50.957 [] [qtp392781299-26] INFO  com.revature.services.UsersService - Either the username or email address already exists in the database, please enter new info.

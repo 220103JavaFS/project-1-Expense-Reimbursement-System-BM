@@ -1,6 +1,7 @@
 package com.revature.repos;
 
 import com.revature.models.users.User;
+import com.revature.util.NewUser;
 
 public interface UsersDAO {
 
@@ -9,7 +10,7 @@ public interface UsersDAO {
     public boolean availableUsernameEmail(String username, String email); //used in new employee creation, makes sure that the given username and emails don't already exist in the database
 
     //POST METHODS
-    public boolean hireEmployee(User newEmployee);
+    public boolean hireEmployee(NewUser newEmployee);
 
     //DELETE METHODS
     public boolean fireEmployee(User exEmployee);
