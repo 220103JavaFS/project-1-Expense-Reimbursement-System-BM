@@ -73,7 +73,7 @@ async function logoutFunc() {
     );
 
     //"refresh" the main page after logout
-    location.href = 'http://localhost:8081/MainPages/CombinedMain.html';
+    location.href = 'http://localhost:8081/mainPage.html';
 }
 
 async function approveFunc() {
