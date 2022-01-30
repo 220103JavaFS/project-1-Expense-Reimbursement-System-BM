@@ -99,14 +99,32 @@ async function submitFunc() {
     if (response.status===200) {
         //Javalin will handle setting appropriate cookies, redirect back to the main page
         //now that our user cookie is set we can redirect to the appropriate location
-
-        //location.href = 'http://localhost:8081/MainPages/CombinedMain.html';
-        console.log("info went through to Javalin");
+        alert("Employee succesfully hired!")
+        location.href = 'http://localhost:8081/EmployeePages/hireEmployee.html';
 
     } else if (response.status===401){
-        alert("You're already logged in, please log out first to login with another user.");
+        alert("You don't have access to do that.");
     } else {
-        alert("Couldn't find user, either the username or password was incorrect. Please retype and try again.");
+        //if we get here it means there was an issue with the request, parse the received error code
+        //to find out what went wrong.
+        let jsonResponse = await response.json();
+        let errorCode = jsonResponse.errorCode; //gets the error code as an integer
+        let errorMessage = "";
+
+        //now we check all possible errors (which are defined in the backend). Since there can be multiple
+        //errors contained within the same code we only use IF statements and not ELSE IF statements
+        if (errorCode & 0b1) errorMessage += "Only managers can hire and employee.\n";
+        if (errorCode & 0b10) errorMessage += "You can't hire that type of employee.\n";
+        if (errorCode & 0b100) errorMessage += "That username isn't available.\n";
+        if (errorCode & 0b1000) errorMessage += "That email address isn't available.\n";
+        if (errorCode & 0b10000) errorMessage += "Password needs to be at least 8 characters lone.\n";
+        if (errorCode & 0b100000) errorMessage += "Password must have an upper case letter.\n";
+        if (errorCode & 0b1000000) errorMessage += "Password must have a lower case letter.\n";
+        if (errorCode & 0b10000000) errorMessage += "Password must have at least one number.\n";
+        if (errorCode & 0b100000000) errorMessage += "Password must have at least one special character.\n";
+        if (errorCode & 0b1000000000) errorMessage += "Password used an incompatible character.\n";
+        if (errorCode & 0b10000000000 ) errorMessage += "There was a problem accessing the user database.\n";
+        alert(errorMessage);
     }
 }
 

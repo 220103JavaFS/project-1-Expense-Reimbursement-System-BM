@@ -4,6 +4,7 @@ import com.revature.models.users.User;
 import com.revature.repos.UserDAOImpl;
 import com.revature.repos.UsersDAO;
 import com.revature.services.UsersService;
+import com.revature.util.AppErrorCode;
 import com.revature.util.NewUser;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
@@ -40,10 +41,14 @@ public class UsersController extends Controller{
         NewUser newUser = ctx.bodyAsClass(NewUser.class);
         User currentUser = ctx.sessionAttribute("currentUser");
 
-        boolean employeeHired = usersService.hireEmployee(currentUser, newUser); //TODO: Want to change return type to int for returning of distinct errors
+        int employeeHired = usersService.hireEmployee(currentUser, newUser); //TODO: Want to change return type to int for returning of distinct errors
 
-        if (employeeHired) ctx.status(200);
-        else ctx.status(400);
+        if (employeeHired == 0) ctx.status(200);
+        else {
+            AppErrorCode errorCode = new AppErrorCode(employeeHired);
+            ctx.json(errorCode);
+            ctx.status(400);
+        }
     };
 
     Handler fireEmployee = (ctx) -> {
@@ -53,11 +58,12 @@ public class UsersController extends Controller{
         NewUser firedUsername = ctx.bodyAsClass(NewUser.class); //we're only interested in the username here
 
         User currentUser = ctx.sessionAttribute("currentUser");
-        boolean fired = usersService.fireEmployee(currentUser, firedUsername.username);
+        int fired = usersService.fireEmployee(currentUser, firedUsername.username);
 
-        if (fired) ctx.status(200);
-        else ctx.status(400);
-
+        if (fired == 0) ctx.status(200);
+        else if (fired == 1) ctx.status(401);
+        else if (fired == 2) ctx.status(404);
+        else ctx.status(500);
     };
 
     @Override

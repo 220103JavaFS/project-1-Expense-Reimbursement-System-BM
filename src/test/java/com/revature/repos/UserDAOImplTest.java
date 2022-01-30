@@ -85,33 +85,33 @@ public class UserDAOImplTest {
 
     @Test
     public void testHireEmployeeSuccess() {
-        assertTrue(testInstance.hireEmployee(newNonDBAnalyst)); //Test that a finance manager can hire a financial employee not already in the database
+        assertTrue(testInstance.hireEmployee(newNonDBAnalyst) == 0); //Test that a finance manager can hire a financial employee not already in the database
     }
 
     @Test
     public void testHireEmployeeFailure() {
-        assertFalse(testInstance.hireEmployee(newAnalyst)); //this test is to make sure a non-financial manager can't hire a financial employee (but the employee input is valid)
+        assertFalse(testInstance.hireEmployee(newAnalyst) == 0); //this test is to make sure a non-financial manager can't hire a financial employee (but the employee input is valid)
     }
 
     @Test
     public void testFireEmployeeSuccess() {
-        assertTrue(testInstance.fireEmployee(nonDBAnalyst)); //This test is to make sure that a finance manager can fire an existing financial employee in the database
+        assertTrue(testInstance.fireEmployee(nonDBAnalyst) == 0); //This test is to make sure that a finance manager can fire an existing financial employee in the database
     }
 
     @Test
     public void testFireEmployeeFailure() {
-        assertFalse(testInstance.fireEmployee(analyst));
+        assertFalse(testInstance.fireEmployee(analyst) == 0);
     }
 
     @Test
     public void testAvailableUsernameEmailSuccess() {
-        assertTrue(testInstance.availableUsernameEmail(availableUsername, availableEmail)); //This test is to make sure that a finance manager can fire an existing financial employee in the database
+        assertTrue(testInstance.availableUsernameEmail(availableUsername, availableEmail) == 0); //This test is to make sure that a finance manager can fire an existing financial employee in the database
     }
 
     @Test
     public void testAvailableUsernameEmailFailure() {
-        assertFalse(testInstance.availableUsernameEmail(username, email));
-        assertFalse(testInstance.availableUsernameEmail(availableUsername, email));
-        assertFalse(testInstance.availableUsernameEmail(username, availableEmail));
+        assertFalse(testInstance.availableUsernameEmail(username, email) == 0);
+        assertFalse(testInstance.availableUsernameEmail(availableUsername, email) == 0);
+        assertFalse(testInstance.availableUsernameEmail(username, availableEmail) == 0);
     }
 }

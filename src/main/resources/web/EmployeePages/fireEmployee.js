@@ -34,7 +34,7 @@ async function submitFunc() {
 
     //we need to make sure that the username field isn't blank
     if (newUser.username == "") {
-        alert("All fields must be filled out.");
+        alert("Please enter the username of the employee you wish to fire.");
         return;
     }
 
@@ -51,12 +51,14 @@ async function submitFunc() {
         //now that our user cookie is set we can redirect to the appropriate location
 
         //location.href = 'http://localhost:8081/MainPages/CombinedMain.html';
-        console.log("Employee was fired.");
-
+        alert("Employee was fired and successfully removed from the database.");
+        location.href = 'http://localhost:8081/EmployeePages/fireEmployee.html';
     } else if (response.status===401){
-        alert("You're already logged in, please log out first to login with another user.");
+        alert("You don't have permission to fire this employee.");
+    } else if (response.status===404){
+        alert("That employee doesn't exist, please re-type the username.");
     } else {
-        alert("Couldn't find user with the given username.");
+        alert("Couldn't connect to the database");
     }
 }
 

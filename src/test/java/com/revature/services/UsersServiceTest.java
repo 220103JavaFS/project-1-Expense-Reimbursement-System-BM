@@ -76,16 +76,16 @@ public class UsersServiceTest {
         MockitoAnnotations.openMocks(this);
         testInstance = new UsersService(mockedDAO);
 
-        Mockito.when(mockedDAO.hireEmployee(newIntern)).thenReturn(false);
-        Mockito.when(mockedDAO.hireEmployee(newAnalyst)).thenReturn(false);
-        Mockito.when(mockedDAO.hireEmployee(newNonDBAnalyst)).thenReturn(true);
-        Mockito.when(mockedDAO.hireEmployee(newNonDBIntern)).thenReturn(true);
-        Mockito.when(mockedDAO.hireEmployee(newNFManager)).thenReturn(false);
+        Mockito.when(mockedDAO.hireEmployee(newIntern)).thenReturn(0b1000000000);
+        Mockito.when(mockedDAO.hireEmployee(newAnalyst)).thenReturn(0b1000000000);
+        Mockito.when(mockedDAO.hireEmployee(newNonDBAnalyst)).thenReturn(0);
+        Mockito.when(mockedDAO.hireEmployee(newNonDBIntern)).thenReturn(0);
+        Mockito.when(mockedDAO.hireEmployee(newNFManager)).thenReturn(0b1000000000);
 
-        Mockito.when(mockedDAO.fireEmployee(analyst)).thenReturn(true);
-        Mockito.when(mockedDAO.fireEmployee(nonDBAnalyst)).thenReturn(false);
-        Mockito.when(mockedDAO.fireEmployee(intern)).thenReturn(true);
-        Mockito.when(mockedDAO.fireEmployee(nonDBIntern)).thenReturn(false);
+        Mockito.when(mockedDAO.fireEmployee(analyst)).thenReturn(0);
+        Mockito.when(mockedDAO.fireEmployee(nonDBAnalyst)).thenReturn(2);
+        Mockito.when(mockedDAO.fireEmployee(intern)).thenReturn(0);
+        Mockito.when(mockedDAO.fireEmployee(nonDBIntern)).thenReturn(2);
 
         //set return values for mockedDAO
         Mockito.when(mockedDAO.getUser(username)).thenReturn(intern);
@@ -96,10 +96,11 @@ public class UsersServiceTest {
         Mockito.when(mockedDAO.getUser("moneyManage2")).thenReturn(manager);
         Mockito.when(mockedDAO.getUser("Manage1")).thenReturn(nfManager);
 
-        Mockito.when(mockedDAO.availableUsernameEmail(repeatUsername.getUsername(), repeatUsername.getEmailAddress())).thenReturn(false);
-        Mockito.when(mockedDAO.availableUsernameEmail(repeatEmail.getUsername(), repeatEmail.getEmailAddress())).thenReturn(false);
-        Mockito.when(mockedDAO.availableUsernameEmail(nonDBAnalyst.getUsername(), nonDBAnalyst.getEmailAddress())).thenReturn(true);
-        Mockito.when(mockedDAO.availableUsernameEmail(nonDBIntern.getUsername(), nonDBIntern.getEmailAddress())).thenReturn(true);
+        Mockito.when(mockedDAO.availableUsernameEmail(repeatUsername.getUsername(), repeatUsername.getEmailAddress())).thenReturn(0b100);
+        Mockito.when(mockedDAO.availableUsernameEmail(repeatEmail.getUsername(), repeatEmail.getEmailAddress())).thenReturn(0b1000);
+        Mockito.when(mockedDAO.availableUsernameEmail(repeatUsername.getUsername(), repeatEmail.getEmailAddress())).thenReturn(0b1100);
+        Mockito.when(mockedDAO.availableUsernameEmail(nonDBAnalyst.getUsername(), nonDBAnalyst.getEmailAddress())).thenReturn(0);
+        Mockito.when(mockedDAO.availableUsernameEmail(nonDBIntern.getUsername(), nonDBIntern.getEmailAddress())).thenReturn(0);
 
     }
 
@@ -119,39 +120,39 @@ public class UsersServiceTest {
 
     @Test
     public void testHireEmployeeSuccess() {
-        assertTrue(testInstance.hireEmployee(manager, newNonDBAnalyst)); //Test that a finance manager can hire a financial employee not already in the database
-        assertTrue(testInstance.hireEmployee(nfManager, newNonDBIntern)); //Test that a non-finance manager can hire a non-financial employee that's not already in the database
+        assertTrue(testInstance.hireEmployee(manager, newNonDBAnalyst) == 0); //Test that a finance manager can hire a financial employee not already in the database
+        assertTrue(testInstance.hireEmployee(nfManager, newNonDBIntern) == 0); //Test that a non-finance manager can hire a non-financial employee that's not already in the database
     }
 
     @Test
     public void testHireEmployeeFailure() {
-        assertFalse(testInstance.hireEmployee(nfManager, newNonDBAnalyst)); //this test is to make sure a non-financial manager can't hire a financial employee (but the employee input is valid)
-        assertFalse(testInstance.hireEmployee(manager, newNonDBIntern)); //this test is to make sure a financial manager can't hire a non-financial employee (but the employee isn't in the database)
+        assertFalse(testInstance.hireEmployee(nfManager, newNonDBAnalyst) == 0); //this test is to make sure a non-financial manager can't hire a financial employee (but the employee input is valid)
+        assertFalse(testInstance.hireEmployee(manager, newNonDBIntern) == 0); //this test is to make sure a financial manager can't hire a non-financial employee (but the employee isn't in the database)
 
-        assertFalse(testInstance.hireEmployee(nfManager, newIntern)); //this test is to make sure a non-financial manager can't hire a non-financial employee who already exists
-        assertFalse(testInstance.hireEmployee(manager, newAnalyst)); //this test is to make sure a financial manager can't hire a financial employee who already exists
+        assertFalse(testInstance.hireEmployee(nfManager, newIntern) == 0); //this test is to make sure a non-financial manager can't hire a non-financial employee who already exists
+        assertFalse(testInstance.hireEmployee(manager, newAnalyst) == 0); //this test is to make sure a financial manager can't hire a financial employee who already exists
 
-        assertFalse(testInstance.hireEmployee(analyst, newNonDBAnalyst)); //this test is to make sure a non-manager role can't hire anybody
-        assertFalse(testInstance.hireEmployee(nfManager, newNFManager)); //this test is to make sure that a mangager can't hire themselves
+        assertFalse(testInstance.hireEmployee(analyst, newNonDBAnalyst) == 0); //this test is to make sure a non-manager role can't hire anybody
+        assertFalse(testInstance.hireEmployee(nfManager, newNFManager) == 0); //this test is to make sure that a mangager can't hire themselves
 
-        assertFalse(testInstance.hireEmployee(manager, newRepeatUsername)); //this test is to make sure we can't hire anyone whose username already exists in the database
-        assertFalse(testInstance.hireEmployee(manager, newRepeatEmail)); //this test is to make sure we can't hire anyone whose email already exists in the database
+        assertFalse(testInstance.hireEmployee(manager, newRepeatUsername) == 0); //this test is to make sure we can't hire anyone whose username already exists in the database
+        assertFalse(testInstance.hireEmployee(manager, newRepeatEmail) == 0); //this test is to make sure we can't hire anyone whose email already exists in the database
     }
 
     @Test
     public void testFireEmployeeSuccess() {
-        assertTrue(testInstance.fireEmployee(manager, "Capn")); //This test is to make sure that a finance manager can fire an existing financial employee in the database
-        assertTrue(testInstance.fireEmployee(nfManager, "rfloyd01")); //This test is to make sure that a non-finance manager can fire an existing non-financial employee in the database
+        assertTrue(testInstance.fireEmployee(manager, "Capn") == 0); //This test is to make sure that a finance manager can fire an existing financial employee in the database
+        assertTrue(testInstance.fireEmployee(nfManager, "rfloyd01") == 0); //This test is to make sure that a non-finance manager can fire an existing non-financial employee in the database
     }
 
     @Test
     public void testFireEmployeeFailure() {
-        assertFalse(testInstance.fireEmployee(manager, "rfloyd01")); //This test is to make sure that a finance manager can't fire an existing non-financial employee in the database
-        assertFalse(testInstance.fireEmployee(nfManager, "Capn")); //This test is to make sure that a non-finance manager can't fire an existing financial employee in the database
+        assertFalse(testInstance.fireEmployee(manager, "rfloyd01") == 0); //This test is to make sure that a finance manager can't fire an existing non-financial employee in the database
+        assertFalse(testInstance.fireEmployee(nfManager, "Capn") == 0); //This test is to make sure that a non-finance manager can't fire an existing financial employee in the database
 
-        assertFalse(testInstance.fireEmployee(nfManager, "rfloyd02")); //This test is to make sure that you can't fire someone who doesn't exist in the database
-        assertFalse(testInstance.fireEmployee(nfManager, "moneyManage2"));
-        assertFalse(testInstance.fireEmployee(manager, "moneyManage2"));
-        assertFalse(testInstance.fireEmployee(manager, "Manage1"));
+        assertFalse(testInstance.fireEmployee(nfManager, "rfloyd02") == 0); //This test is to make sure that you can't fire someone who doesn't exist in the database
+        assertFalse(testInstance.fireEmployee(nfManager, "moneyManage2") == 0);
+        assertFalse(testInstance.fireEmployee(manager, "moneyManage2") == 0);
+        assertFalse(testInstance.fireEmployee(manager, "Manage1") == 0);
     }
 }

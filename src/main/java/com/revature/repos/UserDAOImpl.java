@@ -5,11 +5,15 @@ import com.revature.models.users.User;
 import com.revature.models.users.UserFactory;
 import com.revature.util.ConnectionUtil;
 import com.revature.util.NewUser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class UserDAOImpl implements UsersDAO{
+    private Logger log = LoggerFactory.getLogger(UserDAOImpl.class);
+
     @Override
     public User getUser(String username) {
         //used by admins to view all users in the database
@@ -54,7 +58,7 @@ public class UserDAOImpl implements UsersDAO{
     }
 
     @Override
-    public boolean availableUsernameEmail(String username, String email) {
+    public int availableUsernameEmail(String username, String email) {
         //used by admins to view all users in the database
         System.out.println("Made it down to DAO layer");
         try (Connection conn = ConnectionUtil.getConnection()) {
@@ -69,25 +73,23 @@ public class UserDAOImpl implements UsersDAO{
             statement.setString(++statementCounter, email);
 
             ResultSet result = statement.executeQuery();
+            int errorCode = 0;
 
             System.out.println("About to look at matching usernames");
             while(result.next()) {
-                return false;
+                if (result.getString("ers_username").equals(username)) errorCode |= 0b100;
+                if (result.getString("user_email").equals(email)) errorCode |= 0b1000;
             }
 
-            //if no username match was found then return null
-            System.out.println("Couldn't find employee");
-            return true;
+            //if no issues arose then the error code will be 0
+            return errorCode;
         } catch (SQLException e) {
-            System.out.println("problem");
-            return false;
+            return 0b10000000000; //code for database error
         }
     }
 
     @Override
-    public boolean hireEmployee(NewUser newEmployee) {
-        //used by admins to view all users in the database
-
+    public int hireEmployee(NewUser newEmployee) {
         try (Connection conn = ConnectionUtil.getConnection()) {
             //log.info("UserDAO getAllUsersDAO() method was called");
             //Since each employee has a list of customers associated with them, we don't need to actually query the
@@ -110,17 +112,16 @@ public class UserDAOImpl implements UsersDAO{
 
 
             //if no username match was found then return null
-            System.out.println("Employee added to database");
-            return true;
+            log.info("Employee added to database");
+            return 0;
         } catch (SQLException e) {
-            System.out.println("problem");
-            return false;
+            return 0b10000000000; //code for database error
         }
 
     }
 
     @Override
-    public boolean fireEmployee(User exEmployee) {
+    public int fireEmployee(User exEmployee) {
         //used by admins to view all users in the database
 
         try (Connection conn = ConnectionUtil.getConnection()) {
@@ -131,9 +132,9 @@ public class UserDAOImpl implements UsersDAO{
             statement.setString(++statementCounter, exEmployee.getUsername());
 
             statement.execute();
-            return true;
+            return 0;
         } catch (SQLException e) {
-            return false;
+            return 3; //3 will reprsent a 500 http status in the controller layer
         }
     }
 }
