@@ -1,6 +1,6 @@
-12:08:36.117 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @280ms to org.eclipse.jetty.util.log.Slf4jLog
-12:08:36.154 [] [main] INFO  io.javalin.Javalin - Static file handler added: StaticFileConfig(hostedPath=/, directory=/web, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<javax.servlet.http.HttpServletRequest, java.lang.Boolean>). File system location: 'file:///C:/Users/Bobby/Documents/Coding/Revature_Projects/project-1-bobbymahad/build/resources/main/web/'
-12:08:36.224 [] [main] INFO  io.javalin.Javalin - 
+13:28:31.134 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @283ms to org.eclipse.jetty.util.log.Slf4jLog
+13:28:31.169 [] [main] INFO  io.javalin.Javalin - Static file handler added: StaticFileConfig(hostedPath=/, directory=/web, location=CLASSPATH, precompress=false, aliasCheck=null, headers={Cache-Control=max-age=0}, skipFileFunction=Function1<javax.servlet.http.HttpServletRequest, java.lang.Boolean>). File system location: 'file:///C:/Users/Bobby/Documents/Coding/Revature_Projects/project-1-bobbymahad/build/resources/main/web/'
+13:28:31.242 [] [main] INFO  io.javalin.Javalin - 
        __                      __ _            __ __
       / /____ _ _   __ ____ _ / /(_)____      / // /
  __  / // __ `/| | / // __ `// // // __ \    / // /_
@@ -9,9 +9,13 @@
 
           https://javalin.io/documentation
 
-12:08:36.224 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
-12:08:36.231 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 112 days old. Consider upgrading!).
-12:08:36.512 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8081/
-12:08:36.512 [] [main] INFO  io.javalin.Javalin - Javalin started in 288ms \o/
-12:08:41.022 [] [qtp392781299-34] INFO  com.revature.services.LoginService - The password entered was valid, preparing to log you in.
-12:09:50.957 [] [qtp392781299-26] INFO  com.revature.services.UsersService - Either the username or email address already exists in the database, please enter new info.
+13:28:31.243 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+13:28:31.250 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 112 days old. Consider upgrading!).
+13:28:31.537 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8081/
+13:28:31.538 [] [main] INFO  io.javalin.Javalin - Javalin started in 296ms \o/
+13:28:59.336 [] [qtp1822383117-21] INFO  com.revature.services.LoginService - The password entered was valid, preparing to log you in.
+13:29:43.619 [] [qtp1822383117-21] INFO  com.revature.services.LoginService - The password entered was invalid, please try again.
+13:29:51.737 [] [qtp1822383117-36] INFO  com.revature.services.LoginService - The password entered was valid, preparing to log you in.
+13:32:45.879 [] [qtp1822383117-39] INFO  com.revature.services.UsersService - Either the username or email address already exists in the database, please enter new info.
+13:33:42.314 [] [qtp1822383117-26] INFO  com.revature.services.UsersService - Sorry, you don't have access to fire that type of employee
+13:34:05.681 [] [qtp1822383117-24] INFO  com.revature.services.UsersService - About to fire employee: TheHulk06

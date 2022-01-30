@@ -121,6 +121,19 @@ public class UserDAOImpl implements UsersDAO{
 
     @Override
     public boolean fireEmployee(User exEmployee) {
-        return false;
+        //used by admins to view all users in the database
+
+        try (Connection conn = ConnectionUtil.getConnection()) {
+            String sql = "DELETE FROM ers_users WHERE ers_username = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            int statementCounter = 0;
+            statement.setString(++statementCounter, exEmployee.getUsername());
+
+            statement.execute();
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
     }
 }

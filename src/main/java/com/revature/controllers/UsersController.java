@@ -11,7 +11,6 @@ import io.javalin.http.Handler;
 public class UsersController extends Controller{
 
     private UsersService usersService = new UsersService();
-    private UsersDAO ud = new UserDAOImpl();
 
     Handler getUser = (ctx) -> {
         usersService.getUser("sno19");
@@ -41,15 +40,24 @@ public class UsersController extends Controller{
         NewUser newUser = ctx.bodyAsClass(NewUser.class);
         User currentUser = ctx.sessionAttribute("currentUser");
 
-        //System.out.println(newUser);
-        //System.out.println(currentUser);
-
-        //System.out.println(ud.availableUsernameEmail(newUser.username, newUser.emailAddress));
-
-        boolean employeeHired = usersService.hireEmployee(currentUser, newUser);
+        boolean employeeHired = usersService.hireEmployee(currentUser, newUser); //TODO: Want to change return type to int for returning of distinct errors
 
         if (employeeHired) ctx.status(200);
         else ctx.status(400);
+    };
+
+    Handler fireEmployee = (ctx) -> {
+        //I'm not going to add logic to make sure that a user is logged in directly here. A user needs to be logged in
+        //to reach the page that executes this handler, and there's even a separate check when they click the button
+        //to submit employee information so a third login check here would just be redundant.
+        NewUser firedUsername = ctx.bodyAsClass(NewUser.class); //we're only interested in the username here
+
+        User currentUser = ctx.sessionAttribute("currentUser");
+        boolean fired = usersService.fireEmployee(currentUser, firedUsername.username);
+
+        if (fired) ctx.status(200);
+        else ctx.status(400);
+
     };
 
     @Override
@@ -58,5 +66,6 @@ public class UsersController extends Controller{
         app.get("/users", getUser);
         app.get("/users/currentUser", getCurrentUser);
         app.post("/users", hireEmployee);
+        app.delete("/users", fireEmployee);
     }
 }

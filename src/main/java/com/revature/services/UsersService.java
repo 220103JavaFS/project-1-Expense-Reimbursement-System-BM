@@ -114,6 +114,6 @@ public class UsersService {
         }
 
         log.info("About to fire employee: " + fireableEmployee);
-        return usersDAO.fireEmployee(fEmployee);
+        return userDAO.fireEmployee(fEmployee);
     }
 }
