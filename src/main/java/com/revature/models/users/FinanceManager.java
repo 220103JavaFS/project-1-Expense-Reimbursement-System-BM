@@ -48,7 +48,7 @@ public class FinanceManager extends Employee implements Manager {
                 "userRoleID='" + getUserRoleID() + '\'' +
                 ", userID='" + userID + '\'' +
                 ", username='" + username + '\'' +
-                //", password='" + password + '\'' +
+                ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", emailAddress='" + emailAddress + '\'' +
