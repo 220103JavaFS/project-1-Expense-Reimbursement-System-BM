@@ -56,6 +56,7 @@ public class UserDAOImplTest {
         newAnalyst = new NewUser(5, "Capn", "helloW0rld", "Steve", "Rogers", "captain.america@airproducts.com");
         newAnalystUser = new User(5, "Capn", "helloW0rld", "Steve", "Rogers", "captain.america@airproducts.com");
 
+
         rfloyd01 = new FinanceManager(1, "rfloyd01", "Coding_is_Kewl34", "Robert", "Floyd", "robert.floyd@airproducts.com");
         rfloyd01WrongID = new FinanceManager(2, "rfloyd01", "Coding_is_Kewl34", "Robert", "Floyd", "robert.floyd@airproducts.com");
     }

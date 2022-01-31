@@ -15,14 +15,18 @@ public class ReimbursementRequest {
     private Timestamp reimbursementResolved;
     private String reimbursementDescription;
     private byte[] reimbursementReceipt;
-    private User reimbursementAuthor;
-    private User reimbursementResolver;
-    private ReimbursementStatus reimbursementStatus;
-    private ReimbursementType reimbursementType;
+    private int reimbursementAuthor;
+    private int reimbursementResolver;
+    private int reimbursementStatusId;
+    private int reimbursementTypeId;
+
+    //initially used model classes to represent the below items but realized it would be much more easy (and better match what's in the database) to just use integers
+    //corresponding to the unique id's for each object
+
 
     //CONSTRUCTORS
     public ReimbursementRequest() {}
-    public ReimbursementRequest(int reimbursementID, double reimbursementAmount, Timestamp reimbursementSubmitted, Timestamp reimbursementResolved, String reimbursementDescription, byte[] reimbursementReceipt, User reimbursementAuthor, User reimbursementResolver, ReimbursementStatus reimbursementStatus, ReimbursementType reimbursementType) {
+    public ReimbursementRequest(int reimbursementID, double reimbursementAmount, Timestamp reimbursementSubmitted, Timestamp reimbursementResolved, String reimbursementDescription, byte[] reimbursementReceipt, int reimbursementAuthor, int reimbursementResolver, int reimbursementStatusId, int reimbursementTypeId) {
         this.reimbursementID = reimbursementID;
         this.reimbursementAmount = reimbursementAmount;
         this.reimbursementSubmitted = reimbursementSubmitted;
@@ -31,8 +35,8 @@ public class ReimbursementRequest {
         this.reimbursementReceipt = reimbursementReceipt;
         this.reimbursementAuthor = reimbursementAuthor;
         this.reimbursementResolver = reimbursementResolver;
-        this.reimbursementStatus = reimbursementStatus;
-        this.reimbursementType = reimbursementType;
+        this.reimbursementStatusId = reimbursementStatusId;
+        this.reimbursementTypeId = reimbursementTypeId;
     }
 
     //GETTERS AND SETTERS
@@ -72,42 +76,43 @@ public class ReimbursementRequest {
     public void setReimbursementReceipt(byte[] reimbursementReceipt) {
         this.reimbursementReceipt = reimbursementReceipt;
     }
-    public User getReimbursementAuthor() {
+    public int getReimbursementAuthor() {
         return reimbursementAuthor;
     }
-    public void setReimbursementAuthor(User reimbursementAuthor) {
+    public void setReimbursementAuthor(int reimbursementAuthor) {
         this.reimbursementAuthor = reimbursementAuthor;
     }
-    public User getReimbursementResolver() {
+    public int getReimbursementResolver() {
         return reimbursementResolver;
     }
-    public void setReimbursementResolver(User reimbursementResolver) {
+    public void setReimbursementResolver(int reimbursementResolver) {
         this.reimbursementResolver = reimbursementResolver;
     }
-    public ReimbursementStatus getReimbursementStatus() {
-        return reimbursementStatus;
+    public int getReimbursementStatusId() {
+        return reimbursementStatusId;
     }
-    public void setReimbursementStatus(ReimbursementStatus reimbursementStatus) {
-        this.reimbursementStatus = reimbursementStatus;
+    public void setReimbursementStatusId(int reimbursementStatusId) {
+        this.reimbursementStatusId = reimbursementStatusId;
     }
-    public ReimbursementType getReimbursementType() {
-        return reimbursementType;
+    public int getReimbursementTypeId() {
+        return reimbursementTypeId;
     }
-    public void setReimbursementType(ReimbursementType reimbursementType) {
-        this.reimbursementType = reimbursementType;
+    public void setReimbursementTypeId(int reimbursementTypeId) {
+        this.reimbursementTypeId = reimbursementTypeId;
     }
 
     //METHODS FOR JSON
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ReimbursementRequest that = (ReimbursementRequest) o;
-        return reimbursementID == that.reimbursementID && Double.compare(that.reimbursementAmount, reimbursementAmount) == 0 && Objects.equals(reimbursementSubmitted, that.reimbursementSubmitted) && Objects.equals(reimbursementResolved, that.reimbursementResolved) && Objects.equals(reimbursementDescription, that.reimbursementDescription) && Arrays.equals(reimbursementReceipt, that.reimbursementReceipt) && Objects.equals(reimbursementAuthor, that.reimbursementAuthor) && Objects.equals(reimbursementResolver, that.reimbursementResolver) && Objects.equals(reimbursementStatus, that.reimbursementStatus) && Objects.equals(reimbursementType, that.reimbursementType);
+        return reimbursementID == that.reimbursementID && Double.compare(that.reimbursementAmount, reimbursementAmount) == 0 && reimbursementAuthor == that.reimbursementAuthor && reimbursementResolver == that.reimbursementResolver && reimbursementStatusId == that.reimbursementStatusId && reimbursementTypeId == that.reimbursementTypeId && Objects.equals(reimbursementSubmitted, that.reimbursementSubmitted) && Objects.equals(reimbursementResolved, that.reimbursementResolved) && Objects.equals(reimbursementDescription, that.reimbursementDescription) && Arrays.equals(reimbursementReceipt, that.reimbursementReceipt);
     }
     @Override
     public int hashCode() {
-        int result = Objects.hash(reimbursementID, reimbursementAmount, reimbursementSubmitted, reimbursementResolved, reimbursementDescription, reimbursementAuthor, reimbursementResolver, reimbursementStatus, reimbursementType);
+        int result = Objects.hash(reimbursementID, reimbursementAmount, reimbursementSubmitted, reimbursementResolved, reimbursementDescription, reimbursementAuthor, reimbursementResolver, reimbursementStatusId, reimbursementTypeId);
         result = 31 * result + Arrays.hashCode(reimbursementReceipt);
         return result;
     }
@@ -122,8 +127,8 @@ public class ReimbursementRequest {
                 ", reimbursementReceipt=" + Arrays.toString(reimbursementReceipt) +
                 ", reimbursementAuthor=" + reimbursementAuthor +
                 ", reimbursementResolver=" + reimbursementResolver +
-                ", reimbursementStatus=" + reimbursementStatus +
-                ", reimbursementType=" + reimbursementType +
+                ", reimbursementStatusId=" + reimbursementStatusId +
+                ", reimbursementTypeId=" + reimbursementTypeId +
                 '}';
     }
 }

@@ -43,7 +43,7 @@ public class ReimbursementRequestsService {
         if (RR.getReimbursementDescription().length() > 250) return -3;
 
         //All checks have passed. If the request was submitted with the "submit" status then we need to add a time stamp
-        if (RR.getReimbursementStatus().getStatus().equals("Submit")) {
+        if (RR.getReimbursementStatusId() == 2) {
             Timestamp ts = new Timestamp(System.currentTimeMillis());
             RR.setReimbursementSubmitted(ts);
         }
@@ -62,7 +62,7 @@ public class ReimbursementRequestsService {
         //request is either "created" or "denied"
 
         //check to see if the status of the request is valid for editing
-        if (!RR.getReimbursementStatus().getStatus().equals("Created") && !RR.getReimbursementStatus().getStatus().equals("Denied")) return -4;
+        if (RR.getReimbursementStatusId() != 1 && RR.getReimbursementStatusId() != 5) return -4;
 
         //first, we need to check and make sure the requested amount isn't a negative value.
         if (RR.getReimbursementAmount() < 0) return -1;
@@ -74,7 +74,7 @@ public class ReimbursementRequestsService {
         if (RR.getReimbursementDescription().length() > 250) return -3;
 
         //All checks have passed. If the request was submitted with the "submit" status then we need to add a time stamp
-        if (RR.getReimbursementStatus().getStatus().equals("Submit")) {
+        if (RR.getReimbursementStatusId() == 2) {
             Timestamp ts = new Timestamp(System.currentTimeMillis());
             RR.setReimbursementSubmitted(ts);
         }
@@ -151,7 +151,7 @@ public class ReimbursementRequestsService {
     //DELETE METHODS
     public int deleteReimbursementRequestService(ReimbursementRequest RR) {
         //only requests that haven't been submitted yet are allowed to be deleted from the database
-        if (!RR.getReimbursementStatus().getStatus().equals("Created")) return -1;
+        if (RR.getReimbursementStatusId() != 1) return -1;
 
         return reimbursementRequestsDAO.deleteReimbursementRequestDAO(RR);
     }

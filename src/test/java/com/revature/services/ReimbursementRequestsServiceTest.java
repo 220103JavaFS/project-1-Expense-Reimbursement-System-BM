@@ -67,22 +67,22 @@ public class ReimbursementRequestsServiceTest {
          */
 
         //Requests with "created" status
-        dbRequestOne = new ReimbursementRequest(1, 150.12, null, null, "Lunch with a client", null, intern, null, new ReimbursementStatus(1, "Created"), new ReimbursementType(2, "Food"));
-        dbRequestTwo = new ReimbursementRequest(2, 1000.24, null, null, "Lodging for a week", null, analyst, null, new ReimbursementStatus(1, "Created"), new ReimbursementType(1, "Lodging"));
+        dbRequestOne = new ReimbursementRequest(1, 150.12, null, null, "Lunch with a client", null, intern.getUserID(), 0, 1, 2);
+        dbRequestTwo = new ReimbursementRequest(2, 1000.24, null, null, "Lodging for a week", null, analyst.getUserID(), 0, 1, 1);
 
         //Requests with "submitted" status
-        dbRequestThree = new ReimbursementRequest(3, 12.50, currentTime, null, "Highway toll", null, manager, null, new ReimbursementStatus(2, "Submitted"), new ReimbursementType(3, "Travel"));
-        dbRequestFour  = new ReimbursementRequest(4, 501.34, currentTime, null, "Entertaining clients", null, nfManager, null, new ReimbursementStatus(2, "Submitted"), new ReimbursementType(4, "Other"));
+        dbRequestThree = new ReimbursementRequest(3, 12.50, currentTime, null, "Highway toll", null, manager.getUserID(), 0, 2, 3);
+        dbRequestFour  = new ReimbursementRequest(4, 501.34, currentTime, null, "Entertaining clients", null, nfManager.getUserID(), 0, 2, 4);
 
         //Requests with "approved" status
-        dbRequestFive = new ReimbursementRequest(1, 150.12, null, null, "Lunch with a client", null, intern, null, new ReimbursementStatus(1, "Created"), new ReimbursementType(2, "Food"));
-        dbRequestSix  = new ReimbursementRequest(2, 1000.24, null, null, "Lodging for a week", null, analyst, null, new ReimbursementStatus(1, "Created"), new ReimbursementType(1, "Lodging"));
+        dbRequestFive = new ReimbursementRequest(1, 150.12, null, null, "Lunch with a client", null, intern.getUserID(), 0, 1, 2);
+        dbRequestSix  = new ReimbursementRequest(2, 1000.24, null, null, "Lodging for a week", null, analyst.getUserID(), 0, 1, 1);
 
         //Fill out erroneous requests
-        badRequestOne   = new ReimbursementRequest(1, 0, null, null, "Lunch with a client", null, intern, null, new ReimbursementStatus(1, "Created"), new ReimbursementType(2, "Food"));
-        badRequestTwo   = new ReimbursementRequest(1, 150.12, null, null, "Lunch with a client", null, null, null, new ReimbursementStatus(1, "Created"), new ReimbursementType(2, "Food"));
-        badRequestThree = new ReimbursementRequest(1, 150.12, null, null, "Lunch with a client", null, intern, null, null, new ReimbursementType(2, "Food"));
-        badRequestFour  = new ReimbursementRequest(1, 150.12, null, null, "Lunch with a client", null, intern, null, new ReimbursementStatus(1, "Created"), null);
+        badRequestOne   = new ReimbursementRequest(1, 0, null, null, "Lunch with a client", null, intern.getUserID(), 0, 1, 2);
+        badRequestTwo   = new ReimbursementRequest(1, 150.12, null, null, "Lunch with a client", null, 0, 0, 1, 2);
+        badRequestThree = new ReimbursementRequest(1, 150.12, null, null, "Lunch with a client", null, intern.getUserID(), 0, 12, 2);
+        badRequestFour  = new ReimbursementRequest(1, 150.12, null, null, "Lunch with a client", null, intern.getUserID(), 0, 1, 12);
 
         //set up Mockito instance of DAO
         MockitoAnnotations.openMocks(this);
