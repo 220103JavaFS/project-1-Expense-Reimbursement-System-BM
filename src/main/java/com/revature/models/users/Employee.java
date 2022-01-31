@@ -13,6 +13,7 @@ public abstract class Employee extends User {
     public Employee() {super();}
     public Employee(int userID, String username, String password, String firstName, String lastName, String emailAddress) {
         super(userID, username, password, firstName, lastName, emailAddress);
+        existingReimbursementRequests = new ArrayList<>();
     }
 
     //GETTERS AND SETTERS

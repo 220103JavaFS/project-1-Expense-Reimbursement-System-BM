@@ -35,8 +35,6 @@ switch(currentUser) {
 async function submitFunc() {
     //first convert userType text to useable Role ID number:
 
-    console.log("Current Employee type is:" + employeeType.value);
-
     let userRole = 0;
     switch(employeeType.value) {
         case "financeManager":
@@ -71,7 +69,8 @@ async function submitFunc() {
 
     ////TODO: Would be much easier to make use of the the 'required' field for form elements.
     //   currently though, I'm not sure how to check for blanks without submitting the form which causes a
-    //   page refresh.
+    //   page refresh. For now, is there a better way to check for blanks other than multiple else if statements
+    //   or a single if statement with multiple || operators?
 
     //we need to make sure that none of the form fields are blank:
     let nothingBlank = true;

@@ -44,15 +44,15 @@ public class UserDAOImpl implements UsersDAO{
                 //TODO: add function to get the reimbursement requests for the specific user from the database
                 //TODO: add function to get the all pending reimbursement requests if the user is a manager
 
-                //System.out.println(newUser);
+                System.out.println(newUser);
                 return newUser;
             }
 
             //if no username match was found then return null
-            System.out.println("Couldn't find employee");
+            //System.out.println("Couldn't find employee");
             return null;
         } catch (SQLException e) {
-            System.out.println("problem");
+            //System.out.println("problem");
             return null;
         }
     }

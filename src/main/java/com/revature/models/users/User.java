@@ -1,6 +1,7 @@
 package com.revature.models.users;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class User {
@@ -88,7 +89,9 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return userID == user.userID && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(emailAddress, user.emailAddress);
+
+        //Implementing our own comparison of passwords. Need to use Arrays.equals instead of the default Objects.equals for proper comparison
+        return userID == user.userID && Objects.equals(username, user.username) && Arrays.equals(password, user.password) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(emailAddress, user.emailAddress);
     }
     @Override
     public int hashCode() {
@@ -130,16 +133,8 @@ public class User {
         byte[] encryptedBytes = new byte[password.length() * 2]; //2 bytes for every character
         for(int i = 0; i < password.length(); i++) {
             char newChar = (char)(password.charAt(i) + User.passwordDecrypter);
-            System.out.print(newChar); //TODO: debugging, delete later
             encryptedBytes[2 * i] = (byte) (newChar>>8);
             encryptedBytes[2 * i + 1] = (byte) newChar;
-        }
-        System.out.println("\n");//TODO: debugging, delete later
-        for (int i = 0; i < password.length(); i++){
-            //compare integer value of characters and bytes
-            System.out.print((int)password.charAt(i));
-            int reconstructedByte = ((encryptedBytes[2 * i] & 0xFF) << 8) | (encryptedBytes[2 * i + 1] & 0xFF);
-            System.out.println(" vs. " + reconstructedByte);
         }
 
         return encryptedBytes;

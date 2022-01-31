@@ -17,6 +17,7 @@ public class FinanceManager extends Employee implements Manager {
     }
     public FinanceManager(int userID, String username, String password, String firstName, String lastName, String emailAddress) {
         super(userID, username, password, firstName, lastName, emailAddress);
+        availableReimbursementRequests = new ArrayList<>();
         userType = "FinanceManager";
     }
 
