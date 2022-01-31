@@ -44,7 +44,7 @@ public class UserDAOImpl implements UsersDAO{
                 //TODO: add function to get the reimbursement requests for the specific user from the database
                 //TODO: add function to get the all pending reimbursement requests if the user is a manager
 
-                System.out.println(newUser);
+                //System.out.println(newUser);
                 return newUser;
             }
 
@@ -60,7 +60,6 @@ public class UserDAOImpl implements UsersDAO{
     @Override
     public int availableUsernameEmail(String username, String email) {
         //used by admins to view all users in the database
-        System.out.println("Made it down to DAO layer");
         try (Connection conn = ConnectionUtil.getConnection()) {
             //log.info("UserDAO getAllUsersDAO() method was called");
             //Since each employee has a list of customers associated with them, we don't need to actually query the
@@ -74,8 +73,7 @@ public class UserDAOImpl implements UsersDAO{
 
             ResultSet result = statement.executeQuery();
             int errorCode = 0;
-
-            System.out.println("About to look at matching usernames");
+            
             while(result.next()) {
                 if (result.getString("ers_username").equals(username)) errorCode |= 0b100;
                 if (result.getString("user_email").equals(email)) errorCode |= 0b1000;
@@ -134,7 +132,7 @@ public class UserDAOImpl implements UsersDAO{
             statement.execute();
             return 0;
         } catch (SQLException e) {
-            return 3; //3 will reprsent a 500 http status in the controller layer
+            return 3; //3 will represent a 500 http status in the controller layer
         }
     }
 }

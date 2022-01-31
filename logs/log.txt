@@ -1,0 +1,1 @@
+17:01:29.685 [] [Test worker] INFO  com.revature.repos.UserDAOImpl - Employee added to database

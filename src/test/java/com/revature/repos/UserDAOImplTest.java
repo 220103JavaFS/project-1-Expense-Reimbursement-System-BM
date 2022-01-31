@@ -2,10 +2,12 @@ package com.revature.repos;
 
 import com.revature.models.users.*;
 import com.revature.util.NewUser;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+//Adding test orders as we want to make sure we Hire a test employee before trying to fire the test employee
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 public class UserDAOImplTest {
     //TODO: In the service layer we mocked a copy of this UserDAO class which makes sense to me as we didn't want errors
@@ -35,8 +37,10 @@ public class UserDAOImplTest {
     private String  availableUsername;
     private String availableEmail;
 
-    private NewUser newNonDBAnalyst;
+    private NewUser existingUsername;
+    private NewUser existingEmail;
     private NewUser newAnalyst;
+    private User newAnalystUser;
 
     private User rfloyd01;
     private User rfloyd01WrongID;
@@ -49,7 +53,7 @@ public class UserDAOImplTest {
 
         //create users for tests
         username = "rfloyd01";
-        nonDBUsername = "rfloyd02";
+        nonDBUsername = "CousinSkeeter";
         email = "robert.floyd@company.com";
         availableUsername = "mahad12";
         availableEmail = "mahad12@gmail.com";
@@ -67,57 +71,68 @@ public class UserDAOImplTest {
         nonDBIntern = new Intern(8, "rfloyd02", "helloW0rld", "Robert", "Floyd", "robert.floyd2@company.com");
 
         //create NewUser types for the hire function
-        newNonDBAnalyst = new NewUser(5, "Ir0nMan", "helloW0rld", "Tony", "Stark", "tony.stark@company.com");
-        newAnalyst = new NewUser(5, "Capn", "helloW0rld", "Steve", "Rogers", "captain.america@company.com");
+        existingUsername = new NewUser(5, "Ir0nMan", "helloW0rld", "Tony", "Stark", "tony.star2k@airproducts.com");
+        existingEmail = new NewUser(5, "Ir0nMan2", "helloW0rld", "Tony", "Stark", "tony.stark@airproducts.com");
+        newAnalyst = new NewUser(5, "Capn", "helloW0rld", "Steve", "Rogers", "captain.america@airproducts.com");
+        newAnalystUser = new User(5, "Capn", "helloW0rld", "Steve", "Rogers", "captain.america@airproducts.com");
 
         rfloyd01 = new FinanceManager(1, "rfloyd01", "Coding_is_Kewl34", "Robert", "Floyd", "robert.floyd@airproducts.com");
         rfloyd01WrongID = new FinanceManager(2, "rfloyd01", "Coding_is_Kewl34", "Robert", "Floyd", "robert.floyd@airproducts.com");
     }
 
-    @Test
-    void testGetUserSucccess() {
-        System.out.println(rfloyd01); //TODO: Delete after debugging
-        assertEquals(testInstance.getUser(rfloyd01.getUsername()), rfloyd01); //assert that the user returned from the database matches the pretend user we created here
+//    @Test
+//    @Order(1)
+//    void testGetUserSucccess() {
+//        assertEquals(testInstance.getUser(rfloyd01.getUsername()), rfloyd01); //assert that the user returned from the database matches the pretend user we created here
 //        assertEquals(testInstance.getUser(rfloyd01WrongID.getUsername()), rfloyd01); //assert that the user returned from the database matches our pretend user even if wrong info is passed (when searching for a user only the username is used)
+//    }
+//
+//    @Test
+//    @Order(2)
+//    public void testGetUserFailure() {
 //        assertNull(testInstance.getUser(nonDBUsername)); //searching for a user not in the actual database should return a null value
+//        assertNull(testInstance.getUser("")); //blank names should be captured in service layer but just to test anyway, searching on a blank name should return a null value
+//        assertNotEquals(testInstance.getUser(rfloyd01.getUsername()), manager); //searching for an existing user shouldn't return a different existing user
+//    }
+
+    @Test
+    @Order(3)
+    public void testHireEmployeeSuccess() {
+        assertEquals(testInstance.hireEmployee(newAnalyst), 0); //Hiring a user with a completely original username and email address should work without issue
     }
 
-//    @Test
-//    public void testGetUserFailure() {
-//        assertFalse(testInstance.getUser(username) == manager);
-//        assertFalse(testInstance.getUser(noneDBUser) == intern);
-//        assertFalse(testInstance.getUser("") == intern); //this test is to make sure that our service layer fails upon receiving an empty string
-//    }
-//
-//    @Test
-//    public void testHireEmployeeSuccess() {
-//        assertTrue(testInstance.hireEmployee(newNonDBAnalyst) == 0); //Test that a finance manager can hire a financial employee not already in the database
-//    }
-//
-//    @Test
-//    public void testHireEmployeeFailure() {
-//        assertFalse(testInstance.hireEmployee(newAnalyst) == 0); //this test is to make sure a non-financial manager can't hire a financial employee (but the employee input is valid)
-//    }
-//
-//    @Test
-//    public void testFireEmployeeSuccess() {
-//        assertTrue(testInstance.fireEmployee(nonDBAnalyst) == 0); //This test is to make sure that a finance manager can fire an existing financial employee in the database
-//    }
-//
+    @Test
+    @Order(4)
+    public void testHireEmployeeFailure() {
+        //The three tests below should actually be caught elsewhere before the Hire() method is ever invoked, however, should still be tested here just in case
+        assertEquals(testInstance.hireEmployee(existingUsername), 0b10000000000); //Trying to hire an employee with a username that already exists in the database should throw a SQLException and return the given error code (chosen by us)
+        assertEquals(testInstance.hireEmployee(existingEmail), 0b10000000000); //Trying to hire an employee with an email that already exists in the database should throw a SQLException and return the given error code (chosen by us)
+    }
+
+    @Test
+    @Order(5)
+    public void testFireEmployeeSuccess() {
+        assertEquals(testInstance.fireEmployee(newAnalystUser), 0); //We should be able to fire the employee entered into the database during test 3 above
+        assertEquals(testInstance.fireEmployee(nonDBIntern), 0); //trying to fire someone NOT in the database will actually work, however, nothing will happen so we should actually shouldn't return an error here
+    }
+
+    //I'm currently not sure of good tests to the fire employee failure. It will only fail if a SQLException is raised. Comment it out for now
 //    @Test
 //    public void testFireEmployeeFailure() {
-//        assertFalse(testInstance.fireEmployee(analyst) == 0);
-//    }
 //
-//    @Test
-//    public void testAvailableUsernameEmailSuccess() {
-//        assertTrue(testInstance.availableUsernameEmail(availableUsername, availableEmail) == 0); //This test is to make sure that a finance manager can fire an existing financial employee in the database
 //    }
-//
-//    @Test
-//    public void testAvailableUsernameEmailFailure() {
-//        assertFalse(testInstance.availableUsernameEmail(username, email) == 0);
-//        assertFalse(testInstance.availableUsernameEmail(availableUsername, email) == 0);
-//        assertFalse(testInstance.availableUsernameEmail(username, availableEmail) == 0);
-//    }
+
+    @Test
+    @Order(6)
+    public void testAvailableUsernameEmailSuccess() {
+        assertEquals(testInstance.availableUsernameEmail(availableUsername, availableEmail), 0); //This test is to make sure that a finance manager can fire an existing financial employee in the database
+    }
+
+    @Test
+    @Order(7)
+    public void testAvailableUsernameEmailFailure() {
+        assertEquals(testInstance.availableUsernameEmail(existingUsername.username, nonDBIntern.getEmailAddress()), 4); //if the username isn't available but the email is, we should get error code 4
+        assertEquals(testInstance.availableUsernameEmail(nonDBIntern.getUsername(), existingEmail.emailAddress), 8); //if the email isn't available but the username is, we should get error code 8
+        assertEquals(testInstance.availableUsernameEmail(existingUsername.username, existingEmail.emailAddress), 12); //if neither the username or email is available we should get both of the above error codes which combine for a value of 12
+    }
 }
