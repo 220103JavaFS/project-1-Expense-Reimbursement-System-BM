@@ -59,13 +59,11 @@ public class UserDAOImpl implements UsersDAO{
 
     @Override
     public int availableUsernameEmail(String username, String email) {
-        //used by admins to view all users in the database
         try (Connection conn = ConnectionUtil.getConnection()) {
-            //log.info("UserDAO getAllUsersDAO() method was called");
             //Since each employee has a list of customers associated with them, we don't need to actually query the
             //customer table in our original call to the database.
             String sql = "SELECT * FROM ers_users WHERE ers_username = ? OR user_email = ?;";
-            PreparedStatement statement = conn.prepareStatement(sql);
+            PreparedStatement statement = conn.prepareStatement(sql); //SonarLint wants me to close this in a Finally clause, is that necessary when connection is opened in the try?
 
             int statementCounter = 0;
             statement.setString(++statementCounter, username);
@@ -73,7 +71,7 @@ public class UserDAOImpl implements UsersDAO{
 
             ResultSet result = statement.executeQuery();
             int errorCode = 0;
-            
+
             while(result.next()) {
                 if (result.getString("ers_username").equals(username)) errorCode |= 0b100;
                 if (result.getString("user_email").equals(email)) errorCode |= 0b1000;

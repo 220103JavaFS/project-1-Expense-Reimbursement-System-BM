@@ -23,16 +23,8 @@ public class UserDAOImplTest {
     //to create the database from scratch is located in this project as SQLscript.txt so the users here reflect the ones seen in
     //that file
 
-    private String username;
     private String nonDBUsername;
-    private String email;
     private FinanceManager manager;
-    private NonFinanceManager nfManager;
-    private FinanceAnalyst analyst;
-    private FinanceAnalyst nonDBAnalyst;
-    private FinanceAnalyst repeatUsername;
-    private FinanceAnalyst repeatEmail;
-    private Intern intern;
     private Intern nonDBIntern;
     private String  availableUsername;
     private String availableEmail;
@@ -48,29 +40,17 @@ public class UserDAOImplTest {
     //BEFORE AND AFTER ANNOTATIONS
     @BeforeEach
     public void setUp() {
-        //use BeforeEach because Mockito doesn't like BeforeAll
         testInstance = new UserDAOImpl();
 
-        //create users for tests
-        username = "rfloyd01";
+        //create users, usernames and newUsers for the tests
         nonDBUsername = "CousinSkeeter";
-        email = "robert.floyd@company.com";
         availableUsername = "mahad12";
         availableEmail = "mahad12@gmail.com";
 
-        //The below users represent people already in the database
         manager = new FinanceManager(1, "moneyManage2", "helloW0rld", "Dan", "Preuss", "daniel.preuss@company.com");
-        nfManager = new NonFinanceManager(2, "Manage1", "helloW0rld", "Matt", "Damon", "matthew.damon@company.com");
-        analyst = new FinanceAnalyst(3, "Capn", "helloW0rld", "Steve", "Rogers", "captain.america@company.com");
-        intern = new Intern(4, "rfloyd01", "helloW0rld", "Bobby", "Floyd", "robert.floyd@company.com");
 
-        //The below users represent people NOT in the database
-        nonDBAnalyst = new FinanceAnalyst(5, "Ir0nMan", "helloW0rld", "Tony", "Stark", "tony.stark@company.com");
-        repeatUsername = new FinanceAnalyst(6, "rfloyd01", "helloW0rld", "Bobby", "Floyd", "robert.floyd2@company.com"); //same username
-        repeatEmail = new FinanceAnalyst(7, "rfloyd02", "helloW0rld", "Bobby", "Floyd", "robert.floyd@company.com"); //same email as someone already in the db
         nonDBIntern = new Intern(8, "rfloyd02", "helloW0rld", "Robert", "Floyd", "robert.floyd2@company.com");
 
-        //create NewUser types for the hire function
         existingUsername = new NewUser(5, "Ir0nMan", "helloW0rld", "Tony", "Stark", "tony.star2k@airproducts.com");
         existingEmail = new NewUser(5, "Ir0nMan2", "helloW0rld", "Tony", "Stark", "tony.stark@airproducts.com");
         newAnalyst = new NewUser(5, "Capn", "helloW0rld", "Steve", "Rogers", "captain.america@airproducts.com");
@@ -80,20 +60,20 @@ public class UserDAOImplTest {
         rfloyd01WrongID = new FinanceManager(2, "rfloyd01", "Coding_is_Kewl34", "Robert", "Floyd", "robert.floyd@airproducts.com");
     }
 
-//    @Test
-//    @Order(1)
-//    void testGetUserSucccess() {
-//        assertEquals(testInstance.getUser(rfloyd01.getUsername()), rfloyd01); //assert that the user returned from the database matches the pretend user we created here
-//        assertEquals(testInstance.getUser(rfloyd01WrongID.getUsername()), rfloyd01); //assert that the user returned from the database matches our pretend user even if wrong info is passed (when searching for a user only the username is used)
-//    }
-//
-//    @Test
-//    @Order(2)
-//    public void testGetUserFailure() {
-//        assertNull(testInstance.getUser(nonDBUsername)); //searching for a user not in the actual database should return a null value
-//        assertNull(testInstance.getUser("")); //blank names should be captured in service layer but just to test anyway, searching on a blank name should return a null value
-//        assertNotEquals(testInstance.getUser(rfloyd01.getUsername()), manager); //searching for an existing user shouldn't return a different existing user
-//    }
+    @Test
+    @Order(1)
+    void testGetUserSucccess() {
+        assertEquals(testInstance.getUser(rfloyd01.getUsername()), rfloyd01); //assert that the user returned from the database matches the pretend user we created here
+        assertEquals(testInstance.getUser(rfloyd01WrongID.getUsername()), rfloyd01); //assert that the user returned from the database matches our pretend user even if wrong info is passed (when searching for a user only the username is used)
+    }
+
+    @Test
+    @Order(2)
+    public void testGetUserFailure() {
+        assertNull(testInstance.getUser(nonDBUsername)); //searching for a user not in the actual database should return a null value
+        assertNull(testInstance.getUser("")); //blank names should be captured in service layer but just to test anyway, searching on a blank name should return a null value
+        assertNotEquals(testInstance.getUser(rfloyd01.getUsername()), manager); //searching for an existing user shouldn't return a different existing user
+    }
 
     @Test
     @Order(3)
