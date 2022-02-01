@@ -62,7 +62,6 @@ else {
     }
 }
 
-
 async function logoutFunc() {
 
     await fetch(url + "/logout",
@@ -95,7 +94,7 @@ async function viewFunc() {
         alert("You're connection has timed out, please log back in and try again.");
         logoutFunc()//call the logout function as the browser and javalin cookies no longer match
     }
-    else location.href =  'http://localhost:8081/RequestPages/ReimbursementRequests.html';
+    else location.href =  'http://localhost:8081/RequestPages/ReimbursementRequestsBobby.html';
 }
 
 async function editFunc() {
