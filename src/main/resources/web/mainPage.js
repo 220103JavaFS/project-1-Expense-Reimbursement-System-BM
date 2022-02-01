@@ -83,7 +83,7 @@ async function approveFunc() {
         alert("You're connection has timed out, please log back in and try again.");
         logoutFunc()//call the logout function as the browser and javalin cookies no longer match
     }
-    else location.href =  'http://localhost:8081/MainPages/CombinedMain.html';
+    else location.href =  'http://localhost:8081/RequestPages/ApproveRequestsBobby.html';
 }
 
 async function viewFunc() {

@@ -55,7 +55,24 @@ public class ReimbursementRequestsController extends Controller {
     };
 
     Handler getPendingReimbursementRequests = (ctx) -> {
+        //Gets all the available reimbursement requests for the logged in Finance Manager. This information should already be stored in the
+        //session attribute.
 
+        //first make sure that someone is actually logged in
+        if (ctx.req.getSession(false) != null) {
+            User currentUser = ctx.sessionAttribute("currentUser");
+
+            //only Finance Managers have the power to approve requests. Furthermore, only Finance Managers should have
+            //the power to get to the HTML page that accesses this endpoint. Because of this we can safely cast
+            //the current user to a finance manager type.
+
+            FinanceManager fm = (FinanceManager) currentUser;
+            ctx.json(fm.getAvailableReimbursementRequests()); //return the array of available requests
+            ctx.status(200);
+        }
+        else {
+            ctx.status(401);
+        }
     };
     
     @Override

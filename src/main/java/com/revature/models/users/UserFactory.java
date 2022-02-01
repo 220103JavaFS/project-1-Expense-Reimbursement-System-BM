@@ -26,9 +26,8 @@ public class UserFactory {
         else if (userRoleId == 2) return new ExEmployee();
         else if (userRoleId == 3) {
             FinanceManager fm = new FinanceManager();
-            //fm.setCurrentReimbursementRequests(currentRequests);
             fm.setCurrentReimbursementRequests(requestsDAO.getUserCurrentReimbursementRequestsDAOConn(userId, conn));
-            fm.setAvailableReimbursementRequests(availableRequests); //TODO: add function to get the all pending reimbursement requests if the user is a manager
+            fm.setAvailableReimbursementRequests(requestsDAO.getAllPendingReimbursementRequestsDAOConn(conn));
             return fm;
         }
         else if (userRoleId == 4) {

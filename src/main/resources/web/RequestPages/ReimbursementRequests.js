@@ -38,7 +38,6 @@ window.onload = async () => {
   //get user's 
   let response = await fetch(url + "/ReimbursementRequest"); //just a standard get request
   reimbursementData = await response.json(); //store in a global variable so other functions can access
-  
 
   loadTable(reimbursementData, currentType.id);
 }
@@ -46,24 +45,8 @@ window.onload = async () => {
 function radioChangeFunc() {
    currentType = document.querySelector('input[name="request_type"]:checked');
 
-
    //At this point, currentType.id will be equal to the radio button currently selected
-   console.log(currentType.id);
    loadTable(reimbursementData, currentType.id);
-}
-
-
-
-// This table is where all the user's requests will display
-var table = document.getElementById('RequestTable'),
-  rIndex;
-//requestId is the Reimbursement ID of the request selected
-var requestId = '';
-for (var i = 0; i < table.rows.length; i++) {
-  table.rows[i].onclick = function () {
-    rIndex = this.rowIndex;
-    requestId = this.cells[0].innerHTML;
-  };
 }
 
 function get_cookie(Name) {
@@ -102,12 +85,13 @@ function convertType(typeId) {
 function loadTable(reimbursementList, filter) {
   //if we have a filter applied, only load the appropriate elements
 
-  //first, delete all current data from our table
+  //first, delete all current data from our table (but not the table header)
   let allRows = document.getElementsByClassName("jsRow");
   for (let k = allRows.length - 1; k >= 0; k--) {
     allRows[k].remove();
   }
 
+  //now loop through the current user's reimbursement list which was saved in a global variable upon page load
   for (let request of reimbursementList) {
 
     if (filter == "all" || (reimbursementStatusList[request.reimbursementStatusId] == filter)) {
@@ -131,6 +115,7 @@ function loadTable(reimbursementList, filter) {
           }
           else td.innerText = "";
         }
+        else if (data == "reimbursementAuthor") continue; //no point in loading author data as only the author has access to the page
         else td.innerText = request[data];
 
         row.appendChild(td);
