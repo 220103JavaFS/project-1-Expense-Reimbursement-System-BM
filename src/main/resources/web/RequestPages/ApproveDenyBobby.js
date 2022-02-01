@@ -104,10 +104,16 @@ function submitFunc() {
 function testFunc(event) {
     let element = event.currentTarget;
 
-    if (element.style.color === "green") {
-        element.style.color = "red";
+    //now style the current row appropriately
+    if (element.style.color === "black") {
+        //first, iterate through all rows currently in the table and set their color back to the default black
+        let allRows = document.getElementsByClassName("jsRow");
+        for (let k = allRows.length - 1; k >= 0; k--) {
+          allRows[k].style.color = "black";
+        }
+
+        //then style the actual row
+        element.style.color = "blue";
     }
-    else {
-        element.style.color = "green";
-    }
+    else element.style.color = "black";
 }
