@@ -35,6 +35,7 @@ public class LoginService {
 
         if (loginAttempt.getPassword().equals(decryptedUserPassword)) {
             log.info("The password entered was valid, preparing to log you in.");
+
             return user;
         }
         else {

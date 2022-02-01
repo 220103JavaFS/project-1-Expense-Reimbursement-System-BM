@@ -7,17 +7,14 @@ import com.revature.util.ConnectionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class ReimbursementRequestsDAOImpl implements ReimbursementRequestsDAO {
     Logger log = LoggerFactory.getLogger(ReimbursementRequestsDAOImpl.class);
 
     @Override
-    public ArrayList<ReimbursementRequest> getUserCurrentReimbursementRequestsDAO(User user) {
+    public ArrayList<ReimbursementRequest> getUserCurrentReimbursementRequestsDAO(int userId) {
         //create an array to store the results in. Create the Array outside of the below try block so that we can at least
         //return an empty array in the case that SQLException is encountered
         ArrayList<ReimbursementRequest> reimbursementRequests = new ArrayList<>();
@@ -28,30 +25,63 @@ public class ReimbursementRequestsDAOImpl implements ReimbursementRequestsDAO {
             PreparedStatement statement = conn.prepareStatement(sql);
 
             int statementCounter = 0;
-            statement.setInt(++statementCounter, user.getUserID());
+            statement.setInt(++statementCounter, userId);
             ResultSet result = statement.executeQuery();
 
             while(result.next()) {
                 ReimbursementRequest reimbursementRequest = new ReimbursementRequest();
 
-                /*
-        this.reimbursementStatus = reimbursementStatus;
-        this.reimbursementType = reimbursementType;
-                 */
+                reimbursementRequest.setReimbursementID(result.getInt("reimb_id"));
+                reimbursementRequest.setReimbursementAmount(result.getDouble("reimb_amount"));
+                reimbursementRequest.setReimbursementSubmitted(result.getTimestamp("reimb_submitted"));
+                reimbursementRequest.setReimbursementResolved(result.getTimestamp("reimb_resolved"));
+                reimbursementRequest.setReimbursementDescription(result.getString("reimb_description"));
+                reimbursementRequest.setReimbursementReceipt(result.getBytes("reimb_receipt"));
+                reimbursementRequest.setReimbursementAuthor(userId); //we already passed this info to the function
+                reimbursementRequest.setReimbursementResolver(result.getInt("reimb_resolver"));
+                reimbursementRequest.setReimbursementStatusId(result.getInt("reimb_status_id"));
+                reimbursementRequest.setReimbursementTypeId(result.getInt("reimb_type_id"));
+
+                reimbursementRequests.add(reimbursementRequest);
+            }
+
+            return reimbursementRequests;
+        } catch (SQLException e) {
+            log.info("Encountered an issue accessing user requests and temporarily deleted sessionAttribute. Need to update session attribute.");
+            return reimbursementRequests;
+        }
+    }
+    public ArrayList<ReimbursementRequest> getUserCurrentReimbursementRequestsDAOConn(int userId, Connection conn) {
+        //Same as the getUserCurrentReimbursementRequestsDAO() method, however, uses an existing connection instead of
+        //creating a new one
+        ArrayList<ReimbursementRequest> reimbursementRequests = new ArrayList<>();
+
+        try  {
+            //The employee table is linked to the reimbursement table via their userID which is the primary key
+            String sql = "SELECT * FROM ers_reimbursement WHERE reimb_author = ?;";
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            int statementCounter = 0;
+            statement.setInt(++statementCounter, userId);
+            ResultSet result = statement.executeQuery();
+
+            while(result.next()) {
+                ReimbursementRequest reimbursementRequest = new ReimbursementRequest();
 
                 reimbursementRequest.setReimbursementID(result.getInt("reimb_id"));
                 reimbursementRequest.setReimbursementAmount(result.getDouble("reimb_amount"));
                 reimbursementRequest.setReimbursementSubmitted(result.getTimestamp("reimb_submitted"));
-                reimbursementRequest.setReimbursementSubmitted(result.getTimestamp("reimb_resolved"));
+                reimbursementRequest.setReimbursementResolved(result.getTimestamp("reimb_resolved"));
                 reimbursementRequest.setReimbursementDescription(result.getString("reimb_description"));
                 reimbursementRequest.setReimbursementReceipt(result.getBytes("reimb_receipt"));
-                reimbursementRequest.setReimbursementAuthor(user.getUserID()); //we already passed this info to the function
+                reimbursementRequest.setReimbursementAuthor(userId); //we already passed this info to the function
                 reimbursementRequest.setReimbursementResolver(result.getInt("reimb_resolver"));
                 reimbursementRequest.setReimbursementStatusId(result.getInt("reimb_status_id"));
                 reimbursementRequest.setReimbursementTypeId(result.getInt("reimb_type_id"));
+
+                reimbursementRequests.add(reimbursementRequest);
             }
 
-            //if no username match was found then return null
             return reimbursementRequests;
         } catch (SQLException e) {
             log.info("Encountered an issue accessing user requests and temporarily deleted sessionAttribute. Need to update session attribute.");

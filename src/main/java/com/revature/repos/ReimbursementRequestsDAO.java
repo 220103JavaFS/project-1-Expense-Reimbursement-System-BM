@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public interface ReimbursementRequestsDAO {
 
     //GET METHODS
-    public ArrayList<ReimbursementRequest> getUserCurrentReimbursementRequestsDAO(User user); //returns all reimbursement requests for the user that have a status of created, submitted or denied
+    public ArrayList<ReimbursementRequest> getUserCurrentReimbursementRequestsDAO(int userId); //returns all reimbursement requests for the user that have a status of created, submitted or denied
     public ArrayList<ReimbursementRequest> getAllPendingReimbursementRequestsDAO(); //returns all reimbursement requests in the database with a status of submitted (for approving managers only)
 
     //POST METHODS

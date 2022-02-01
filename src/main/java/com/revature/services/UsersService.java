@@ -1,6 +1,7 @@
 package com.revature.services;
 
 import com.revature.models.users.User;
+import com.revature.repos.ReimbursementRequestsDAOImpl;
 import com.revature.repos.UserDAOImpl;
 import com.revature.repos.UsersDAO;
 import com.revature.util.NewUser;
@@ -11,6 +12,7 @@ public class UsersService {
 
     private UsersDAO usersDAO; //used for mocking of service layer tests
     private UserDAOImpl userDAO;
+
     private Logger log = LoggerFactory.getLogger(UsersService.class);
 
     //CONSTRUCTORS
@@ -28,7 +30,6 @@ public class UsersService {
 
         try {
             if (username.equals("")) {
-                System.out.println(username);
                 return null;
             }
             return userDAO.getUser(username);

@@ -18,7 +18,6 @@ public class UserDAOImpl implements UsersDAO{
     public User getUser(String username) {
         //used by admins to view all users in the database
         try (Connection conn = ConnectionUtil.getConnection()) {
-            //log.info("UserDAO getAllUsersDAO() method was called");
             //Since each employee has a list of customers associated with them, we don't need to actually query the
             //customer table in our original call to the database.
             String sql = "SELECT * FROM ers_users WHERE ers_username = ?;";
@@ -31,7 +30,7 @@ public class UserDAOImpl implements UsersDAO{
 
             while(result.next()) {
                 UserFactory factory = UserFactory.getFactory();
-                User newUser = factory.makeUser(result.getInt("user_role_id"));
+                User newUser = factory.makeUser(result.getInt("user_role_id"), result.getInt("ers_users_id"), conn);
 
                 newUser.setUserID(result.getInt("ers_users_id"));
                 newUser.setUsername(result.getString("ers_username"));
@@ -41,18 +40,12 @@ public class UserDAOImpl implements UsersDAO{
                 newUser.setEmailAddress(result.getString("user_email"));
                 //Note: we don't need to set the userRoleID as this happens upon user creation in the UserFactory
 
-                //TODO: add function to get the reimbursement requests for the specific user from the database
-                //TODO: add function to get the all pending reimbursement requests if the user is a manager
-
-                //System.out.println(newUser);
                 return newUser;
             }
 
             //if no username match was found then return null
-            //System.out.println("Couldn't find employee");
             return null;
         } catch (SQLException e) {
-            //System.out.println("problem");
             return null;
         }
     }

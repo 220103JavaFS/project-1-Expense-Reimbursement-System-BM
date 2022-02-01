@@ -22,7 +22,7 @@ public class ReimbursementRequestsService {
 
     //GET METHODS
     public ArrayList<ReimbursementRequest> getCurrentUserReimbursementRequestsService(User user) {
-        return reimbursementRequestsDAO.getUserCurrentReimbursementRequestsDAO(user); }
+        return reimbursementRequestsDAO.getUserCurrentReimbursementRequestsDAO(user.getUserID()); }
     public ArrayList<ReimbursementRequest> getAllPendingReimbursementRequestsService() {
 
         return reimbursementRequestsDAO.getAllPendingReimbursementRequestsDAO();
