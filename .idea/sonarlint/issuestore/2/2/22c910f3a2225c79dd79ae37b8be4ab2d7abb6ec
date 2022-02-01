@@ -1,0 +1,11 @@
+
+F
+java:S2160"+Override the "equals" method in this class.(»›ôùüÿÿÿÿ
+[
+java:S1124
+"EReorder the modifiers to comply with the Java Language Specification.(Ø¼¸ê
+Q	java:S125F"<This block of commented-out lines of code should be removed.(Á›Ô¡
+†
+java:S1319&"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(‰’­ž
+”
+java:S1319)"~The type of "availableReimbursementRequests" should be an interface such as "List" rather than the implementation "ArrayList".(Ìëœ

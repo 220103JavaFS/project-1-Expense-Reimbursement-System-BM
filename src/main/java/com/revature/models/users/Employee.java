@@ -5,7 +5,7 @@ import com.revature.models.reimbursement.ReimbursementRequest;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public abstract class Employee extends User {
+public class Employee extends User {
     //FIELDS
     protected ArrayList<ReimbursementRequest> existingReimbursementRequests;
 

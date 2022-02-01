@@ -1,0 +1,13 @@
+
+Q
+java:S2696/"6Make the enclosing method "static" or remove this set.(Ç„ºëüÿÿÿÿ
+P
+java:S2209/"5Change this instance-reference to a static reference.(Ç„ºëüÿÿÿÿ
+=
+java:S1110±"!Remove these useless parentheses.(ÈÇàúÿÿÿÿ
+=
+java:S1110³"!Remove these useless parentheses.(Úğá•ÿÿÿÿÿ
+[
+java:S1128">Remove this unused import 'java.nio.charset.StandardCharsets'.(ï˜ŞÛ8üÄ†ë/
+o
+java:S1104"TMake userType a static final constant or non-public and provide accessors if needed.(Õ³¢Ãÿÿÿÿÿ

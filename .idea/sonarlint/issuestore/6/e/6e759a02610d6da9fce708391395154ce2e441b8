@@ -1,0 +1,14 @@
+
+x
+java:S1104	"VMake userRoleID a static final constant or non-public and provide accessors if needed.(·è©ãıÿÿÿÿ8ÇÌæÛê/
+q
+java:S1104
+"TMake username a static final constant or non-public and provide accessors if needed.(Ü±›Ô8›ÈçÛê/
+v
+java:S1104"TMake password a static final constant or non-public and provide accessors if needed.(¼şòüÿÿÿÿ8ÙòçÛê/
+w
+java:S1104"UMake firstName a static final constant or non-public and provide accessors if needed.(ßæÆÑıÿÿÿÿ8×ÂèÛê/
+p
+java:S1104"TMake lastName a static final constant or non-public and provide accessors if needed.(¿ü8¸ÜèÛê/
+u
+java:S1104"XMake emailAddress a static final constant or non-public and provide accessors if needed.(œ°­æ8ëğéÛê/

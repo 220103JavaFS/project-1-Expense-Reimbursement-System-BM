@@ -1,0 +1,63 @@
+
+3
+java:S5786l"Remove this 'public' modifier.(äù£I
+;
+java:S5786s"Remove this 'public' modifier.(ºÿŠ8•Õ©ƒë/
+;
+java:S5786z"Remove this 'public' modifier.(ü¾Â8•Õ©ƒë/
+<
+java:S5786€"Remove this 'public' modifier.(¹»”û8•Õ©ƒë/
+A
+java:S5786"Remove this 'public' modifier.(ıØ»çûÿÿÿÿ8•Õ©ƒë/
+<
+java:S5786•"Remove this 'public' modifier.(ìÎÊ¤8•Õ©ƒë/
+@
+java:S5786"Remove this 'public' modifier.(ÔâÉáùÿÿÿÿ8•Õ©ƒë/
+4
+java:S5785m"Use assertSame instead.(Š­€ù8—Õ©ƒë/
+9
+java:S5785n"Use assertNull instead.(ÏˆèÃùÿÿÿÿ8—Õ©ƒë/
+9
+java:S5785o"Use assertNull instead.(Î¯ºÏşÿÿÿÿ8—Õ©ƒë/
+7
+java:S5785t"Use assertNotSame instead.(§ËåÇ8—Õ©ƒë/
+<
+java:S5785u"Use assertNotSame instead.(©ãÉºûÿÿÿÿ8—Õ©ƒë/
+7
+java:S5785v"Use assertNotSame instead.(Û¼Ãş8—Õ©ƒë/
+;
+java:S5785{"Use assertEquals instead.(ÔÅ®çúÿÿÿÿ8˜Õ©ƒë/
+;
+java:S5785|"Use assertEquals instead.(ĞÏÔÃÿÿÿÿÿ8˜Õ©ƒë/
+:
+java:S5785"Use assertNotEquals instead.(‚Ôº¾8˜Õ©ƒë/
+?
+java:S5785‚"Use assertNotEquals instead.(Ôõª§úÿÿÿÿ8˜Õ©ƒë/
+:
+java:S5785„"Use assertNotEquals instead.(¨Ö…ª8˜Õ©ƒë/
+?
+java:S5785…"Use assertNotEquals instead.(½˜ƒ÷ıÿÿÿÿ8˜Õ©ƒë/
+:
+java:S5785‡"Use assertNotEquals instead.(·Æ‹É8˜Õ©ƒë/
+:
+java:S5785ˆ"Use assertNotEquals instead.(­ãìŒ8˜Õ©ƒë/
+:
+java:S5785Š"Use assertNotEquals instead.(ö±ô“8˜Õ©ƒë/
+?
+java:S5785‹"Use assertNotEquals instead.(«µû®øÿÿÿÿ8™Õ©ƒë/
+7
+java:S5785"Use assertEquals instead.(©ÅüÍ8™Õ©ƒë/
+<
+java:S5785‘"Use assertEquals instead.(§¥„ùÿÿÿÿ8™Õ©ƒë/
+?
+java:S5785–"Use assertNotEquals instead.(ø¶™ûÿÿÿÿ8™Õ©ƒë/
+:
+java:S5785—"Use assertNotEquals instead.(çÎ¾à8™Õ©ƒë/
+:
+java:S5785™"Use assertNotEquals instead.(” ·8™Õ©ƒë/
+:
+java:S5785š"Use assertNotEquals instead.(—‰œÜ8™Õ©ƒë/
+:
+java:S5785›"Use assertNotEquals instead.(ÁŠŠÅ8™Õ©ƒë/
+?
+java:S5785œ"Use assertNotEquals instead.(ÿÉùÂùÿÿÿÿ8™Õ©ƒë/
