@@ -1,13 +1,14 @@
-2022-01-28 16:06:13.872 - Create display
-2022-01-28 16:06:14.139 - DBeaver 21.3.2.202112271055 is starting
-2022-01-28 16:06:14.140 - OS: Windows 10 10.0 (amd64)
-2022-01-28 16:06:14.141 - Java version: 11.0.12 by Eclipse Foundation (64bit)
-2022-01-28 16:06:14.142 - Install path: 'C:\Users\thema\scoop\apps\dbeaver\current'
-2022-01-28 16:06:14.142 - Instance path: 'file:/C:/Users/thema/project-1-bobbymahad/'
-2022-01-28 16:06:14.142 - Memory available 64Mb/1024Mb
+2022-02-01 01:32:04.312 - Create display
+> Start Team Support Core [org.eclipse.team.core 3.9.100.v20210604-1207]
+2022-02-01 01:32:04.516 - DBeaver 21.3.2.202112271055 is starting
+2022-02-01 01:32:04.518 - OS: Windows 10 10.0 (amd64)
+2022-02-01 01:32:04.518 - Java version: 11.0.12 by Eclipse Foundation (64bit)
+2022-02-01 01:32:04.518 - Install path: 'C:\Users\thema\scoop\apps\dbeaver\current'
+2022-02-01 01:32:04.519 - Instance path: 'file:/C:/Users/thema/project-1-bobbymahad/'
+2022-02-01 01:32:04.519 - Memory available 64Mb/1024Mb
 > Start DBeaver UI Editors - Base [org.jkiss.dbeaver.ui.editors.base 1.0.72.202112271055]
-2022-01-28 16:06:14.176 - Starting RMI server at 41702
-2022-01-28 16:06:14.328 - Run workbench
+2022-02-01 01:32:04.554 - Starting RMI server at 43692
+2022-02-01 01:32:06.702 - Run workbench
 > Start Eclipse e4 Workbench SWT [org.eclipse.e4.ui.workbench.swt 0.16.200.v20210723-1326]
 > Start Eclipse Application Services [org.eclipse.e4.core.services 2.3.0.v20210723-1034]
 > Start Eclipse UI Application Services [org.eclipse.e4.ui.services 1.5.0.v20210115-1333]
@@ -18,49 +19,43 @@
 > Start Eclipse Bindings Support [org.eclipse.e4.ui.bindings 0.13.100.v20210722-1426]
 > Start Eclipse Dependency Injection Extensions [org.eclipse.e4.core.di.extensions 0.17.0.v20210625-1052]
 > Start Eclipse CSS SWT Support [org.eclipse.e4.ui.css.swt 0.14.300.v20210723-0837]
-> Start Java Native Access [com.sun.jna 5.8.0.v20210503-0343]
 > Start DBeaver UI [org.jkiss.dbeaver.ui 5.1.87.202112271055]
-2022-01-28 16:06:25.346 - Configure workbench window
+2022-02-01 01:32:14.641 - Configure workbench window
 > Start Help System Core [org.eclipse.help 3.9.100.v20210721-0601]
-2022-01-28 16:06:25.656 - Create actions
-2022-01-28 16:06:25.668 - Disable Eclipse action set 'org.eclipse.ui.edit.text.actionSet.annotationNavigation'
-2022-01-28 16:06:25.670 - Disable Eclipse action set 'org.eclipse.ui.WorkingSetActionSet'
-2022-01-28 16:06:25.670 - Disable Eclipse action set 'org.eclipse.ui.actionSet.openFiles'
-2022-01-28 16:06:27.933 - Initialize workbench window
-2022-01-28 16:06:27.939 - Finish initialization
+2022-02-01 01:32:15.216 - Create actions
+2022-02-01 01:32:15.222 - Disable Eclipse action set 'org.eclipse.ui.edit.text.actionSet.annotationNavigation'
+2022-02-01 01:32:15.223 - Disable Eclipse action set 'org.eclipse.ui.WorkingSetActionSet'
+2022-02-01 01:32:15.223 - Disable Eclipse action set 'org.eclipse.ui.actionSet.openFiles'
+2022-02-01 01:32:16.013 - Initialize workbench window
+2022-02-01 01:32:16.020 - Finish initialization
+> Start Default Text Editor [org.eclipse.ui.editors 3.14.200.v20210622-1002]
+> Start Text Editor Framework [org.eclipse.ui.workbench.texteditor 3.16.200.v20210724-2153]
 > Start Equinox Java Authentication and Authorization Service (JAAS) [org.eclipse.equinox.security 1.3.700.v20210726-0943]
 > Start Internet Connection Management UI [org.eclipse.ui.net 1.4.0.v20210426-0838]
 > Start Internet Connection Management [org.eclipse.core.net 1.3.1100.v20210424-0724]
 > Start DBeaver SQL Model [org.jkiss.dbeaver.model.sql 1.0.62.202112271055]
-2022-01-28 16:06:29.232 - No SQL dialect specified for data source provider 'oceanbase'. Use default.
-2022-01-28 16:06:29.248 - Total database drivers: 94 (94)
+2022-02-01 01:32:17.905 - No SQL dialect specified for data source provider 'oceanbase'. Use default.
+2022-02-01 01:32:17.911 - Loading user drivers configuration from 'C:\Users\thema\project-1-bobbymahad\.metadata\.plugins\org.jkiss.dbeaver.core\drivers.xml'
+2022-02-01 01:32:17.932 - Total database drivers: 94 (94)
 > Start DBeaver UI Editors - Data [org.jkiss.dbeaver.ui.editors.data 1.0.72.202112271055]
-> Start Default Text Editor [org.eclipse.ui.editors 3.14.200.v20210622-1002]
-> Start Text Editor Framework [org.eclipse.ui.workbench.texteditor 3.16.200.v20210724-2153]
 > Start DBeaver UI Editors - SQL [org.jkiss.dbeaver.ui.editors.sql 1.0.72.202112271055]
+> Start DBeaver Sample Database [org.jkiss.dbeaver.ext.sample.database 1.0.109.202112271055]
+> Start DBeaver Tip of the day [org.jkiss.dbeaver.ext.ui.tipoftheday 1.0.78.202112271055]
 > Start Draw2d [org.eclipse.draw2dl 3.12.100.20211006155649]
 > Start GEF3 GEF (MVC) [org.eclipse.gef3 3.12.100.20211006155649]
 > Start DBeaver ERD UI [org.jkiss.dbeaver.erd.ui 3.0.32.202112271055]
 > Start DBeaver ERD Model [org.jkiss.dbeaver.erd.model 1.0.32.202112271055]
-> Start DBeaver Sample Database [org.jkiss.dbeaver.ext.sample.database 1.0.109.202112271055]
-> Start DBeaver Tip of the day [org.jkiss.dbeaver.ext.ui.tipoftheday 1.0.78.202112271055]
-2022-01-28 16:06:31.648 - Open [https://dbeaver.io/product/version.xml]
-> Start DBeaver UI Editors - Connections [org.jkiss.dbeaver.ui.editors.connection 1.0.63.202112271055]
-> Start DBeaver PostgreSQL Support UI [org.jkiss.dbeaver.ext.postgresql.ui 1.0.48.202112271055]
+2022-02-01 01:32:18.596 - Connect with 'postgres' (postgres-jdbc-17ea283ccac-35e6105ed4fc3250)
 > Start DBeaver PostgreSQL Support [org.jkiss.dbeaver.ext.postgresql 2.1.145.202112271055]
-> Start DBeaver SSH tunnels UI [org.jkiss.dbeaver.net.ssh.ui 1.0.93.202112271055]
-> Start DBeaver SSH tunnels [org.jkiss.dbeaver.net.ssh 1.0.93.202112271055]
-2022-01-28 16:07:35.880 - Service 'org.jkiss.dbeaver.runtime.ui.UIServiceSecurity' not found
-2022-01-28 16:08:13.279 - Connect with 'jdbc:postgresql://javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com:5432/postgres' (postgres-jdbc-17ea28466d1-30e7da744de4f1ae)
 > Start DBeaver GIS Support [org.jkiss.dbeaver.data.gis 1.0.96.202112271055]
-2022-01-28 16:08:13.383 - Execution context opened (jdbc:postgresql://javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com:5432/postgres; Main <postgres>; 0)
-2022-01-28 16:08:13.386 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Main <postgres>
-2022-01-28 16:08:14.412 - Connected (postgres-jdbc-17ea28466d1-30e7da744de4f1ae, PostgreSQL JDBC Driver [42.2.20])
-2022-01-28 16:08:14.472 - Execution context closed (jdbc:postgresql://javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com:5432/postgres, 0)
-2022-01-28 16:08:14.472 - Disconnected (postgres-jdbc-17ea28466d1-30e7da744de4f1ae)
-2022-01-28 16:08:23.479 - Connect with 'postgres' (postgres-jdbc-17ea283ccac-35e6105ed4fc3250)
-2022-01-28 16:08:23.479 - Execution context opened (postgres; Main <postgres>; 1)
-2022-01-28 16:08:23.480 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Main <postgres>
-2022-01-28 16:08:23.821 - Execution context opened (postgres; Metadata <postgres>; 2)
-2022-01-28 16:08:23.822 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Metadata <postgres>
-2022-01-28 16:08:24.295 - Connected (postgres-jdbc-17ea283ccac-35e6105ed4fc3250, PostgreSQL JDBC Driver [42.2.20])
+2022-02-01 01:32:18.681 - Execution context opened (postgres; Main <postgres>; 0)
+2022-02-01 01:32:18.685 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Main <postgres>
+2022-02-01 01:32:19.724 - Execution context opened (postgres; Metadata <postgres>; 1)
+2022-02-01 01:32:19.724 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Metadata <postgres>
+2022-02-01 01:32:20.198 - Connected (postgres-jdbc-17ea283ccac-35e6105ed4fc3250, PostgreSQL JDBC Driver [42.2.20])
+2022-02-01 01:32:20.694 - Open [https://dbeaver.io/product/version.xml]
+> Start Core Compare Support [org.eclipse.compare.core 3.6.1000.v20201020-1107]
+> Start Console [org.eclipse.ui.console 3.11.100.v20210721-1355]
+> Start Debug Core [org.eclipse.debug.core 3.18.200.v20210721-1355]
+2022-02-01 01:32:35.199 - Execution context opened (postgres; SQLEditor <Script.sql>; 2)
+2022-02-01 01:32:35.200 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for SQLEditor <Script.sql>
