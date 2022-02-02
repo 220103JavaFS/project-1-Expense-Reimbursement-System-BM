@@ -74,6 +74,10 @@ public class ReimbursementRequestsController extends Controller {
             ctx.status(401);
         }
     };
+
+    //Handler updateUserRequests
+    //step 1: go down to Reimbursement DAO and update the request in the DB
+    //step 2: update the current user data stored in ctx.getSession("currentUser") to reflect the changes made in step 1
     
     @Override
     public void addRoutes(Javalin app) {

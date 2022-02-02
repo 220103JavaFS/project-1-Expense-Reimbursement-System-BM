@@ -20,7 +20,7 @@ public class UserFactory {
         //pass the connection object created in the User DAO and use it to also grab reimbursement information.
 
         //ArrayList<ReimbursementRequest> currentRequests = new ArrayList<>();
-        ArrayList<ReimbursementRequest> availableRequests = new ArrayList<>(); //only finance manager gets this
+        //ArrayList<ReimbursementRequest> availableRequests = new ArrayList<>(); //only finance manager gets this
 
         if (userRoleId == 1) return new User();
         else if (userRoleId == 2) return new ExEmployee();

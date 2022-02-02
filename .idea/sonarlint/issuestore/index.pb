@@ -20,15 +20,11 @@ k
 ;src/main/java/com/revature/controllers/UsersController.java,3\d\3df3e9972f2cebc03b9b4a0c95a83c055f69e011
 k
 ;src/main/java/com/revature/models/users/FinanceManager.java,2\2\22c910f3a2225c79dd79ae37b8be4ab2d7abb6ec
-a
-1src/main/java/com/revature/models/users/User.java,8\4\84e89e4476c158e01f1bda2343f124015cd99339
 e
 5src/test/java/com/revature/repos/UserDAOImplTest.java,2\4\2447ff4cdee7746991114a475af1131ad6db5631
 y
 Isrc/test/java/com/revature/services/ReimbursementRequestsServiceTest.java,6\1\6112d73124c18008149c7f4ee31c782e49324fe4
 =
 SQLscript.txt,3\9\3936dd282ddf401dfbeb3929f6847129a772fcfa
-e
-5src/main/java/com/revature/services/LoginService.java,1\b\1b28c27c65cf2fc174a6e9ad32bcf86427ac9f3c
 n
 >src/main/java/com/revature/repos/ReimbursementRequestsDAO.java,5\9\599573c301bb92e9bacfd34d3ed5316fd4cb0696

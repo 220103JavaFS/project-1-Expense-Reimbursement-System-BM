@@ -98,6 +98,12 @@ function loadTable(reimbursementList) {
 }
 
 function submitFunc() {
+    //Step one, look at the current value of the radio button
+    //step two, look at the currently selected request
+    //step three submit patch request to Javalin with await fetch()
+
+    //step four either remove the request form the table if step three worked
+    //   or show an error message
 
 }
 
