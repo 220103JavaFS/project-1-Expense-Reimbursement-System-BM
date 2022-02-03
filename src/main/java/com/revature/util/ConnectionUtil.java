@@ -38,7 +38,7 @@ public class ConnectionUtil {
         //String password = "password"; //The password for the db. Note* it's possible and preferable to hide this environment in environment variables for security reasons
 
         //return DriverManager.getConnection(mahadURL, bobbyUsername, mahadPassword); //this can throw a SQLException so we add throws SQLException to our class definition
-        return DriverManager.getConnection(bobbyURL, bobbyUsername, bobbyPassword);
+        return DriverManager.getConnection(mahadURL, bobbyUsername, mahadPassword);
 
     }
 
