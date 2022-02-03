@@ -1,4 +1,0 @@
-com/revature/services/UsersServiceTest.java
- com.revature.services.UsersServiceTest
-com/revature/services/LoginServiceTest.java
- com.revature.services.LoginServiceTest
