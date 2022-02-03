@@ -8,6 +8,7 @@ import com.revature.models.users.User;
 import com.revature.repos.UserDAOImpl;
 import com.revature.services.ReimbursementRequestsService;
 import com.revature.services.UsersService;
+import com.revature.util.AppErrorCode;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
 
@@ -64,7 +65,6 @@ public class ReimbursementRequestsController extends Controller {
     Handler updateUserRequests = (ctx) -> {
         //first make sure that someone is actually logged in
         if (ctx.req.getSession(false) != null) {
-            //String pathRequestID = ctx.pathParam("request_id"); //get the id of the specific request to be edited from front end
             User currentUser = ctx.sessionAttribute("currentUser");
             ReimbursementRequest reimbursementRequest = ctx.bodyAsClass(ReimbursementRequest.class);
 
@@ -78,21 +78,90 @@ public class ReimbursementRequestsController extends Controller {
 
                 ctx.status(200);
             }
+            else {
+                AppErrorCode creationError = new AppErrorCode(errorCode);
+                ctx.json(creationError);
+                ctx.status(400);
+            }
 
         }
         else {
             ctx.status(401);
         }
-
     };
-    //step 1: go down to Reimbursement DAO and update the request in the DB
-    //step 2: update the current user data stored in ctx.getSession("currentUser") to reflect the changes made in step 1
+
+    Handler createUserReimbursementRequests = (ctx) -> {
+        //first make sure that someone is actually logged in
+        if (ctx.req.getSession(false) != null) {
+            User currentUser = ctx.sessionAttribute("currentUser");
+            ReimbursementRequest reimbursementRequest = ctx.bodyAsClass(ReimbursementRequest.class);
+
+            //we need to fill in the request author information
+            reimbursementRequest.setReimbursementAuthor(currentUser.getUserID());
+
+            int errorCode = rrService.createReimbursementRequestService(reimbursementRequest);
+
+            if (errorCode == 0) {
+                //we need to update the current users requests (and available requests if it's a finance manager)
+                //to do this it's easiest to just create the current user again from scratch (which won't require the updating
+                //of current browser cookies
+                User updatedUser = userDAO.getUser(currentUser.getUsername()); //this function will get all updated data
+                ctx.sessionAttribute("currentUser", updatedUser); //update user which will include request data
+
+                ctx.status(200);
+            }
+            else {
+                AppErrorCode creationError = new AppErrorCode(errorCode);
+                ctx.json(creationError);
+                ctx.status(400);
+            }
+
+        }
+        else {
+            ctx.status(401);
+        }
+    };
+
+    Handler deleteReimbursementRequest = (ctx) -> {
+        //first make sure that someone is actually logged in
+        if (ctx.req.getSession(false) != null) {
+            User currentUser = ctx.sessionAttribute("currentUser");
+            ReimbursementRequest reimbursementRequest = ctx.bodyAsClass(ReimbursementRequest.class);
+
+            //we need to fill in the request author information
+            reimbursementRequest.setReimbursementAuthor(currentUser.getUserID());
+
+            int errorCode = rrService.deleteReimbursementRequestService(reimbursementRequest);
+
+            if (errorCode == 0) {
+                //we need to update the current users requests (and available requests if it's a finance manager)
+                //to do this it's easiest to just create the current user again from scratch (which won't require the updating
+                //of current browser cookies
+                User updatedUser = userDAO.getUser(currentUser.getUsername()); //this function will get all updated data
+                ctx.sessionAttribute("currentUser", updatedUser); //update user which will include request data
+
+                ctx.status(200);
+            }
+            else {
+                AppErrorCode creationError = new AppErrorCode(errorCode);
+                ctx.json(creationError);
+                ctx.status(400);
+            }
+        }
+        else {
+            ctx.status(401);
+        }
+    };
     
     @Override
     public void addRoutes(Javalin app) {
         app.get("/ReimbursementRequest", getUserReimbursementRequests);
         app.get("/ReimbursementRequest/Approval", getPendingReimbursementRequests);
 
-        app.patch("/ReimbursementRequest/Edit/{request_id}", updateUserRequests);
+        app.post("/ReimbursementRequest", createUserReimbursementRequests);
+
+        app.patch("/ReimbursementRequest/Edit", updateUserRequests);
+
+        app.delete("/ReimbursementRequest", deleteReimbursementRequest);
     }
 }

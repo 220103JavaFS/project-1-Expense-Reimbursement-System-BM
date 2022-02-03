@@ -36,9 +36,11 @@ public class LoginController extends Controller {
 
                 //create a few basic cookies to help the browser keep track of who is currently logged in
                 Integer userRole = user.getUserRoleID();
+                Integer userId = user.getUserID();
                 ctx.cookie("currentUserRole", userRole.toString());
                 ctx.cookie("currentUserName", user.getFirstName());
                 ctx.cookie("currentUserUsername", user.getUsername());
+                ctx.cookie("currentUserId", userId.toString());
 
                 ctx.status(200);
             }
@@ -61,6 +63,7 @@ public class LoginController extends Controller {
         if (ctx.cookie("currentUserRole") != null) ctx.removeCookie("currentUserRole");
         if (ctx.cookie("currentUserName") != null)ctx.removeCookie("currentUserName");
         if (ctx.cookie("currentUserUsername") != null)ctx.removeCookie("currentUserUsername");
+        if (ctx.cookie("currentUserId") != null)ctx.removeCookie("currentUserId");
     };
 
     @Override

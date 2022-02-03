@@ -7,26 +7,55 @@ let allRadio = document.getElementById("all");
 let submittedRadio = document.getElementById('submitted');
 let approvedRadio = document.getElementById('approved');
 let deniedRadio = document.getElementById('denied');
+let createdRadio = document.getElementById('created');
 
 let requestTable = document.getElementById("RequestTable");
 
 //Resquest Buttons
-//let editButton = document.getElementById('edit_btn').value;
-let newButton = document.getElementById('new_btn').value;
-let deleteButton = document.getElementById('delete_btn').value;
+let editButton = document.getElementById('edit_btn');
+let deleteButton = document.getElementById('delete_btn');
 
 const currentUserUsername = get_cookie("currentUserUsername"); //get name of the logged in user from cookie
 const url = "http://localhost:8081";
 
 const reimbursementStatusList = ["null", "created", "submitted", "approved", "denied"]
+const reimbursementStatuses = {
+  Created: 1,
+  Submitted: 2,
+  Approved: 3,
+  Denied:4
+}
+const reimbursementTypes = {
+  Lodging: 1,
+  Food: 2,
+  Travel: 3,
+  Other: 4
+}
+
 var reimbursementData; //this will be filled in on loading of the page
 var currentType; //this will be filled in on page load
+var selectedReimbursement = {
+  reimbursementID: 0,
+  reimbursementAmount: 0,
+  reimbursementSubmitted: null,
+  reimbursementResolved: null,
+  reimbursementDescription: "",
+  reimbursementReceipt: [],
+  reimbursementAuthor: get_cookie("currentUserId"),
+  reimbursementResolver: 0,
+  reimbursementStatusId: 0,
+  reimbursementTypeId: 0,
+}; //keeps track of the currently selected reimbursement
 
 //Add event listeners for each radio button that will filter the table
-allRadio.addEventListener("click", radioChangeFunc)
+allRadio.addEventListener("click", radioChangeFunc);
 submittedRadio.addEventListener("click", radioChangeFunc);
 approvedRadio.addEventListener("click", radioChangeFunc);
 deniedRadio.addEventListener("click", radioChangeFunc);
+createdRadio.addEventListener("click", radioChangeFunc);
+
+editButton.addEventListener("click", editFunc);
+deleteButton.addEventListener("click", deleteFunc);
 
 //on page load, reach out to the server to get user reimbursement data and then save it in JS object,
 //also display it in the table on screen
@@ -98,6 +127,7 @@ function loadTable(reimbursementList, filter) {
       //we only want to display table rows that match our filter
       let row = document.createElement("tr");
       row.classList.add("jsRow");
+      row.addEventListener("click", selectFunc); //each row needs its own eventListener
 
       for (let data in request) {
         let td = document.createElement("td");
@@ -122,5 +152,83 @@ function loadTable(reimbursementList, filter) {
       }
       requestTable.appendChild(row);
     }
+  }
+}
+
+function selectFunc(event) {
+  let element = event.currentTarget;
+
+  //now style the current row appropriately
+  if (element.style.color === "black") {
+      //first, iterate through all rows currently in the table and set their color back to the default black
+      let allRows = document.getElementsByClassName("jsRow");
+      for (let k = allRows.length - 1; k >= 0; k--) {
+        allRows[k].style.color = "black";
+      }
+
+      //then style the actual row
+      element.style.color = "blue";
+
+      //set the currently selected reimbursement to the one that was just clicked on
+      //selectedReimbursement = element.childNodes[0].innerHTML;
+      
+     let counter = -1;
+     for (let field in selectedReimbursement) {
+        if (field == "reimbursementAuthor") continue; //we don't keep track of this in the table so skip it
+        else if (field == "reimbursementStatusId") selectedReimbursement[field] = reimbursementStatuses[element.childNodes[++counter].innerHTML];
+        else if (field == "reimbursementTypeId") selectedReimbursement[field] = reimbursementTypes[element.childNodes[++counter].innerHTML];
+        else selectedReimbursement[field] = element.childNodes[++counter].innerHTML
+     }
+
+     console.log(selectedReimbursement);
+  }
+  else {
+      element.style.color = "black";
+
+      //reset the selection
+      selectedReimbursement = {
+        reimbursementID: 0,
+        reimbursementAmount: 0,
+        reimbursementSubmitted: null,
+        reimbursementResolved: null,
+        reimbursementDescription: "",
+        reimbursementReceipt: [],
+        reimbursementAuthor: get_cookie("currentUserId"),
+        reimbursementResolver: 0,
+        reimbursementStatusId: 0,
+        reimbursementTypeId: 0,
+      }; 
+  }
+}
+
+function editFunc() {
+  if (selectedReimbursement.reimbursementStatusId != 1 && selectedReimbursement.reimbursementStatusId != 4) {
+    alert("Only reimbursement requests with 'Created' or 'Denied' status are eligible for editing.");
+    return;
+  }
+
+  //set cookie before going to the edit page
+  document.cookie = "reimbursementRequest=" + selectedReimbursement.reimbursementID;
+  location.href = 'http://localhost:8081/RequestPages/EditRequest.html';
+}
+
+async function deleteFunc() {
+  if (selectedReimbursement.reimbursementStatusId == 1) {
+    let result = await fetch(url + "/ReimbursementRequest", {
+      method: 'DELETE',
+      body: JSON.stringify(selectedReimbursement),
+      credentials: 'include', //TODO: Is this needed for cookies?
+    });
+
+    if (result.status === 200) {
+      alert("Request was successfully deleted from the database.");
+      location.href = 'http://localhost:8081/RequestPages/ReimbursementRequestsBobby.html';
+    }
+    else if (result.status === 400) {
+      alert("There was an issue when trying to connect to the database.");
+    }
+  }
+  else {
+    alert("You can only delete requests that haven't already been submit for approval.");
   }
 }

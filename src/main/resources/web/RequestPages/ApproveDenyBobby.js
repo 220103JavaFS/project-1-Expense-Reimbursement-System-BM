@@ -132,7 +132,7 @@ async function submitFunc() {
     }
 
     //step three submit patch request to Javalin with await fetch()
-    let response = await fetch(url + "/ReimbursementRequest/Edit/" + selectedReimbursement["reimbursementID"], {
+    let response = await fetch(url + "/ReimbursementRequest/Edit", {
       method: 'PATCH',
       body: JSON.stringify(selectedReimbursement),
       credentials: 'include', //TODO: Is this needed for cookies?
@@ -141,6 +141,14 @@ async function submitFunc() {
     if (response.status === 200) {
       alert("Request decision was carried out succesfully.")
       location.href = 'http://localhost:8081/RequestPages/ApproveRequestsBobby.html';//reload the current page which will in turn update the table
+    }
+    else if (response.status === 400) {
+      let jsonAnswer = await response.json()
+      let errorCode = jsonAnswer.errorCode;
+
+      let errorString = "";
+      if (errorCode & 0b1000) errorString += "You can't approve/deny your own requests.\n";
+      alert(errorString);
     }
 
     //step four either remove the request form the table if step three worked

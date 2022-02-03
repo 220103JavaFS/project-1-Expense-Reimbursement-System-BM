@@ -163,7 +163,33 @@ public class ReimbursementRequestsDAOImpl implements ReimbursementRequestsDAO {
 
     @Override
     public int createReimbursementRequestDAO(ReimbursementRequest RR) {
-        return 0;
+        try (Connection conn = ConnectionUtil.getConnection()) {
+            //Since each employee has a list of customers associated with them, we don't need to actually query the
+            //customer table in our original call to the database.
+            String sql = "INSERT INTO ers_reimbursement (reimb_amount, reimb_submitted, reimb_description, reimb_receipt, reimb_author, reimb_status_id, reimb_type_id) VALUES" +
+                    " (?, ?, ?, ?, ?, ?, ?);";
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            //note that it's not possible to create a new request with a resolved status so we leave out any resolved fields
+            int currentLocation = 0;
+            statement.setDouble(++currentLocation, RR.getReimbursementAmount());
+            statement.setTimestamp(++currentLocation, RR.getReimbursementSubmitted());
+            statement.setString(++currentLocation, RR.getReimbursementDescription());
+            statement.setBytes(++currentLocation, RR.getReimbursementReceipt());
+            statement.setInt(++currentLocation, RR.getReimbursementAuthor());
+            statement.setInt(++currentLocation, RR.getReimbursementStatusId());
+            statement.setInt(++currentLocation, RR.getReimbursementTypeId());
+
+            statement.execute();
+
+
+            //if no username match was found then return null
+            log.info("Reimbursement Request added to the database");
+            return 0;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return 0b1000; //code for database error
+        }
     }
 
     @Override
@@ -180,7 +206,8 @@ public class ReimbursementRequestsDAOImpl implements ReimbursementRequestsDAO {
             statement.setString(++currentLocation, RR.getReimbursementDescription());
             statement.setBytes(++currentLocation, RR.getReimbursementReceipt());
             statement.setInt(++currentLocation, RR.getReimbursementAuthor());
-            statement.setInt(++currentLocation, RR.getReimbursementResolver());
+            if(RR.getReimbursementResolver() != 0) statement.setInt(++currentLocation, RR.getReimbursementResolver());
+            else statement.setNull(++currentLocation, Types.NULL);
             statement.setInt(++currentLocation, RR.getReimbursementStatusId());
             statement.setInt(++currentLocation, RR.getReimbursementTypeId());
             statement.setInt(++currentLocation, RR.getReimbursementID());
@@ -195,6 +222,18 @@ public class ReimbursementRequestsDAOImpl implements ReimbursementRequestsDAO {
 
     @Override
     public int deleteReimbursementRequestDAO(ReimbursementRequest RR) {
-        return 0;
+        try (Connection conn = ConnectionUtil.getConnection()) {
+
+            String sql = "DELETE FROM ers_reimbursement WHERE reimb_id = ?;";
+
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, RR.getReimbursementID());
+
+            statement.execute();
+            return 0;
+        } catch (SQLException e) {
+            log.info(e.toString());
+            return 0b10;
+        }
     }
 }

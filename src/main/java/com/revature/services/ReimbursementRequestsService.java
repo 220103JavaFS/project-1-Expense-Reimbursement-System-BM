@@ -36,13 +36,13 @@ public class ReimbursementRequestsService {
         //represent an error code. A returned value of 0 means everything was ok
 
         //first, we need to check and make sure the requested amount isn't a negative value.
-        if (RR.getReimbursementAmount() <= 0) return -1;
+        if (RR.getReimbursementAmount() <= 0) return 0b1;
 
         //next, we need to see if the amount is more than or equal to $500. if so then it needs to have a receipt attached to it
-        if (RR.getReimbursementAmount() >= 500 && RR.getReimbursementReceipt() == null) return -2;
+        if (RR.getReimbursementAmount() > 500 && RR.getReimbursementReceipt() == null) return 0b10;
 
         //Our final check is to make sure that the description is 250 characters or less because the DB can't handle more than that
-        if (RR.getReimbursementDescription().length() > 250) return -3;
+        if (RR.getReimbursementDescription().length() > 250) return 0b100;
 
         //All checks have passed. If the request was submitted with the "submit" status then we need to add a time stamp
         if (RR.getReimbursementStatusId() == 2) {
@@ -63,11 +63,14 @@ public class ReimbursementRequestsService {
         //creating a reimbursement request, however, we also need to make sure that the status of the current
         //request is either "created" or "denied"
 
+        System.out.println(RR);
+
         //check to see if the status of the request is valid for editing
         if (RR.getReimbursementStatusId() == 3) {
             //if the reimbursement edit is coming through with a status of approved, then it MUST be coming from a finance manager.
             //furthermore, in this case the only field allowed to be edited is the actual status value
             if (user.getUserRoleID() != 3) return 0b1;
+            if (RR.getReimbursementAuthor() == user.getUserID()) return 0b1000;
 
             //we need to set a resolved time stamp as well as the ID of the resolver
             RR.setReimbursementResolver(user.getUserID());
@@ -78,6 +81,8 @@ public class ReimbursementRequestsService {
             //we're currently looking at a denied request. If the request already has a Timestamp under the "approved" category it means that it was
             //previously denied and that we're updating a previously denied request. If there's no time stamp, it means that a finance manager is setting
             //a request to denied
+            if (RR.getReimbursementAuthor() == user.getUserID()) return 0b1000;
+
             if (RR.getReimbursementResolved() == null) {
                 //we need to set a resolved time stamp as well as the ID of the resolver
                 RR.setReimbursementResolver(user.getUserID());
@@ -92,7 +97,7 @@ public class ReimbursementRequestsService {
             RR.setReimbursementResolver(0); //TODO: need code in DAO layer that converts 0 to a null as it's ok to have null in the db
             RR.setReimbursementResolved(null);
         }
-        else if (RR.getReimbursementStatusId() == 2) {
+        else if (RR.getReimbursementStatusId() == 2 && RR.getReimbursementSubmitted() != null) {
             //a user can't edit a user request that's in the "submitted status". It must be either approved or denied from this state
             return 0b10;
         }
@@ -184,7 +189,7 @@ public class ReimbursementRequestsService {
     //DELETE METHODS
     public int deleteReimbursementRequestService(ReimbursementRequest RR) {
         //only requests that haven't been submitted yet are allowed to be deleted from the database
-        if (RR.getReimbursementStatusId() != 1) return -1;
+        if (RR.getReimbursementStatusId() != 1) return 0b1;
 
         return reimbursementRequestsDAO.deleteReimbursementRequestDAO(RR);
     }
