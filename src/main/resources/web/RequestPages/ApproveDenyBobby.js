@@ -102,7 +102,6 @@ function loadTable(reimbursementList) {
 
     for (let data in request) {
       let td = document.createElement("td");
-      
       td.innerText = request[data];
       row.appendChild(td); 
     }

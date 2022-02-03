@@ -103,13 +103,13 @@ public class ReimbursementRequestsService {
         }
 
         //first, we need to check and make sure the requested amount isn't a negative value.
-        if (RR.getReimbursementAmount() < 0) return -1;
+        if (RR.getReimbursementAmount() < 0) return 0b100;
 
         //next, we need to see if the amount is more than or equal to $500. if so then it needs to have a receipt attached to it
-        if (RR.getReimbursementAmount() >= 500 && RR.getReimbursementReceipt() == null) return -2;
+        if (RR.getReimbursementAmount() >= 500 && RR.getReimbursementReceipt() == null) return 0b10000;
 
         //Our final check is to make sure that the description is 250 characters or less because the DB can't handle more than that
-        if (RR.getReimbursementDescription().length() > 250) return -3;
+        if (RR.getReimbursementDescription().length() > 250) return 0b100000;
 
         //All checks have passed. If the request was submitted with the "submit" status then we need to add a time stamp
         if (RR.getReimbursementStatusId() == 2) {

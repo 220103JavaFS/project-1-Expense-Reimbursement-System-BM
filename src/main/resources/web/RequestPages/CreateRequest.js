@@ -59,7 +59,11 @@ async function requestFunc() {
 
   try {
     let reciptBuffer = await receipt.files[0].arrayBuffer();
-    reimbursementRequest.reimbursementReceipt = new Uint8Array(reciptBuffer);
+    let unsignedArray = new Uint8Array(reciptBuffer)
+    let actualArray = [];
+    for (let byte in unsignedArray) actualArray.push(unsignedArray[byte]);
+
+    reimbursementRequest.reimbursementReceipt = actualArray;
   }
   catch (e) {
       console.log("No receipt detected.");

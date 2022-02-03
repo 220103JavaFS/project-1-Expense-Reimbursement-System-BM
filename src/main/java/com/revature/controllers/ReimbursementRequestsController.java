@@ -67,6 +67,8 @@ public class ReimbursementRequestsController extends Controller {
         if (ctx.req.getSession(false) != null) {
             User currentUser = ctx.sessionAttribute("currentUser");
             ReimbursementRequest reimbursementRequest = ctx.bodyAsClass(ReimbursementRequest.class);
+            System.out.println("Here's the request");
+            System.out.println(reimbursementRequest);
 
             int errorCode = rrService.editReimbursementRequestService(reimbursementRequest, currentUser);
             if (errorCode == 0) {
