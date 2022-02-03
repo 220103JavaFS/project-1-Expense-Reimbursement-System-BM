@@ -15,6 +15,19 @@ const url = "http://localhost:8081";
 const reimbursementStatusList = ["null", "created", "submitted", "denied", "approved"]
 var reimbursementData; //this will be filled in on loading of the page
 var currentRadioType; //this will be filled in on page load
+var selectedReimbursement = {
+  reimbursementID: 0,
+  reimbursementAmount: 0,
+  reimbursementSubmitted: null,
+  reimbursementResolved: null,
+  reimbursementDescription: "",
+  reimbursementReceipt: [],
+  reimbursementAuthor: 0,
+  reimbursementResolver: 0,
+  reimbursementStatusId: 0,
+  reimbursementTypeId: 0,
+}; //represents the request currently selected by the user. Set everything to default values off the bat
+
 
 //Add event listeners
 approvedRadio.addEventListener("click", radioChangeFunc);
@@ -25,7 +38,7 @@ submitButton.addEventListener("click", submitFunc);
 //also display it in the table on screen
 window.onload = async () => {
 
-  //get user's 
+  //get all of the requests in the database with "submit" status
   let response = await fetch(url + "/ReimbursementRequest/Approval"); //just a standard get request
   reimbursementData = await response.json(); //store in a global variable so other functions can access
 
@@ -33,7 +46,7 @@ window.onload = async () => {
 }
 
 function radioChangeFunc() {
-   currentRadioType = document.querySelector('input[name="request_type"]:checked');
+   currentRadioType = document.querySelector('input[name="request_action"]:checked').value;
 }
 
 function get_cookie(Name) {
@@ -85,7 +98,7 @@ function loadTable(reimbursementList) {
     //we only want to display table rows that match our filter
     let row = document.createElement("tr");
     row.classList.add("jsRow");
-    row.addEventListener("click", testFunc);
+    row.addEventListener("click", selectFunc);
 
     for (let data in request) {
       let td = document.createElement("td");
@@ -97,17 +110,45 @@ function loadTable(reimbursementList) {
   }
 }
 
-function submitFunc() {
-    //Step one, look at the current value of the radio button
-    //step two, look at the currently selected request
+async function submitFunc() {
+    //Step one, make sure that a request is selected
+    if (selectedReimbursement == 0) {
+        alert("Please select a request before submitting a decision.")
+        return;
+    }
+
+
+    console.log(currentRadioType);
+    //Step two, make sure that one of the radio buttons has actually been selected
+    if (currentRadioType == "Approve") {
+        selectedReimbursement["reimbursementStatusId"] = 3; //set status to approve
+    }
+    else if (currentRadioType == "Deny") {
+      selectedReimbursement["reimbursementStatusId"] = 4; //set status to denied
+    }
+    else {
+        alert("Please select an action via the radio buttons.");
+        return;
+    }
+
     //step three submit patch request to Javalin with await fetch()
+    let response = await fetch(url + "/ReimbursementRequest/Edit/" + selectedReimbursement["reimbursementID"], {
+      method: 'PATCH',
+      body: JSON.stringify(selectedReimbursement),
+      credentials: 'include', //TODO: Is this needed for cookies?
+    });
+
+    if (response.status === 200) {
+      alert("Request decision was carried out succesfully.")
+      location.href = 'http://localhost:8081/RequestPages/ApproveRequestsBobby.html';//reload the current page which will in turn update the table
+    }
 
     //step four either remove the request form the table if step three worked
     //   or show an error message
 
 }
 
-function testFunc(event) {
+function selectFunc(event) {
     let element = event.currentTarget;
 
     //now style the current row appropriately
@@ -120,6 +161,31 @@ function testFunc(event) {
 
         //then style the actual row
         element.style.color = "blue";
+
+        //set the currently selected reimbursement to the one that was just clicked on
+        //selectedReimbursement = element.childNodes[0].innerHTML;
+       let counter = -1;
+       for (let field in selectedReimbursement) {
+          selectedReimbursement[field] = element.childNodes[++counter].innerHTML
+       }
+       //console.log("selection should now be updated");
+       //console.log(selectedReimbursement);
     }
-    else element.style.color = "black";
+    else {
+        element.style.color = "black";
+
+        //reset the selection
+        selectedReimbursement = {
+          reimbursementID: 0,
+          reimbursementAmount: 0,
+          reimbursementSubmitted: null,
+          reimbursementResolved: null,
+          reimbursementDescription: "",
+          reimbursementReceipt: [],
+          reimbursementAuthor: 0,
+          reimbursementResolver: 0,
+          reimbursementStatusId: 0,
+          reimbursementTypeId: 0,
+        }; 
+    }
 }

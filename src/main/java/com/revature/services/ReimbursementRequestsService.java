@@ -3,6 +3,7 @@ package com.revature.services;
 import com.revature.models.reimbursement.ReimbursementRequest;
 import com.revature.models.users.*;
 import com.revature.repos.ReimbursementRequestsDAO;
+import com.revature.repos.ReimbursementRequestsDAOImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,13 +12,14 @@ import java.util.ArrayList;
 
 public class ReimbursementRequestsService {
 
-    private ReimbursementRequestsDAO reimbursementRequestsDAO; //used for Mockito purposes
+    private ReimbursementRequestsDAO reimbursementRequestsDAOTest; //used for Mockito purposes
+    private ReimbursementRequestsDAOImpl reimbursementRequestsDAO = new ReimbursementRequestsDAOImpl();
     private Logger log = LoggerFactory.getLogger(ReimbursementRequestsService.class);
 
     //CONSTRUCTORS
     public ReimbursementRequestsService() {}
     public ReimbursementRequestsService(ReimbursementRequestsDAO reimbursementRequestsDAO) {
-        this.reimbursementRequestsDAO = reimbursementRequestsDAO;
+        this.reimbursementRequestsDAOTest = reimbursementRequestsDAO;
     }
 
     //GET METHODS
@@ -54,7 +56,7 @@ public class ReimbursementRequestsService {
     }
 
     //PATCH METHODS
-    public int editReimbursementRequestService(ReimbursementRequest RR) {
+    public int editReimbursementRequestService(ReimbursementRequest RR, User user) {
         //this function allows all users to edit ReimbursementRequests that they have with a status of
         //either "created" or "denied". Furthermore, this function will also allow user's with the proper access
         //to approve or deny a request by changing the status. We go through the same checks as we did for
@@ -62,7 +64,38 @@ public class ReimbursementRequestsService {
         //request is either "created" or "denied"
 
         //check to see if the status of the request is valid for editing
-        if (RR.getReimbursementStatusId() != 1 && RR.getReimbursementStatusId() != 5) return -4;
+        if (RR.getReimbursementStatusId() == 3) {
+            //if the reimbursement edit is coming through with a status of approved, then it MUST be coming from a finance manager.
+            //furthermore, in this case the only field allowed to be edited is the actual status value
+            if (user.getUserRoleID() != 3) return 0b1;
+
+            //we need to set a resolved time stamp as well as the ID of the resolver
+            RR.setReimbursementResolver(user.getUserID());
+            RR.setReimbursementResolved(new Timestamp(System.currentTimeMillis()));
+            return reimbursementRequestsDAO.editReimbursementRequestDAO(RR); //request should already be valid as it's in the db already so no need for other checks
+        }
+        else if (RR.getReimbursementStatusId() == 4) {
+            //we're currently looking at a denied request. If the request already has a Timestamp under the "approved" category it means that it was
+            //previously denied and that we're updating a previously denied request. If there's no time stamp, it means that a finance manager is setting
+            //a request to denied
+            if (RR.getReimbursementResolved() == null) {
+                //we need to set a resolved time stamp as well as the ID of the resolver
+                RR.setReimbursementResolver(user.getUserID());
+                RR.setReimbursementResolved(new Timestamp(System.currentTimeMillis()));
+                return reimbursementRequestsDAO.editReimbursementRequestDAO(RR);
+            }
+
+            //if we made it here it means we're a user that's updating their own denied request. We need to reset the resolver and resolved fields to null
+            //as well as updating the submit timestamp and changing the status to submit from denied
+            RR.setReimbursementStatusId(2);
+            RR.setReimbursementSubmitted(new Timestamp(System.currentTimeMillis()));
+            RR.setReimbursementResolver(0); //TODO: need code in DAO layer that converts 0 to a null as it's ok to have null in the db
+            RR.setReimbursementResolved(null);
+        }
+        else if (RR.getReimbursementStatusId() == 2) {
+            //a user can't edit a user request that's in the "submitted status". It must be either approved or denied from this state
+            return 0b10;
+        }
 
         //first, we need to check and make sure the requested amount isn't a negative value.
         if (RR.getReimbursementAmount() < 0) return -1;

@@ -1,6 +1,7 @@
 package com.revature.repos;
 
 import com.revature.models.reimbursement.ReimbursementRequest;
+import com.revature.models.users.Employee;
 import com.revature.models.users.User;
 import com.revature.models.users.UserFactory;
 import com.revature.util.ConnectionUtil;
@@ -167,7 +168,29 @@ public class ReimbursementRequestsDAOImpl implements ReimbursementRequestsDAO {
 
     @Override
     public int editReimbursementRequestDAO(ReimbursementRequest RR) {
-        return 0;
+        try (Connection conn = ConnectionUtil.getConnection()) {
+            String sql = "UPDATE ers_reimbursement SET reimb_amount = ?, reimb_submitted = ?, reimb_resolved = ?, reimb_description = ?, reimb_receipt = ?, " +
+                    "reimb_author = ?, reimb_resolver = ?, reimb_status_id = ?, reimb_type_id = ? WHERE reimb_id = ?;";
+
+            PreparedStatement statement = conn.prepareStatement(sql);
+            int currentLocation = 0;
+            statement.setDouble(++currentLocation, RR.getReimbursementAmount());
+            statement.setTimestamp(++currentLocation, RR.getReimbursementSubmitted());
+            statement.setTimestamp(++currentLocation, RR.getReimbursementResolved());
+            statement.setString(++currentLocation, RR.getReimbursementDescription());
+            statement.setBytes(++currentLocation, RR.getReimbursementReceipt());
+            statement.setInt(++currentLocation, RR.getReimbursementAuthor());
+            statement.setInt(++currentLocation, RR.getReimbursementResolver());
+            statement.setInt(++currentLocation, RR.getReimbursementStatusId());
+            statement.setInt(++currentLocation, RR.getReimbursementTypeId());
+            statement.setInt(++currentLocation, RR.getReimbursementID());
+
+            statement.execute();
+            return 0; //updated without issue
+        } catch (SQLException e) {
+            log.info(e.toString());
+            return -1;
+        }
     }
 
     @Override

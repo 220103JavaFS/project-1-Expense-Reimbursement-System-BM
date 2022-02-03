@@ -18,7 +18,7 @@ let deleteButton = document.getElementById('delete_btn').value;
 const currentUserUsername = get_cookie("currentUserUsername"); //get name of the logged in user from cookie
 const url = "http://localhost:8081";
 
-const reimbursementStatusList = ["null", "created", "submitted", "denied", "approved"]
+const reimbursementStatusList = ["null", "created", "submitted", "approved", "denied"]
 var reimbursementData; //this will be filled in on loading of the page
 var currentType; //this will be filled in on page load
 
