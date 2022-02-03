@@ -1,13 +1,14 @@
-2022-01-28 16:06:13.872 - Create display
-2022-01-28 16:06:14.139 - DBeaver 21.3.2.202112271055 is starting
-2022-01-28 16:06:14.140 - OS: Windows 10 10.0 (amd64)
-2022-01-28 16:06:14.141 - Java version: 11.0.12 by Eclipse Foundation (64bit)
-2022-01-28 16:06:14.142 - Install path: 'C:\Users\thema\scoop\apps\dbeaver\current'
-2022-01-28 16:06:14.142 - Instance path: 'file:/C:/Users/thema/project-1-bobbymahad/'
-2022-01-28 16:06:14.142 - Memory available 64Mb/1024Mb
+2022-02-01 20:53:00.032 - Create display
+> Start Team Support Core [org.eclipse.team.core 3.9.100.v20210604-1207]
+2022-02-01 20:53:00.175 - DBeaver 21.3.2.202112271055 is starting
+2022-02-01 20:53:00.176 - OS: Windows 10 10.0 (amd64)
+2022-02-01 20:53:00.176 - Java version: 11.0.12 by Eclipse Foundation (64bit)
+2022-02-01 20:53:00.176 - Install path: 'C:\Users\thema\scoop\apps\dbeaver\current'
+2022-02-01 20:53:00.177 - Instance path: 'file:/C:/Users/thema/project-1-bobbymahad/'
+2022-02-01 20:53:00.177 - Memory available 64Mb/1024Mb
 > Start DBeaver UI Editors - Base [org.jkiss.dbeaver.ui.editors.base 1.0.72.202112271055]
-2022-01-28 16:06:14.176 - Starting RMI server at 41702
-2022-01-28 16:06:14.328 - Run workbench
+2022-02-01 20:53:00.200 - Starting RMI server at 59734
+2022-02-01 20:53:02.321 - Run workbench
 > Start Eclipse e4 Workbench SWT [org.eclipse.e4.ui.workbench.swt 0.16.200.v20210723-1326]
 > Start Eclipse Application Services [org.eclipse.e4.core.services 2.3.0.v20210723-1034]
 > Start Eclipse UI Application Services [org.eclipse.e4.ui.services 1.5.0.v20210115-1333]
@@ -18,107 +19,146 @@
 > Start Eclipse Bindings Support [org.eclipse.e4.ui.bindings 0.13.100.v20210722-1426]
 > Start Eclipse Dependency Injection Extensions [org.eclipse.e4.core.di.extensions 0.17.0.v20210625-1052]
 > Start Eclipse CSS SWT Support [org.eclipse.e4.ui.css.swt 0.14.300.v20210723-0837]
-> Start Java Native Access [com.sun.jna 5.8.0.v20210503-0343]
 > Start DBeaver UI [org.jkiss.dbeaver.ui 5.1.87.202112271055]
-2022-01-28 16:06:25.346 - Configure workbench window
+2022-02-01 20:53:09.860 - Configure workbench window
 > Start Help System Core [org.eclipse.help 3.9.100.v20210721-0601]
-2022-01-28 16:06:25.656 - Create actions
-2022-01-28 16:06:25.668 - Disable Eclipse action set 'org.eclipse.ui.edit.text.actionSet.annotationNavigation'
-2022-01-28 16:06:25.670 - Disable Eclipse action set 'org.eclipse.ui.WorkingSetActionSet'
-2022-01-28 16:06:25.670 - Disable Eclipse action set 'org.eclipse.ui.actionSet.openFiles'
-2022-01-28 16:06:27.933 - Initialize workbench window
-2022-01-28 16:06:27.939 - Finish initialization
+2022-02-01 20:53:10.423 - Create actions
+2022-02-01 20:53:10.428 - Disable Eclipse action set 'org.eclipse.ui.edit.text.actionSet.annotationNavigation'
+2022-02-01 20:53:10.428 - Disable Eclipse action set 'org.eclipse.ui.WorkingSetActionSet'
+2022-02-01 20:53:10.429 - Disable Eclipse action set 'org.eclipse.ui.actionSet.openFiles'
+2022-02-01 20:53:11.081 - Initialize workbench window
+2022-02-01 20:53:11.087 - Finish initialization
+> Start Default Text Editor [org.eclipse.ui.editors 3.14.200.v20210622-1002]
+> Start Text Editor Framework [org.eclipse.ui.workbench.texteditor 3.16.200.v20210724-2153]
 > Start Equinox Java Authentication and Authorization Service (JAAS) [org.eclipse.equinox.security 1.3.700.v20210726-0943]
 > Start Internet Connection Management UI [org.eclipse.ui.net 1.4.0.v20210426-0838]
 > Start Internet Connection Management [org.eclipse.core.net 1.3.1100.v20210424-0724]
 > Start DBeaver SQL Model [org.jkiss.dbeaver.model.sql 1.0.62.202112271055]
-2022-01-28 16:06:29.232 - No SQL dialect specified for data source provider 'oceanbase'. Use default.
-2022-01-28 16:06:29.248 - Total database drivers: 94 (94)
+2022-02-01 20:53:12.589 - No SQL dialect specified for data source provider 'oceanbase'. Use default.
+2022-02-01 20:53:12.592 - Loading user drivers configuration from 'C:\Users\thema\project-1-bobbymahad\.metadata\.plugins\org.jkiss.dbeaver.core\drivers.xml'
+2022-02-01 20:53:12.611 - Total database drivers: 94 (94)
 > Start DBeaver UI Editors - Data [org.jkiss.dbeaver.ui.editors.data 1.0.72.202112271055]
-> Start Default Text Editor [org.eclipse.ui.editors 3.14.200.v20210622-1002]
-> Start Text Editor Framework [org.eclipse.ui.workbench.texteditor 3.16.200.v20210724-2153]
 > Start DBeaver UI Editors - SQL [org.jkiss.dbeaver.ui.editors.sql 1.0.72.202112271055]
+> Start DBeaver Sample Database [org.jkiss.dbeaver.ext.sample.database 1.0.109.202112271055]
+> Start DBeaver Tip of the day [org.jkiss.dbeaver.ext.ui.tipoftheday 1.0.78.202112271055]
 > Start Draw2d [org.eclipse.draw2dl 3.12.100.20211006155649]
 > Start GEF3 GEF (MVC) [org.eclipse.gef3 3.12.100.20211006155649]
 > Start DBeaver ERD UI [org.jkiss.dbeaver.erd.ui 3.0.32.202112271055]
 > Start DBeaver ERD Model [org.jkiss.dbeaver.erd.model 1.0.32.202112271055]
-> Start DBeaver Sample Database [org.jkiss.dbeaver.ext.sample.database 1.0.109.202112271055]
-> Start DBeaver Tip of the day [org.jkiss.dbeaver.ext.ui.tipoftheday 1.0.78.202112271055]
-2022-01-28 16:06:31.648 - Open [https://dbeaver.io/product/version.xml]
-> Start DBeaver UI Editors - Connections [org.jkiss.dbeaver.ui.editors.connection 1.0.63.202112271055]
-> Start DBeaver PostgreSQL Support UI [org.jkiss.dbeaver.ext.postgresql.ui 1.0.48.202112271055]
+2022-02-01 20:53:13.199 - Connect with 'postgres' (postgres-jdbc-17ea283ccac-35e6105ed4fc3250)
 > Start DBeaver PostgreSQL Support [org.jkiss.dbeaver.ext.postgresql 2.1.145.202112271055]
-> Start DBeaver SSH tunnels UI [org.jkiss.dbeaver.net.ssh.ui 1.0.93.202112271055]
-> Start DBeaver SSH tunnels [org.jkiss.dbeaver.net.ssh 1.0.93.202112271055]
-2022-01-28 16:07:35.880 - Service 'org.jkiss.dbeaver.runtime.ui.UIServiceSecurity' not found
-2022-01-28 16:08:13.279 - Connect with 'jdbc:postgresql://javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com:5432/postgres' (postgres-jdbc-17ea28466d1-30e7da744de4f1ae)
 > Start DBeaver GIS Support [org.jkiss.dbeaver.data.gis 1.0.96.202112271055]
-2022-01-28 16:08:13.383 - Execution context opened (jdbc:postgresql://javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com:5432/postgres; Main <postgres>; 0)
-2022-01-28 16:08:13.386 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Main <postgres>
-2022-01-28 16:08:14.412 - Connected (postgres-jdbc-17ea28466d1-30e7da744de4f1ae, PostgreSQL JDBC Driver [42.2.20])
-2022-01-28 16:08:14.472 - Execution context closed (jdbc:postgresql://javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com:5432/postgres, 0)
-2022-01-28 16:08:14.472 - Disconnected (postgres-jdbc-17ea28466d1-30e7da744de4f1ae)
-2022-01-28 16:08:23.479 - Connect with 'postgres' (postgres-jdbc-17ea283ccac-35e6105ed4fc3250)
-2022-01-28 16:08:23.479 - Execution context opened (postgres; Main <postgres>; 1)
-2022-01-28 16:08:23.480 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Main <postgres>
-2022-01-28 16:08:23.821 - Execution context opened (postgres; Metadata <postgres>; 2)
-2022-01-28 16:08:23.822 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Metadata <postgres>
-2022-01-28 16:08:24.295 - Connected (postgres-jdbc-17ea283ccac-35e6105ed4fc3250, PostgreSQL JDBC Driver [42.2.20])
+2022-02-01 20:53:13.262 - Execution context opened (postgres; Main <postgres>; 0)
+2022-02-01 20:53:13.265 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Main <postgres>
+2022-02-01 20:53:14.285 - Execution context opened (postgres; Metadata <postgres>; 1)
+2022-02-01 20:53:14.285 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Metadata <postgres>
+2022-02-01 20:53:14.785 - Connected (postgres-jdbc-17ea283ccac-35e6105ed4fc3250, PostgreSQL JDBC Driver [42.2.20])
+2022-02-01 20:53:15.379 - Open [https://dbeaver.io/product/version.xml]
 > Start Core Compare Support [org.eclipse.compare.core 3.6.1000.v20201020-1107]
 > Start Console [org.eclipse.ui.console 3.11.100.v20210721-1355]
 > Start Debug Core [org.eclipse.debug.core 3.18.200.v20210721-1355]
-2022-01-28 16:12:28.166 - Execution context opened (postgres; SQLEditor <Script.sql>; 3)
-2022-01-28 16:12:28.167 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for SQLEditor <Script.sql>
-2022-01-28 16:13:54.556 - Object stat > 100%!
-2022-01-28 16:13:55.867 - Object stat > 100%!
-2022-01-28 16:14:01.660 - Object stat > 100%!
-2022-01-28 16:14:01.673 - Object stat > 100%!
-2022-01-28 16:14:01.710 - Object stat > 100%!
-2022-01-28 16:14:01.825 - Object stat > 100%!
-2022-01-28 16:14:01.872 - Object stat > 100%!
-2022-01-28 16:14:01.968 - Object stat > 100%!
-2022-01-28 16:14:01.970 - Object stat > 100%!
-2022-01-28 16:14:02.273 - Object stat > 100%!
-2022-01-28 16:14:02.411 - Object stat > 100%!
-2022-01-28 16:14:02.893 - Object stat > 100%!
-2022-01-28 16:14:08.238 - Object stat > 100%!
-2022-01-28 16:14:08.546 - Object stat > 100%!
-2022-01-28 16:14:08.553 - Object stat > 100%!
-2022-01-28 16:14:08.610 - Object stat > 100%!
-2022-01-28 16:14:08.612 - Object stat > 100%!
-2022-01-28 16:14:08.863 - Object stat > 100%!
-2022-01-28 16:14:08.865 - Object stat > 100%!
-2022-01-28 16:14:09.186 - Object stat > 100%!
-2022-01-28 16:14:09.679 - Object stat > 100%!
-2022-01-28 16:14:09.968 - Object stat > 100%!
-2022-01-28 16:14:10.624 - Object stat > 100%!
-2022-01-28 16:14:10.832 - Object stat > 100%!
-2022-01-28 16:14:12.704 - Object stat > 100%!
-2022-01-28 16:14:14.274 - Object stat > 100%!
-2022-01-28 16:14:14.688 - Object stat > 100%!
-2022-01-28 16:14:14.950 - Object stat > 100%!
-2022-01-28 16:14:15.147 - Object stat > 100%!
-2022-01-28 16:14:16.795 - Object stat > 100%!
-> Start DBeaver UI Editors - Hex [org.jkiss.dbeaver.ui.editors.hex 1.0.72.202112271055]
-> Start DBeaver UI Editors - image [org.jkiss.dbeaver.ui.editors.image 1.0.72.202112271055]
-2022-01-28 16:43:02.757 - Can't detect image type: Unsupported or unrecognized format
-> Start DBeaver UI Editors - JSON [org.jkiss.dbeaver.ui.editors.json 1.0.56.202112271055]
-> Start DBeaver UI Editors - XML [org.jkiss.dbeaver.ui.editors.xml 1.0.72.202112271055]
-2022-01-28 16:43:04.936 - Can't detect image type: Unsupported or unrecognized format
-2022-01-28 16:43:05.665 - Can't detect image type: Unsupported or unrecognized format
-2022-01-28 16:43:06.454 - Can't detect image type: Unsupported or unrecognized format
-2022-01-28 16:43:14.414 - Can't detect image type: Unsupported or unrecognized format
-2022-01-28 16:43:16.677 - Can't detect image type: Unsupported or unrecognized format
-2022-01-28 21:29:23.804 - System suspend detected! Reinitialize all remote connections.
-2022-01-28 21:53:55.956 - System suspend detected! Reinitialize all remote connections.
-2022-01-28 21:57:56.886 - Invalidate datasource 'postgres' connections...
-2022-01-28 21:57:56.940 - Execution context closed (postgres, 1)
-2022-01-28 21:57:56.940 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Main <postgres>
-2022-01-28 21:57:57.350 - Execution context closed (postgres, 2)
-2022-01-28 21:57:57.350 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Metadata <postgres>
-2022-01-28 21:57:57.740 - Execution context closed (postgres, 3)
-2022-01-28 21:57:57.741 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for SQLEditor <Script.sql>
-2022-01-28 21:57:58.072 - Operation failed. Retry count remains = 1
+2022-02-01 20:53:48.056 - Execution context opened (postgres; SQLEditor <Script.sql>; 2)
+2022-02-01 20:53:48.058 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for SQLEditor <Script.sql>
+2022-02-01 20:54:30.352 - Execution context closed (postgres, 0)
+2022-02-01 20:54:30.414 - Execution context closed (postgres, 1)
+2022-02-01 20:54:30.477 - Execution context closed (postgres, 2)
+2022-02-01 20:54:30.477 - Execution context opened (postgres; Main <postgres>; 3)
+2022-02-01 20:54:30.477 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Main <postgres>
+2022-02-01 20:54:30.610 - Error testing property connected: No databases found on the server
+2022-02-01 20:54:30.610 - Error testing property connected: No databases found on the server
+2022-02-01 20:54:30.611 - Error testing property connected: No databases found on the server
+2022-02-01 20:54:30.611 - Error testing property connected: No databases found on the server
+2022-02-01 20:54:30.612 - Error testing property connected: No databases found on the server
+2022-02-01 20:54:30.612 - Error testing property connected: No databases found on the server
+2022-02-01 20:54:30.614 - Error testing property connected: No databases found on the server
+2022-02-01 20:54:30.614 - Error testing property connected: No databases found on the server
+2022-02-01 20:54:30.867 - Execution context opened (postgres; Metadata <postgres>; 4)
+2022-02-01 20:54:30.867 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Metadata <postgres>
+2022-02-01 20:54:30.956 - Error testing property connected: No databases found on the server
+2022-02-01 20:54:30.956 - Error testing property connected: No databases found on the server
+2022-02-01 20:54:30.957 - Error testing property connected: No databases found on the server
+2022-02-01 20:54:30.957 - Error testing property connected: No databases found on the server
+2022-02-01 20:54:30.957 - Error testing property connected: No databases found on the server
+2022-02-01 20:54:30.958 - Error testing property connected: No databases found on the server
+2022-02-01 20:54:30.958 - Error testing property connected: No databases found on the server
+2022-02-01 20:54:30.958 - Error testing property connected: No databases found on the server
+2022-02-01 21:04:23.592 - No execution context within database instance
+2022-02-01 21:04:23.593 - java.lang.NullPointerException
+	at org.jkiss.dbeaver.ext.postgresql.PostgreUtils.getRealSchemaName(PostgreUtils.java:669)
+	at org.jkiss.dbeaver.ext.postgresql.model.PostgreStructureAssistant.findObjectsByMask(PostgreStructureAssistant.java:127)
+	at org.jkiss.dbeaver.ext.postgresql.model.PostgreStructureAssistant.findObjectsByMask(PostgreStructureAssistant.java:1)
+	at org.jkiss.dbeaver.ui.editors.sql.syntax.SQLContextInformer$TablesFinderJob.run(SQLContextInformer.java:366)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2022-02-01 21:04:46.795 - No execution context within database instance
+2022-02-01 21:04:46.795 - java.lang.NullPointerException
+	at org.jkiss.dbeaver.ext.postgresql.PostgreUtils.getRealSchemaName(PostgreUtils.java:669)
+	at org.jkiss.dbeaver.ext.postgresql.model.PostgreStructureAssistant.findObjectsByMask(PostgreStructureAssistant.java:127)
+	at org.jkiss.dbeaver.ext.postgresql.model.PostgreStructureAssistant.findObjectsByMask(PostgreStructureAssistant.java:1)
+	at org.jkiss.dbeaver.ui.editors.sql.syntax.SQLContextInformer$TablesFinderJob.run(SQLContextInformer.java:366)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2022-02-01 21:04:48.043 - No execution context within database instance
+2022-02-01 21:04:48.043 - java.lang.NullPointerException
+	at org.jkiss.dbeaver.ext.postgresql.PostgreUtils.getRealSchemaName(PostgreUtils.java:669)
+	at org.jkiss.dbeaver.ext.postgresql.model.PostgreStructureAssistant.findObjectsByMask(PostgreStructureAssistant.java:127)
+	at org.jkiss.dbeaver.ext.postgresql.model.PostgreStructureAssistant.findObjectsByMask(PostgreStructureAssistant.java:1)
+	at org.jkiss.dbeaver.ui.editors.sql.syntax.SQLContextInformer$TablesFinderJob.run(SQLContextInformer.java:366)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2022-02-01 21:06:02.163 - No execution context within database instance
+2022-02-01 21:06:02.163 - java.lang.NullPointerException
+	at org.jkiss.dbeaver.ext.postgresql.PostgreUtils.getRealSchemaName(PostgreUtils.java:669)
+	at org.jkiss.dbeaver.ext.postgresql.model.PostgreStructureAssistant.findObjectsByMask(PostgreStructureAssistant.java:127)
+	at org.jkiss.dbeaver.ext.postgresql.model.PostgreStructureAssistant.findObjectsByMask(PostgreStructureAssistant.java:1)
+	at org.jkiss.dbeaver.ui.editors.sql.syntax.SQLContextInformer$TablesFinderJob.run(SQLContextInformer.java:366)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2022-02-01 23:30:57.126 - System suspend detected! Reinitialize all remote connections.
+2022-02-01 23:45:22.884 - No execution context within database instance
+2022-02-01 23:45:22.884 - java.lang.NullPointerException
+	at org.jkiss.dbeaver.ext.postgresql.PostgreUtils.getRealSchemaName(PostgreUtils.java:669)
+	at org.jkiss.dbeaver.ext.postgresql.model.PostgreStructureAssistant.findObjectsByMask(PostgreStructureAssistant.java:127)
+	at org.jkiss.dbeaver.ext.postgresql.model.PostgreStructureAssistant.findObjectsByMask(PostgreStructureAssistant.java:1)
+	at org.jkiss.dbeaver.ui.editors.sql.syntax.SQLContextInformer$TablesFinderJob.run(SQLContextInformer.java:366)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2022-02-02 01:11:50.314 - System suspend detected! Reinitialize all remote connections.
+2022-02-02 02:12:32.477 - System suspend detected! Reinitialize all remote connections.
+2022-02-02 09:27:47.923 - System suspend detected! Reinitialize all remote connections.
+2022-02-02 09:59:45.419 - System suspend detected! Reinitialize all remote connections.
+2022-02-02 13:55:50.681 - System suspend detected! Reinitialize all remote connections.
+2022-02-02 20:17:24.599 - System suspend detected! Reinitialize all remote connections.
+2022-02-02 21:02:35.260 - System suspend detected! Reinitialize all remote connections.
+2022-02-02 21:26:01.467 - System suspend detected! Reinitialize all remote connections.
+2022-02-02 23:14:14.146 - System suspend detected! Reinitialize all remote connections.
+2022-02-03 00:49:20.170 - No execution context within database instance
+2022-02-03 00:49:20.175 - java.lang.NullPointerException
+	at org.jkiss.dbeaver.ext.postgresql.PostgreUtils.getRealSchemaName(PostgreUtils.java:669)
+	at org.jkiss.dbeaver.ext.postgresql.model.PostgreStructureAssistant.findObjectsByMask(PostgreStructureAssistant.java:127)
+	at org.jkiss.dbeaver.ext.postgresql.model.PostgreStructureAssistant.findObjectsByMask(PostgreStructureAssistant.java:1)
+	at org.jkiss.dbeaver.ui.editors.sql.syntax.SQLContextInformer$TablesFinderJob.run(SQLContextInformer.java:366)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2022-02-03 00:49:20.401 - Execution context opened (postgres; Main <postgres>; 5)
+2022-02-03 00:49:20.402 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Main <postgres>
+2022-02-03 00:49:20.462 - java.lang.NullPointerException
+	at java.base/java.lang.String.replace(Unknown Source)
+	at org.jkiss.dbeaver.ext.postgresql.PostgreUtils.getRealSchemaName(PostgreUtils.java:669)
+	at org.jkiss.dbeaver.ext.postgresql.model.PostgreStructureAssistant.findObjectsByMask(PostgreStructureAssistant.java:127)
+	at org.jkiss.dbeaver.ext.postgresql.model.PostgreStructureAssistant.findObjectsByMask(PostgreStructureAssistant.java:1)
+	at org.jkiss.dbeaver.ui.editors.sql.syntax.SQLContextInformer$TablesFinderJob.run(SQLContextInformer.java:366)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2022-02-03 00:49:20.798 - Execution context opened (postgres; Metadata <postgres>; 6)
+2022-02-03 00:49:20.799 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Metadata <postgres>
+2022-02-03 00:49:21.130 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for SQLEditor <Script.sql>
+2022-02-03 00:49:49.470 - Invalidate datasource 'postgres' connections...
+2022-02-03 00:49:49.536 - Execution context closed (postgres, 3)
+2022-02-03 00:49:49.536 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Main <postgres>
+2022-02-03 00:49:49.907 - Execution context closed (postgres, 4)
+2022-02-03 00:49:49.907 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Metadata <postgres>
+2022-02-03 00:49:50.209 - Operation failed. Retry count remains = 1
 org.jkiss.dbeaver.model.sql.DBSQLException: SQL Error [08006]: An I/O error occurred while sending to the backend.
 	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCStatementImpl.executeStatement(JDBCStatementImpl.java:133)
 	at org.jkiss.dbeaver.model.impl.jdbc.struct.JDBCTable.readData(JDBCTable.java:190)
@@ -139,95 +179,15 @@ Caused by: org.postgresql.util.PSQLException: An I/O error occurred while sendin
 	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCStatementImpl.execute(JDBCStatementImpl.java:330)
 	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCStatementImpl.executeStatement(JDBCStatementImpl.java:130)
 	... 7 more
-Caused by: java.net.SocketException: Connection reset
-	at java.base/java.net.SocketInputStream.read(Unknown Source)
-	at java.base/java.net.SocketInputStream.read(Unknown Source)
-	at java.base/sun.security.ssl.SSLSocketInputRecord.read(Unknown Source)
-	at java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(Unknown Source)
-	at java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(Unknown Source)
-	at java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(Unknown Source)
-	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(Unknown Source)
-	at org.postgresql.core.VisibleBufferedInputStream.readMore(VisibleBufferedInputStream.java:161)
-	at org.postgresql.core.VisibleBufferedInputStream.ensureBytes(VisibleBufferedInputStream.java:128)
-	at org.postgresql.core.VisibleBufferedInputStream.ensureBytes(VisibleBufferedInputStream.java:113)
-	at org.postgresql.core.VisibleBufferedInputStream.read(VisibleBufferedInputStream.java:73)
-	at org.postgresql.core.PGStream.receiveChar(PGStream.java:443)
-	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2057)
-	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:323)
+Caused by: java.net.SocketException: Connection reset by peer: socket write error
+	at java.base/java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.base/java.net.SocketOutputStream.socketWrite(Unknown Source)
+	at java.base/java.net.SocketOutputStream.write(Unknown Source)
+	at java.base/sun.security.ssl.SSLSocketOutputRecord.deliver(Unknown Source)
+	at java.base/sun.security.ssl.SSLSocketImpl$AppOutputStream.write(Unknown Source)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.base/java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.postgresql.core.PGStream.flush(PGStream.java:665)
+	at org.postgresql.core.v3.QueryExecutorImpl.sendSync(QueryExecutorImpl.java:1470)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:321)
 	... 15 more
-2022-01-29 00:42:50.104 - System suspend detected! Reinitialize all remote connections.
-2022-01-29 13:01:54.422 - System suspend detected! Reinitialize all remote connections.
-2022-01-29 15:50:01.517 - System suspend detected! Reinitialize all remote connections.
-2022-01-29 18:01:54.420 - System suspend detected! Reinitialize all remote connections.
-2022-01-29 18:38:29.026 - System suspend detected! Reinitialize all remote connections.
-2022-01-29 20:29:12.682 - System suspend detected! Reinitialize all remote connections.
-2022-01-29 22:21:20.946 - Invalidate datasource 'postgres' connections...
-2022-01-29 22:21:20.998 - Execution context closed (postgres, 1)
-2022-01-29 22:21:20.998 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Main <postgres>
-2022-01-29 22:21:21.438 - Execution context closed (postgres, 2)
-2022-01-29 22:21:21.438 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for Metadata <postgres>
-2022-01-29 22:21:21.998 - Execution context closed (postgres, 3)
-2022-01-29 22:21:21.998 - Initiate connection to PostgreSQL database [postgres@javafs220103.c2351hhbxi6c.us-east-1.rds.amazonaws.com] for SQLEditor <Script.sql>
-2022-01-29 22:21:22.378 - Operation failed. Retry count remains = 1
-org.jkiss.dbeaver.model.sql.DBSQLException: SQL Error [08006]: An I/O error occurred while sending to the backend.
-	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCStatementImpl.executeStatement(JDBCStatementImpl.java:133)
-	at org.jkiss.dbeaver.model.impl.jdbc.struct.JDBCTable.readData(JDBCTable.java:190)
-	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.lambda$0(ResultSetJobDataRead.java:118)
-	at org.jkiss.dbeaver.model.exec.DBExecUtils.tryExecuteRecover(DBExecUtils.java:171)
-	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.run(ResultSetJobDataRead.java:116)
-	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetViewer$ResultSetDataPumpJob.run(ResultSetViewer.java:4810)
-	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:105)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-Caused by: org.postgresql.util.PSQLException: An I/O error occurred while sending to the backend.
-	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:350)
-	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:481)
-	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:401)
-	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:322)
-	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:308)
-	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:284)
-	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:279)
-	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCStatementImpl.execute(JDBCStatementImpl.java:330)
-	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCStatementImpl.executeStatement(JDBCStatementImpl.java:130)
-	... 7 more
-Caused by: java.net.SocketException: Connection reset
-	at java.base/java.net.SocketInputStream.read(Unknown Source)
-	at java.base/java.net.SocketInputStream.read(Unknown Source)
-	at java.base/sun.security.ssl.SSLSocketInputRecord.read(Unknown Source)
-	at java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(Unknown Source)
-	at java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(Unknown Source)
-	at java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(Unknown Source)
-	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(Unknown Source)
-	at org.postgresql.core.VisibleBufferedInputStream.readMore(VisibleBufferedInputStream.java:161)
-	at org.postgresql.core.VisibleBufferedInputStream.ensureBytes(VisibleBufferedInputStream.java:128)
-	at org.postgresql.core.VisibleBufferedInputStream.ensureBytes(VisibleBufferedInputStream.java:113)
-	at org.postgresql.core.VisibleBufferedInputStream.read(VisibleBufferedInputStream.java:73)
-	at org.postgresql.core.PGStream.receiveChar(PGStream.java:443)
-	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2057)
-	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:323)
-	... 15 more
-2022-01-29 22:23:14.554 - org.jkiss.dbeaver.DBException: Reference table 17886 not found
-	at org.jkiss.dbeaver.ext.postgresql.model.PostgreTableForeignKey.<init>(PostgreTableForeignKey.java:100)
-	at org.jkiss.dbeaver.ext.postgresql.model.PostgreSchema$ConstraintCache.fetchObject(PostgreSchema.java:868)
-	at org.jkiss.dbeaver.ext.postgresql.model.PostgreSchema$ConstraintCache.fetchObject(PostgreSchema.java:1)
-	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.loadObjects(JDBCCompositeCache.java:341)
-	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.getObject(JDBCCompositeCache.java:163)
-	at org.jkiss.dbeaver.ext.postgresql.model.PostgreTableReal.getConstraint(PostgreTableReal.java:206)
-	at org.jkiss.dbeaver.ext.postgresql.model.PostgreIndex.<init>(PostgreIndex.java:97)
-	at org.jkiss.dbeaver.ext.postgresql.model.PostgreSchema$IndexCache.fetchObject(PostgreSchema.java:1004)
-	at org.jkiss.dbeaver.ext.postgresql.model.PostgreSchema$IndexCache.fetchObject(PostgreSchema.java:1)
-	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.loadObjects(JDBCCompositeCache.java:341)
-	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.getObjects(JDBCCompositeCache.java:120)
-	at org.jkiss.dbeaver.ext.postgresql.model.PostgreTable.getIndexes(PostgreTable.java:200)
-	at org.jkiss.dbeaver.model.exec.DBExecUtils.getBestIdentifier(DBExecUtils.java:451)
-	at org.jkiss.dbeaver.model.exec.DBExecUtils.bindAttributes(DBExecUtils.java:797)
-	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetDataReceiver.fetchEnd(ResultSetDataReceiver.java:164)
-	at org.jkiss.dbeaver.model.impl.jdbc.struct.JDBCTable.readData(JDBCTable.java:217)
-	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.lambda$0(ResultSetJobDataRead.java:118)
-	at org.jkiss.dbeaver.model.exec.DBExecUtils.tryExecuteRecover(DBExecUtils.java:171)
-	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.run(ResultSetJobDataRead.java:116)
-	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetViewer$ResultSetDataPumpJob.run(ResultSetViewer.java:4810)
-	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:105)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-2022-01-30 12:33:24.722 - System suspend detected! Reinitialize all remote connections.
-2022-01-30 12:48:04.463 - System suspend detected! Reinitialize all remote connections.
-2022-01-30 15:19:41.654 - System suspend detected! Reinitialize all remote connections.
