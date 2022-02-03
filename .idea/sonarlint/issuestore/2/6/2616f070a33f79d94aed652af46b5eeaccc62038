@@ -1,13 +1,0 @@
-
-O
-java:S1611"4Remove the parentheses around the "config" parameter(Åëû—ùÿÿÿÿ
-G
-java:S1602",Remove useless curly braces around statement(Åëû—ùÿÿÿÿ
-W	java:S125"<This block of commented-out lines of code should be removed.(ıŠé8˜¹¯–ê/
-]	java:S125"<This block of commented-out lines of code should be removed.(æÙòçùÿÿÿÿ8˜¹¯–ê/
-Z
-java:S1128"=Remove this unused import 'com.revature.models.users.Intern'.(€ú¾¬8™¹¯–ê/
-H
-java:S1068"+Remove this unused "userDAO" private field.(©×–Å8™¹¯–ê/
--
-java:S1700"Rename field "app"(ùæ¦Ïøÿÿÿÿ
