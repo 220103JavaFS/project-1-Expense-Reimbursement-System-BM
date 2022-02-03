@@ -1,0 +1,119 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 500px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-row input {
+  padding: 3px 1px;
+  width: 100%;
+}
+input.currency {
+  text-align: center;
+  padding-right: 15px;
+}
+.input-group .form-control {
+  float: none;
+}
+.input-group .input-buttons {
+  position: relative;
+  z-index: 3;
+}
+
+.input-group-addon {
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+label {
+  display: inline-block;
+  width: 140px;
+  text-align: left;
+}
+
+ .input-group input{
+  margin-bottom: 8px;
+  width: 330px;
+  height: 32px;
+}
+
+#submit{
+  margin-top: 20px;
+}
+
+#mainButton{
+  width: 200px;
+  margin: 0 auto;
+  display: inline;
+}
+
+.inlineButtons{
+  width: 200px;
+  margin: 0 auto;
+  display: inline;
+}
+
+#RequestsDisplayed{
+  width: 50%;
+  float: right;
+  border: 1px solid;
+  background-color:rgb(255, 235, 235);
+}
+
+#RequestFilters{
+  width: 50%;
+  float: left;
+}
+
+input[type="radio"]{
+  float:left;
+}
+
+#requests{
+  float:left;
+}
+
+table th {
+  border-bottom: solid;
+  border-right: solid;
+  border-left: solid;
+  border-top: solid;
+}
+
+table tr {
+  border-bottom: groove;
+}
