@@ -3,7 +3,7 @@ let loginButton = document.getElementById("loginButton");
 let logoutButton = document.getElementById("logoutButton");
 let approveButton = document.getElementById("approveButton");
 let viewButton = document.getElementById("viewButton");
-let editButton = document.getElementById("editButton");
+let createButton = document.getElementById("createButton");
 let hireButton = document.getElementById("hireButton");
 let fireButton = document.getElementById("fireButton");
 let welcomeMessage = document.getElementById("welcomeMessage");
@@ -13,9 +13,9 @@ const url = "http://localhost:8081";
 logoutButton.addEventListener("click", logoutFunc);
 approveButton.addEventListener("click", approveFunc);
 viewButton.addEventListener("click", viewFunc);
-editButton.addEventListener("click", editFunc);
 hireButton.addEventListener("click", hireFunc);
 fireButton.addEventListener("click", fireFunc);
+createButton.addEventListener("click", createFunc);
 
 //Upon opening or reloading this page, we need to ask the database who's currently logged in.
 //This information is stored in the Javalin session. We might already have information on the current user
@@ -43,25 +43,24 @@ else {
             logoutButton.hidden = false;
             viewButton.hidden = false;
             approveButton.hidden = false;
-            editButton.hidden = false;
             hireButton.hidden = false;
             fireButton.hidden = false;
+            createButton.hidden = false;
             break;
         case "4":
             logoutButton.hidden = false;
             viewButton.hidden = false;
-            editButton.hidden = false;
             hireButton.hidden = false;
             fireButton.hidden = false;
+            createButton.hidden = false;
             break;
         default:
             logoutButton.hidden = false;
             viewButton.hidden = false;
-            editButton.hidden = false;
+            createButton.hidden = false;
             break;
     }
 }
-
 
 async function logoutFunc() {
 
@@ -84,7 +83,7 @@ async function approveFunc() {
         alert("You're connection has timed out, please log back in and try again.");
         logoutFunc()//call the logout function as the browser and javalin cookies no longer match
     }
-    else location.href =  'http://localhost:8081/MainPages/CombinedMain.html';
+    else location.href =  'http://localhost:8081/RequestPages/ApproveRequestsBobby.html';
 }
 
 async function viewFunc() {
@@ -95,10 +94,10 @@ async function viewFunc() {
         alert("You're connection has timed out, please log back in and try again.");
         logoutFunc()//call the logout function as the browser and javalin cookies no longer match
     }
-    else location.href =  'http://localhost:8081/RequestPages/ReimbursementRequests.html';
+    else location.href =  'http://localhost:8081/RequestPages/ReimbursementRequestsBobby.html';
 }
 
-async function editFunc() {
+async function createFunc() {
     //before going to the edit page, get the current user from the Javalin session. Make sure it matches
     //what's currently in the cookie
     let currentJavalinUser = await getCurrentUser(); //make sure that user cookie is up to date
@@ -106,7 +105,7 @@ async function editFunc() {
         alert("You're connection has timed out, please log back in and try again.");
         logoutFunc()//call the logout function as the browser and javalin cookies no longer match
     }
-    else location.href = 'http://localhost:8081/RequestPages/Request.html';
+    else location.href = 'http://localhost:8081/RequestPages/CreateRequest.html';
 }
 
 async function hireFunc() {
