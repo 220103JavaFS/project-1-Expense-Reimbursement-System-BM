@@ -94,7 +94,6 @@ INSERT INTO ers_reimbursement_type (reimb_type) VALUES ('lodging'),
 --next create the different status for a reimbursement request
 INSERT INTO ers_reimbursement_status (reimb_status) VALUES ('created'),
 	('submitted'),
-	('pending'),
 	('approved'),
 	('denied');
 
@@ -130,6 +129,11 @@ INSERT INTO ers_users (ers_username, ers_password, user_first_name, user_last_na
 
 --finally add a few reimbursement requests so we can try to process them in the Java application
 INSERT INTO ers_reimbursement (reimb_amount, reimb_submitted, reimb_resolved, reimb_description, reimb_receipt, reimb_author, reimb_resolver, reimb_status_id, reimb_type_id) VALUES
+	(18.50, null, null, 'big league chew', null, 1, null, 1, 4),
+	(125.12, '2022-01-08 16:05:06.445', null, 'took client out for dinner', null, 1, null, 2, 2),
+	(230.32, '2022-01-08 17:10:12.389', '2022-01-10 11:10:12.389', 'Loding for a night', null, 1, 2, 3, 1),
+	(600.45, '2022-01-09 16:05:06.445', '2022-01-09 11:10:12.389', 'Gas for the week', null, 1, 2, 4, 3),
+
 	(125.12, '2022-01-08 16:05:06.445', null, 'took client out for dinner', null, 4, null, 2, 2),
 	(1000.00, '2022-01-12 10:33:45.123', null, 'lodging for a week at holiday inn', null, 6, null, 2, 1),
 	(15.28, null, null, 'needed my smokes', null, 4, null, 1, 4);
