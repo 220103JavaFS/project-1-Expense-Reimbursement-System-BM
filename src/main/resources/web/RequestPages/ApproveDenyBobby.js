@@ -28,6 +28,19 @@ var selectedReimbursement = {
   reimbursementTypeId: 0,
 }; //represents the request currently selected by the user. Set everything to default values off the bat
 
+//const reimbursementStatusList = ["null", "created", "submitted", "approved", "denied"]
+const reimbursementStatuses = {
+  Created: 1,
+  Submitted: 2,
+  Approved: 3,
+  Denied:4
+}
+const reimbursementTypes = {
+  Lodging: 1,
+  Food: 2,
+  Travel: 3,
+  Other: 4
+}
 
 //Add event listeners
 approvedRadio.addEventListener("click", radioChangeFunc);
@@ -102,7 +115,23 @@ function loadTable(reimbursementList) {
 
     for (let data in request) {
       let td = document.createElement("td");
-      td.innerText = request[data];
+
+      //console.log(data);
+
+      if (data == "reimbursementStatusId") td.innerText = convertStatus(request[data]);
+      else if (data == "reimbursementTypeId") td.innerText = convertType(request[data]);
+      else if (data == "reimbursementSubmitted" || data == "reimbursementResolved") {
+        if (request[data] != null){
+          let date = new Date(request[data]);
+          td.innerText = date.toLocaleString();
+          //console.log("yoooooo");
+          //console.log(date.toLocaleString());
+        }
+        else td.innerText = "";
+      }
+      else {
+        td.innerText = request[data];
+      }
       row.appendChild(td); 
     }
     requestTable.appendChild(row);
@@ -171,10 +200,20 @@ function selectFunc(event) {
 
         //set the currently selected reimbursement to the one that was just clicked on
         //selectedReimbursement = element.childNodes[0].innerHTML;
-       let counter = -1;
-       for (let field in selectedReimbursement) {
-          selectedReimbursement[field] = element.childNodes[++counter].innerHTML
-       }
+        let counter = -1;
+        for (let field in selectedReimbursement) {
+           //if (field == "reimbursementAuthor") continue; //we don't keep track of this in the table so skip it
+           if (field == "reimbursementStatusId") selectedReimbursement[field] = reimbursementStatuses[element.childNodes[++counter].innerHTML];
+           else if (field == "reimbursementTypeId") selectedReimbursement[field] = reimbursementTypes[element.childNodes[++counter].innerHTML];
+           else if (field == "reimbursementSubmitted") {
+
+             //console.log(selectedReimbursement.reimbursementSubmitted);
+             
+             selectedReimbursement[field] = Date.parse(element.childNodes[++counter].innerHTML);
+             console.log( Date.parse(element.childNodes[counter].innerHTML));
+           }
+           else selectedReimbursement[field] = element.childNodes[++counter].innerHTML
+        }
        //console.log("selection should now be updated");
        //console.log(selectedReimbursement);
     }
@@ -195,4 +234,18 @@ function selectFunc(event) {
           reimbursementTypeId: 0,
         }; 
     }
+}
+
+function convertStatus(statusId) {
+  if (statusId === 1) return "Created";
+  else if (statusId === 2) return "Submitted";
+  else if (statusId === 3) return "Approved";
+  else return "Denied";
+}
+
+function convertType(typeId) {
+  if (typeId === 1) return "Lodging";
+  else if (typeId === 2) return "Food";
+  else if (typeId === 3) return "Travel";
+  else return "Other";
 }
