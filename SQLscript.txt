@@ -75,13 +75,15 @@ CREATE TABLE ers_reimbursement (
 		ON DELETE SET DEFAULT,
 	reimb_status_id INTEGER NOT NULL REFERENCES ers_reimbursement_status(reimb_status_id)
 		ON UPDATE CASCADE
-		ON DELETE NO ACTION,
+		ON DELETE SET DEFAULT,
 	reimb_type_id INTEGER NOT NULL REFERENCES ers_reimbursement_type(reimb_type_id)
 		ON UPDATE CASCADE
-		ON DELETE NO ACTION);
+		ON DELETE SET DEFAULT);
 
 --SET the default value for the approver column to "ex-employee" which has an id of 2
 ALTER TABLE ers_reimbursement  ALTER COLUMN reimb_resolver SET DEFAULT 2;
+ALTER TABLE ers_reimbursement  ALTER COLUMN reimb_status_id SET DEFAULT 5;
+ALTER TABLE ers_reimbursement  ALTER COLUMN reimb_type_id SET DEFAULT 5;
 
 --Now that the tables are created, insert some basic data into them
 
@@ -89,13 +91,15 @@ ALTER TABLE ers_reimbursement  ALTER COLUMN reimb_resolver SET DEFAULT 2;
 INSERT INTO ers_reimbursement_type (reimb_type) VALUES ('lodging'),
 	('food'),
 	('travel'),
-	('other');
+	('other'),
+	('deleted');
 
 --next create the different status for a reimbursement request
 INSERT INTO ers_reimbursement_status (reimb_status) VALUES ('created'),
 	('submitted'),
 	('approved'),
-	('denied');
+	('denied'),
+	('deleted');
 
 --now create a few basic employee types
 INSERT INTO ers_user_roles (user_role) VALUES ('default'),
@@ -142,6 +146,9 @@ INSERT INTO ers_reimbursement (reimb_amount, reimb_submitted, reimb_resolved, re
 
 --This was to test that a users role was set to default if their existing role was accidentally deleted
 --DELETE FROM ers_user_roles WHERE ers_user_role_id = 3;
+
+--DELETE FROM ers_users WHERE ers_username = 'rfloyd01';
+--DELETE FROM ers_reimbursement_status WHERE reimb_status_id = 2;
 
 --This line was to confirm that creating a user without a set role would give them the default user_role_id
 /*
